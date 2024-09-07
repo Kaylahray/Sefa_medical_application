@@ -1,11 +1,11 @@
-import OverviewPage from "./OverviewPage";
-import Patient from "./Patient";
-import Staff from "./Staff";
-import Finance from "./Finance";
-import Pharmacy from "./Pharmacy";
-import Analytics from "./Analytics";
-import Labs from "./Labs";
-import Users from "./Users";
+import OverviewPage from "./overviewpage/OverviewPage";
+import Patient from "./patient/Patient";
+import Staff from "./staff/Staff";
+import Finance from "./finance/Finance";
+import Analytics from "./analytics/Analytics";
+import Labs from "./labs/Labs";
+import Users from "./users/Users";
+import Pharmacy from "./pharmacyy/Pharmacy";
 export {
   OverviewPage,
   Patient,
