@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Avenir-Meduim';
+        font-style: normal;
+        src: url(/src/assets/Avenir-LT-Std/Avenir\ LT\ Std\ 65\ Medium.otf) format('otf');
+    }
+}

@@ -1,4 +1,5 @@
-How to Contribute
+How to Contribute.
+
 A simple guide on how to contribute. Please follow these steps:
 
 1. Clone the Forked Repository
@@ -40,3 +41,14 @@ Go to the original repository on GitHub.
 Click the Compare & pull request button.
 Provide a clear title and description for your pull request.
 Submit the pull request for review.
+
+
+Note:
+
+inside the components folder we have content folder and shared folder:
+
+Content Folder: it is for components that are not reusable that are just static.
+
+while
+
+Shared Folder: it is for components that are resuable, and can be called and be used anywhere.
