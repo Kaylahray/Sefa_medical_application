@@ -45,8 +45,8 @@ const Navbar = () => {
               to={item.path}
               className={({ isActive }) =>
                 isActive
-                  ? "inline-flex items-center border-b-2 border-indigo-500 px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
-                  : "inline-flex items-center px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
+                  ? "inline-flex items-center font-AvenirMeduim border-b-2 border-indigo-500 px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
+                  : "inline-flex items-center font-AvenirMeduim px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
               }
             >
               {item.name}
