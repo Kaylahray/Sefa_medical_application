@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import PatientLineChart from "../../components/patient/charts/PatientLineChart";
+import GenderDonutChart from "../../components/patient/charts/GenderDonutChart";
 
 const OverviewPage = () => {
   return (
-    <div>OverviewPage</div>
-  )
-}
+    <div>
+      <PatientLineChart />
+      <GenderDonutChart />
+    </div>
+  );
+};
 
-export default OverviewPage
+export default OverviewPage;
