@@ -1,9 +1,10 @@
-import React from 'react'
 
 const OverviewPage = () => {
   return (
-    <div>OverviewPage</div>
-  )
-}
+    <div>
+      OverviewPage
+    </div>
+  );
+};
 
-export default OverviewPage
+export default OverviewPage;

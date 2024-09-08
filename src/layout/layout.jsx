@@ -3,12 +3,12 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Content/Navbar";
 const Layout = () => {
   return (
-    <>
+    <div className="bg-bgColor h-screen">
       <Navbar />
-      <div className="content">
+      <div className="content conatiner px-4 md:px-0 md:w-4/5 max-w-7xl mx-auto py-4 font-AvenirMeduim">
         <Outlet /> {/* This is where child routes will be rendered */}
       </div>
-    </>
+    </div>
   );
 };
 

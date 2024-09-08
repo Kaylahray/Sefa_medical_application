@@ -17,6 +17,7 @@ module.exports = {
         inactiveTextColor: "#A35800",
         inactiveBgColor: "#FFF6EB",
         warning: "#CC0000",
+        tableTextColor: '#525252',
       },
     },
   },
