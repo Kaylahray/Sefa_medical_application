@@ -1,11 +1,11 @@
 import React from "react";
-import PatientLineChart from "../../components/patient/charts/PatientLineChart";
+import PatientChart from "../../components/patient/charts/PatientLineChart";
 import GenderDonutChart from "../../components/patient/charts/GenderDonutChart";
 
 const OverviewPage = () => {
   return (
     <div>
-      <PatientLineChart />
+      <PatientChart />
       <GenderDonutChart />
     </div>
   );
