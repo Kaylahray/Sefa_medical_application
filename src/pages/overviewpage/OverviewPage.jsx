@@ -1,8 +1,10 @@
+import OverviewHero from "../../Components/Content/OverviewHero";
+
 
 const OverviewPage = () => {
   return (
-    <div>
-      OverviewPage
+    <div className="md:mt-14">
+      <OverviewHero />
     </div>
   );
 };

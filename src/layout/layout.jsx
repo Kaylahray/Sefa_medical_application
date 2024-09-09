@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <div className="bg-bgColor h-screen font-AvenirMeduim">
       <Navbar />
-      <div className="content conatiner px-4 md:px-0 md:w-4/5 max-w-7xl mx-auto py-4 ">
+      <div className="content conatiner px-4 md:px-0 md:w-[85%] max-w-7xl mx-auto py-4 ">
         <Outlet /> {/* This is where child routes will be rendered */}
       </div>
     </div>
