@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/content/Navbar";
-
 const Layout = () => {
   return (
     <div className="bg-bgColor h-screen font-AvenirMeduim">

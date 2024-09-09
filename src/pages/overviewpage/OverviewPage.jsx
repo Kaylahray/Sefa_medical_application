@@ -1,4 +1,4 @@
-import OverviewHero from "../../Components/Content/OverviewHero";
+import OverviewHero from "../../components/content/OverviewHero";
 const OverviewPage = () => {
   return (
     <div className="md:mt-14">

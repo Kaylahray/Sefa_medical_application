@@ -11,18 +11,18 @@ import {
 } from "recharts";
 
 const data = [
-  { month: "JAN", newPatients: 120, returningPatients: 30 },
-  { month: "FEB", newPatients: 150, returningPatients: 70 },
-  { month: "MAR", newPatients: 200, returningPatients: 110 },
-  { month: "APR", newPatients: 170, returningPatients: 150 },
-  { month: "MAY", newPatients: 130, returningPatients: 180 },
-  { month: "JUN", newPatients: 100, returningPatients: 250 },
-  { month: "JUL", newPatients: 80, returningPatients: 300 },
-  { month: "AUG", newPatients: 60, returningPatients: 260 },
-  { month: "SEP", newPatients: 100, returningPatients: 190 },
-  { month: "OCT", newPatients: 20, returningPatients: 140 },
-  { month: "NOV", newPatients: 30, returningPatients: 120 },
-  { month: "DEC", newPatients: 40, returningPatients: 110 },
+  { month: "JAN", newPatients: 110, returningPatients: 0 },
+  { month: "FEB", newPatients: 150, returningPatients: 100 },
+  { month: "MAR", newPatients: 120, returningPatients: 150 },
+  { month: "APR", newPatients: 30, returningPatients: 310 },
+  { month: "MAY", newPatients: 40, returningPatients: 420 },
+  { month: "JUN", newPatients: 100, returningPatients: 400 },
+  { month: "JUL", newPatients: 180, returningPatients: 300 },
+  { month: "AUG", newPatients: 220, returningPatients: 200 },
+  { month: "SEP", newPatients: 200, returningPatients: 190 },
+  { month: "OCT", newPatients: 20, returningPatients: 240 },
+  { month: "NOV", newPatients: 30, returningPatients: 380 },
+  { month: "DEC", newPatients: 40, returningPatients: 300 },
 ];
 
 const PatientChart = () => {
@@ -30,11 +30,11 @@ const PatientChart = () => {
     <ResponsiveContainer width="100%" height={400}>
       <AreaChart
         data={data}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        margin={{ top: 10, right: 30, left: 20, bottom: 20 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" axisLine={false} />
-        <YAxis axisLine={false} />
+        <XAxis dataKey="month" axisLine={false} padding={{ left: 20 }} />
+        <YAxis axisLine={false} padding={{ bottom: 20 }} />
         <Tooltip />
         <Legend />
         <defs>
