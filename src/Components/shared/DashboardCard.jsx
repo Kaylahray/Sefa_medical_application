@@ -2,7 +2,7 @@ import React from 'react'
 
 const Card = ({children}) => {
   return (
-    <div className='card bg-white card-compact border border-[#E0E0E0] rounded-lg px-3 py-3 '>
+    <div className='w-full md:w-64 card bg-white card-compact border border-[#E0E0E0] rounded-lg px-3 py-4 '>
         {children}
     </div>
   )

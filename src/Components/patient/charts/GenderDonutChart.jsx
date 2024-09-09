@@ -6,7 +6,7 @@ const data = [
   { name: "Female", value: 6000000 },
 ];
 
-const COLORS = ["#1E90FF", "#FF69B4"];
+const COLORS = ["#799794", "#CDB1A8"];
 
 const GenderDonutChart = () => {
   const totalPopulation = data.reduce((acc, entry) => acc + entry.value, 0);
@@ -44,7 +44,7 @@ const GenderDonutChart = () => {
           y="60%"
           textAnchor="middle"
           dominantBaseline="middle"
-          fontSize={18}
+          fontSize={16}
         >
           Total Patients
         </text>

@@ -1,12 +1,9 @@
-import React from "react";
-import PatientChart from "../../components/patient/charts/PatientLineChart";
-import GenderDonutChart from "../../components/patient/charts/GenderDonutChart";
+import OverviewHero from "../../Components/Content/OverviewHero";
 
 const OverviewPage = () => {
   return (
-    <div>
-      <PatientChart />
-      <GenderDonutChart />
+    <div className="md:mt-14">
+      <OverviewHero />
     </div>
   );
 };
