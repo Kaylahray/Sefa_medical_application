@@ -11,6 +11,7 @@ module.exports = {
         bgColor: "#FAFAFA",
         lightColorText: "#7A7A7A",
         boldColorText: "#292929",
+        dasboardSmalText: '#8F8F8F',
         buttonBg: "#799794",
         activeTextColor: "#03A300",
         activerBgColor: "#EBFFEB",
