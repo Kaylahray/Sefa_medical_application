@@ -9,24 +9,24 @@ import Profit from "../../assets/img/profit icon.png";
 const OverviewHero = () => {
   return (
     <>
-      <div className="bg-[#E4EAEA] mb-5 px-5 py-5">
-        <div className="md:ml-20">
-          <h1 className="text-[#283231] text-xl md:text-2xl font-semibold ">
+      <div className="bg-[#E4EAEA] md:h-[96px] flex flex-col md:flex-row justify-between items-center mb-5 px-5 py-10">
+        <div className=" lg:ml-20 md:text-left">
+          <h1 className="text-[#283231]  text-xl md:text-2xl font-semibold ">
             Welcome Back, Tobi.
           </h1>
           <p className="text-[#799794] text-base font-normal">
             25th October, 2022
           </p>
         </div>
-        <div className="hidden md:block relative">
+        <div className="relative lg:mr-20">
           <img
             src={DoctorPana}
             alt="doctors banner"
-            className="md:absolute right-10 top-1/2 -mt-[185px] z-10"
+            className="md:-mt-[88px] z-10"
           />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mb-5">
         {/* card 1 */}
         <DashboardCard>
           <div className="flex items-center gap-4 ">

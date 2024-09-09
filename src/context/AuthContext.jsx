@@ -9,7 +9,7 @@ export const UserProvider = ({children}) => {
         const res = await fetch('https://dummyjson.com/users')
         const info = await res.json()
         console.log(info)
-        setPeople(info)
+        setPeople(info.users)
     }
     useEffect(() => {
      fetchPeople()

@@ -15,8 +15,8 @@ const Table = () => {
   // replace the content to what you is suppose to be diplyed at your end
   return (
     <div className="w-full overflow-x-auto  ">
-      <table className="w-full border-separate border-spacing-y-2 text-tableTextColor">
-        <thead className="bg-[#E4EAEA] text-left text-base  font-semibold">
+      <table className="table w-full border-separate border-spacing-y-2 text-tableTextColor">
+        <thead className="bg-[#E4EAEA] text-left text-base font-semibold">
           <tr>
             <th
               scope="col"
