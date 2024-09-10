@@ -34,11 +34,24 @@ const PatientChart = () => {
         height: "400px",
       }}
     >
-      {/* <h3
-        style={{ margin: "0 0 20px 0", fontSize: "16px", fontWeight: "normal" }}
-      >
-        Patient
-      </h3> */}
+      <div className="flex gap-6 mb-2">
+        <h3 className="mr-1 mt-1 font-bold">Patient</h3>
+        <div className="w-full flex mt-1 space-x-8">
+          {["New Patients", "Returning Patients"].map((label, index) => (
+            <div key={label} className="flex flex-col items-center">
+              <div className="flex items-center">
+                <div
+                  className={`w-[32px] h-[8px] rounded mr-2 ${
+                    index === 0 ? "bg-[#799794]" : "bg-[#CDB1A8]"
+                  }`}
+                ></div>
+                <span className="text-sm text-gray-700">{label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={data}
@@ -53,7 +66,7 @@ const PatientChart = () => {
           />
           <YAxis axisLine={false} tickLine={false} padding={{ bottom: 20 }} />
           <Tooltip />
-          <Legend
+          {/* <Legend
             layout="horizontal"
             align="left"
             verticalAlign="top"
@@ -63,7 +76,7 @@ const PatientChart = () => {
               fontSize: "14px",
               color: "#333",
             }} // Custom styles
-          />
+          /> */}
           <defs>
             <linearGradient id="colorNewPatients" x1="0" y1="0" x2="0" y2="1">
               {/* <stop offset="5%" stopColor="#D3A7A2" stopOpacity={0.8} /> */}

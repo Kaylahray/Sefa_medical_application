@@ -18,7 +18,7 @@ const Analytics = () => {
         </Card>
       </div>
 
-      <div>
+      <div className="mt-4">
         <Card>
           <ReportedCasesChart />
         </Card>

@@ -1,5 +1,12 @@
 import React from "react";
-import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Tooltip,
+  Cell,
+  ResponsiveContainer,
+} from "recharts";
 
 const data = [
   { name: "Male", value: 4000000 },
@@ -8,22 +15,53 @@ const data = [
 
 const COLORS = ["#799794", "#CDB1A8"];
 
+// Custom Sector for smoother curves where segments meet
+const CustomSector = ({
+  cx,
+  cy,
+  innerRadius,
+  outerRadius,
+  startAngle,
+  endAngle,
+  fill,
+  cornerRadius,
+}) => (
+  <Sector
+    cx={cx}
+    cy={cy}
+    innerRadius={innerRadius}
+    outerRadius={outerRadius}
+    startAngle={startAngle}
+    endAngle={endAngle}
+    fill={fill}
+    cornerRadius={cornerRadius} // This ensures smoother edges
+  />
+);
+
 const GenderDonutChart = () => {
   const totalPopulation = data.reduce((acc, entry) => acc + entry.value, 0);
 
   return (
     <>
+      <h3
+        style={{ margin: "0 0 20px 0", fontSize: "16px", fontWeight: "normal" }}
+      >
+        Gender
+      </h3>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={80}
-            outerRadius={100}
-            fill="#8884d8"
-            paddingAngle={0}
+            startAngle={0}
+            innerRadius={90}
+            outerRadius={110}
+            paddingAngle={-5}
             dataKey="value"
+            cornerRadius={50} // Adds rounded corners
+            isAnimationActive={false}
+            activeShape={CustomSector}
           >
             {data.map((entry, index) => (
               <Cell
