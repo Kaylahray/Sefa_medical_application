@@ -31,10 +31,10 @@ const PatientChart = () => {
       className="chart-container"
       style={{
         width: "100%",
-        height: "100%",
+        height: "481px",
       }}
     >
-      <div className="flex items-center gap-10 mb-[36px]">
+      <div className="flex items-center gap-10 mb-[26px]">
         <h3 className="ml-1 mt-1 font-[600] text-[20px] text-[#525252]">
           Patient
         </h3>

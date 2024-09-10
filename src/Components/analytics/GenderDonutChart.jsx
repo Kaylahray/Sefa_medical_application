@@ -15,6 +15,7 @@ const data = [
 
 const COLORS = ["#799794", "#CDB1A8"];
 
+// Custom Sector for smoother curves where segments meet
 const CustomSector = ({
   cx,
   cy,
@@ -43,7 +44,7 @@ const GenderDonutChart = () => {
   return (
     <>
       <h3 className="font-[600] text-[18px]">Gender</h3>
-      <ResponsiveContainer width="100%" height="80%">
+      <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie
             data={data}
