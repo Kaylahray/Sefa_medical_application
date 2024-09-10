@@ -45,7 +45,7 @@ const HMOCoverageChart = () => {
                     %)
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 h-1">
+                <div className="w-full bg-gray-200 h-[2px]">
                   <div
                     className={`h-full ${item.color}`}
                     style={{ width: `${100 - item.percentage}%` }}

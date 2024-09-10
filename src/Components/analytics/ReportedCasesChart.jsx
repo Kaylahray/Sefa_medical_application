@@ -29,7 +29,7 @@ const ReportedCasesChart = () => {
       className="chart-container"
       style={{
         width: "100%",
-        height: "481px",
+        height: "400px",
       }}
     >
       <h3 className="font-[600] ml-1 text-[#3D3D3D] text-[20px] mb-[56px]">
