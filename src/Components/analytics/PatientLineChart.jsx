@@ -100,6 +100,7 @@ const PatientChart = () => {
             fillOpacity={1}
             fill="url(#colorNewPatients)"
             name="New patients"
+            strokeWidth={3}
           />
           <Area
             type="monotone"
@@ -108,6 +109,7 @@ const PatientChart = () => {
             fillOpacity={1}
             fill="url(#colorReturningPatients)"
             name="Returning patients"
+            strokeWidth={3}
           />
         </AreaChart>
       </ResponsiveContainer>
