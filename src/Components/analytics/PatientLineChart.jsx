@@ -34,9 +34,11 @@ const PatientChart = () => {
         height: "400px",
       }}
     >
-      <div className="flex gap-6 mb-2">
-        <h3 className="mr-1 mt-1 font-bold">Patient</h3>
-        <div className="w-full flex mt-1 space-x-8">
+      <div className="flex items-center gap-10 mb-2">
+        <h3 className="ml-1 mt-1 font-[600] text-[18px] text-[#525252]">
+          Patient
+        </h3>
+        <div className="w-full flex mt-1 space-x-8 font-[600] text-[16px] text-[#525252]">
           {["New Patients", "Returning Patients"].map((label, index) => (
             <div key={label} className="flex flex-col items-center">
               <div className="flex items-center">
@@ -57,7 +59,7 @@ const PatientChart = () => {
           data={data}
           margin={{ top: 10, right: 30, left: 20, bottom: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
             dataKey="month"
             axisLine={false}
