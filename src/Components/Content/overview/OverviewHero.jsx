@@ -1,10 +1,10 @@
-import DashboardCard from "../shared/DashboardCard";
+import DashboardCard from "../../shared/DashboardCard";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
-import DoctorPana from "../../assets/img/Doctors-pana 2.svg";
-import Patient from "../../assets/img/patient.svg";
-import Staff from "../../assets/img/staff icon.svg";
-import Profit from "../../assets/img/profit icon.png";
+import DoctorPana from "../../../assets/img/Doctors-pana 2.svg";
+import Patient from "../../../assets/img/patient.svg";
+import Staff from "../../../assets/img/staff icon.svg";
+import Profit from "../../../assets/img/profit icon.png";
 
 const OverviewHero = () => {
   return (

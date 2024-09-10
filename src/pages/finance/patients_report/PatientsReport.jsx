@@ -1,7 +1,11 @@
-import React from "react";
+import PatientReportHero from "../../../Components/Content/finance/patientReportHer";
 
 const PatientsReport = () => {
-  return <div>PatientReport</div>;
+  return (
+  <div>
+    <PatientReportHero />
+  </div>
+  );
 };
 
 export default PatientsReport;

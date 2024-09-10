@@ -1,5 +1,6 @@
-import OverviewHero from "../../Components/Content/OverviewHero";
-import OverviewTable from "../../Components/Content/OverviewTable";
+import OverviewHero from "../../Components/Content/overview/OverviewHero";
+import OverviewTable from "../../Components/Content/overview/OverviewTable";
+
 
 const OverviewPage = () => {
 

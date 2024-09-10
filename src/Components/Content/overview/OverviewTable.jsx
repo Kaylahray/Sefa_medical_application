@@ -2,21 +2,22 @@ import { useContext } from "react";
 import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
-import TableHeader from "../../Components/shared/TableHeader";
-import TableBody from "../../Components/shared/TableBody";
-import UsersContext from "../../context/AuthContext";
+import TableHeader from "../../shared/TableHeader";
+import TableBody from "../../shared/TableBody";
+import UsersContext from "../../../context/AuthContext";
 
 const OverviewTable = () => {
   const { people } = useContext(UsersContext);
   const users = people.slice(0, 10);
-  const handleClick = () => {
-    const menu = document.getElementById("moreMenu");
-    if (menu.style.display === "none") {
-      menu.style.display = "block";
-    } else {
-      menu.style.display = "none";
-    }
-  };
+  const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  // const handleClick = () => {
+  //   const menu = document.getElementById("moreMenu");
+  //   if (menu.style.display === "none") {
+  //     menu.style.display = "block";
+  //   } else {
+  //     menu.style.display = "none";
+  //   }
+  // };
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex justify-between font-semibold">
@@ -78,7 +79,7 @@ const OverviewTable = () => {
                   {user.age}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {user.age}
+                  {currentTime}
                 </td>
                 <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                   <IoMdMore className="cursor-pointer" />
