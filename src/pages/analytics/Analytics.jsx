@@ -6,6 +6,7 @@ import ReportedCasesChart from "../../components/analytics/ReportedCasesChart";
 import HMOCoverageChart from "../../components/analytics/HMOCoverageChart";
 import TabComponent from "../../components/analytics/TabComponent";
 import Select from "../../components/shared/Select";
+import BlankTab from "./BlankTab";
 
 const PatientAnalystics = () => {
   return (
@@ -32,10 +33,10 @@ const PatientAnalystics = () => {
   );
 };
 
-const StaffAnalyticis = () => <div>Overview Content</div>;
-const FInancialAnalytics = () => <div>Patients Content</div>;
-const PharmacyAnalytics = () => <div>Appointments Content</div>;
-const LabAnalytics = () => <div>Lab Content</div>;
+const StaffAnalyticis = BlankTab;
+const FInancialAnalytics = BlankTab;
+const PharmacyAnalytics = BlankTab;
+const LabAnalytics = BlankTab;
 
 const Analytics = () => {
   const tabData = [
@@ -47,8 +48,16 @@ const Analytics = () => {
   ];
   return (
     <>
-      <Select />
-      <TabComponent tabs={tabData} />
+      <div className="w-full">
+        <div className="flex items-center justify-between px-8 py-1">
+          <div></div>
+          <div>
+            <Select />
+          </div>
+        </div>
+
+        <TabComponent tabs={tabData} />
+      </div>
     </>
   );
 };
