@@ -1,9 +1,7 @@
-import React from 'react'
+import { Outlet } from "react-router-dom";
 
 const Patient = () => {
-  return (
-    <div>Patient</div>
-  )
-}
+  return <Outlet />;
+};
 
-export default Patient
+export default Patient;

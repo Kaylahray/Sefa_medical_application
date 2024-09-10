@@ -1,121 +1,195 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import profile from "../../assets/profile.svg";
 import down from "../../assets/arrow_down.svg";
-
-const navigation = [
-  { name: "Overview", path: "/" },
-  { name: "Patient", path: "/patient" },
-  { name: "Staff", path: "/staff" },
-  { name: "Finance", path: "/finance" },
-  { name: "Pharmacy", path: "/pharmacy" },
-  { name: "Analytics", path: "/analytics" },
-  { name: "Labs", path: "/labs" },
-  { name: "Users", path: "/users" },
-];
+import up from "../../assets/up.svg";
+import { navigation } from "./routes";
 
 const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const location = useLocation();
+
+  // Determine the active parent link based on the current location
+  const getActiveParent = () => {
+    const parentLink = navigation.find((item) => {
+      const isExactMatch = location.pathname === item.path;
+      const isNestedMatch = location.pathname.startsWith(
+        item.path + "/"
+      );
+
+      return isExactMatch || isNestedMatch;
+    });
+    return parentLink ? parentLink.name : "";
+  };
+
+  const activeParent = getActiveParent();
 
   return (
     <>
-      <nav
-        aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-      >
-        <div className="flex lg:flex-1">
-          <Link to="/">
-            <h1 className="-m-1.5 p-1.5 text-2xl">Sefa</h1>
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
-            <span className="sr-only">Open main menu</span>
-            {/* Icon for mobile menu button */}
-          </button>
-        </div>
-        <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.path}
-              className={({ isActive }) =>
-                isActive
-                  ? "inline-flex items-center font-AvenirMeduim border-b-2 border-indigo-500 px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
-                  : "inline-flex items-center font-AvenirMeduim px-2 pt-2 pb-4 text-sm font-medium text-gray-900"
-              }
+      <nav className="bg-white">
+        <div className="flex justify-around items-center h-full w-full">
+          <div className="flex justify-between w-full z-50 md:w-auto">
+            <img src={profile} alt="Profile" />
+            <div
+              className="text-3xl lg:hidden p-2"
+              onClick={() => setMenuOpen(!open)}
             >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 items-center lg:justify-end">
-          <img src={profile} alt="User Profile" />
-          <div className="flex items-center">
-            <span className="text-sm font-semibold leading-6 text-gray-900">
-              Super Admin
-            </span>
-            <img src={down} alt="Arrow Down" />
-          </div>
-        </div>
-      </nav>
-
-      {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div
-            className="fixed inset-0 z-50"
-            aria-hidden="true"
-          ></div>
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
-              <Link to="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img
-                  alt="Company Logo"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  className="h-8 w-auto"
-                />
-              </Link>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              >
-                <span className="sr-only">Close menu</span>
-                {/* Icon for closing mobile menu */}
-              </button>
+              {open ? (
+                <h1>X</h1>
+              ) : (
+                <div className="flex flex-col justify-around">
+                  <span className="h-2 bg-black"></span>
+                  <span className="h-2 bg-black"></span>
+                  <span className="h-2 bg-black"></span>
+                </div>
+              )}
             </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
+          </div>
+
+          {/* Desktop Menu */}
+          <ul className="lg:flex hidden items-center gap-8">
+            {navigation.map((item, index) => (
+              <li
+                className="relative"
+                key={item.name}
+                onMouseEnter={() => setOpenDropdown(index)}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <div className="flex items-center">
+                  {/* If the item has subLinks, disable the link functionality */}
+                  {!item.subLinks ? (
                     <NavLink
-                      key={item.name}
                       to={item.path}
                       className={({ isActive }) =>
-                        isActive
-                          ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 border-b-2 border-indigo-500"
-                          : "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        isActive || activeParent === item.name
+                          ? "inline-flex items-center font-AvenirMedium border-b-4 border-[#283231] px-2 py-5 text-sm font-bold text-gray-900"
+                          : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
                       }
                     >
                       {item.name}
                     </NavLink>
-                  ))}
+                  ) : (
+                    <button
+                      className={
+                        activeParent === item.name
+                          ? "inline-flex items-center font-AvenirMedium border-b-4 border-[#283231] px-2 py-5 text-sm font-bold text-gray-900"
+                          : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
+                      }
+                    >
+                      {item.name}
+                      <img
+                        src={openDropdown === index ? up : down}
+                        alt="Dropdown Arrow"
+                        className="ml-1"
+                      />
+                    </button>
+                  )}
                 </div>
-                <div className="py-6">
-                  <button className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                    Log in
-                  </button>
+
+                {/* Dropdown for Sublinks */}
+                {item.subLinks && openDropdown === index && (
+                  <ul className="absolute top-full left-0 w-48 bg-white shadow-lg rounded-lg">
+                    {item.subLinks.map((subLink) => (
+                      <li key={subLink.name}>
+                        <NavLink
+                          to={subLink.path}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "block px-4 py-2 bg-gray-100 text-[#283231]"
+                              : "block px-4 py-2 hover:bg-gray-100"
+                          }
+                        >
+                          {subLink.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile Menu */}
+          <ul
+            className={`lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 ${
+              open ? "left-0" : "left-[-100%]"
+            }`}
+          >
+            {navigation.map((item, index) => (
+              <li key={item.name}>
+                <div
+                  className="flex justify-between items-center"
+                  onClick={() =>
+                    setOpenDropdown(
+                      openDropdown === index ? null : index
+                    )
+                  }
+                >
+                  {/* If the item has subLinks, disable the link functionality */}
+                  {!item.subLinks ? (
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        isActive || activeParent === item.name
+                          ? "inline-flex items-center font-AvenirMedium border-b-2 border-indigo-500 px-2 py-5 text-sm font-medium text-gray-900"
+                          : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  ) : (
+                    <button
+                      className={
+                        activeParent === item.name
+                          ? "inline-flex items-center font-AvenirMedium border-b-2 border-indigo-500 px-2 py-5 text-sm font-medium text-gray-900"
+                          : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
+                      }
+                    >
+                      {item.name}
+                      <img
+                        src={openDropdown === index ? up : down}
+                        alt="Dropdown Arrow"
+                        className="ml-6"
+                      />
+                    </button>
+                  )}
                 </div>
-              </div>
+
+                {/* Mobile Dropdown for Sublinks */}
+                {item.subLinks && openDropdown === index && (
+                  <ul className="pl-4">
+                    {item.subLinks.map((subLink) => (
+                      <li key={subLink.name}>
+                        <NavLink
+                          to={subLink.path}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "block px-4 py-2 bg-gray-100 text-indigo-500"
+                              : "block px-4 py-2 hover:bg-gray-100"
+                          }
+                        >
+                          {subLink.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden lg:flex items-center lg:justify-end">
+            <img src={profile} alt="User Profile" />
+            <div className="flex items-center">
+              <span className="text-sm font-semibold leading-6 text-gray-900">
+                Super Admin
+              </span>
+              <img src={down} alt="Arrow Down" />
             </div>
           </div>
         </div>
-      )}
+      </nav>
     </>
   );
 };
