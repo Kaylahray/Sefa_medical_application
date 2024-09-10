@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import profile from "../../assets/profile.svg";
 import down from "../../assets/arrow_down.svg";
 import up from "../../assets/up.svg";
-import { navigation } from "./routes";
+import { navigation } from "../../routes";
 
 const Navbar = () => {
   const [open, setMenuOpen] = useState(false);
