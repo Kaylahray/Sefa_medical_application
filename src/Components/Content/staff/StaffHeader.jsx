@@ -1,15 +1,15 @@
 import React from 'react'
-import Search from '../../Components/shared/Search'
-import Select from '../../Components/shared/Select'
-import Button from '../../Components/shared/Button'
-import Arrow from '../../assets/arrow_down.svg'
+import Search from '../../shared/Search'
+import Select from '../../shared/Select'
+import Button from '../../shared/Button'
+
 
 
 
 
 function StaffHeader() {
   return (
-    <div className=''>
+    <div className='flex flex-row gap-20'>
     <Search />
     <Select/>
   
