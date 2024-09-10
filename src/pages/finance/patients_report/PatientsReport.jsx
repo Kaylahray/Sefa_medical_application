@@ -1,10 +1,10 @@
-import PatientReportHero from "../../../Components/Content/finance/patientReportHer";
+import PatientReportHero from "../../../components/content/finance/patientReportHer";
 
 const PatientsReport = () => {
   return (
-  <div>
-    <PatientReportHero />
-  </div>
+    <div>
+      <PatientReportHero />
+    </div>
   );
 };
 
