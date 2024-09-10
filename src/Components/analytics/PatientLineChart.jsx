@@ -31,11 +31,11 @@ const PatientChart = () => {
       className="chart-container"
       style={{
         width: "100%",
-        height: "400px",
+        height: "100%",
       }}
     >
-      <div className="flex items-center gap-10 mb-2">
-        <h3 className="ml-1 mt-1 font-[600] text-[18px] text-[#525252]">
+      <div className="flex items-center gap-10 mb-[36px]">
+        <h3 className="ml-1 mt-1 font-[600] text-[20px] text-[#525252]">
           Patient
         </h3>
         <div className="w-full flex mt-1 space-x-8 font-[600] text-[16px] text-[#525252]">
@@ -54,7 +54,7 @@ const PatientChart = () => {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height="95%">
         <AreaChart
           data={data}
           margin={{ top: 10, right: 30, left: 20, bottom: 20 }}
@@ -65,8 +65,15 @@ const PatientChart = () => {
             axisLine={false}
             tickLine={false}
             padding={{ left: 20 }}
+            textAnchor="middle"
+            // ="text-[#7A7A7A] font-[400]"
           />
-          <YAxis axisLine={false} tickLine={false} padding={{ bottom: 20 }} />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            padding={{ bottom: 20 }}
+            ticks={[0, 100, 200, 300, 400, 500]}
+          />
           <Tooltip />
           {/* <Legend
             layout="horizontal"
