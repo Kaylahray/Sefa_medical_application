@@ -8,7 +8,7 @@ const Tabs = ({ tabs, selectedTab, onTabClick }) => {
         <div
           key={tab.label}
           onClick={() => onTabClick(index)}
-          className={`cursor-pointer py-4 font-[400] text-18px px-6 relative ${
+          className={`cursor-pointer pb-4 font-[400] text-18px px-6 relative ${
             selectedTab === index
               ? "text-[#283231]"
               : "text-[#7A7A7A] hover:text-gray-700"

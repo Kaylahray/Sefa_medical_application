@@ -6,6 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 
 const data = [
@@ -66,6 +67,7 @@ const ReportedCasesChart = () => {
             tickLine={false}
             tick={{ fontSize: 12, fill: "#7A7A7A" }}
           />
+          {/* <Tooltip /> */}
           <Bar
             dataKey="cases"
             fill="#9EB1B8"
