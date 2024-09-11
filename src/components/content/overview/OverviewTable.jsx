@@ -9,7 +9,10 @@ import UsersContext from "../../../context/AuthContext";
 const OverviewTable = () => {
   const { people } = useContext(UsersContext);
   const users = people.slice(0, 10);
-  const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const currentTime = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   // const handleClick = () => {
   //   const menu = document.getElementById("moreMenu");
   //   if (menu.style.display === "none") {
