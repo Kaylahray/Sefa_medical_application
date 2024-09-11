@@ -1,9 +1,25 @@
-import React from 'react'
+import React from "react";
+import Search from "../../components/shared/Search";
+import Select from "../../components/shared/Select";
+import Button from "../../components/shared/Button";
+import LabsHero from "../../components/Content/labs/LabsHero";
+import LabTable from "../../components/Content/labs/LabTable";
 
 const Labs = () => {
   return (
-    <div>Labs</div>
-  )
-}
+    <>
+      <div className="flex items-center justify-between">
+        <h3>Labs</h3>
+        <div className="flex items-center gap-[24px] justify-between">
+          <Search />
+          <Select />
+          <Button>Add Text</Button>
+        </div>
+      </div>
+      <LabsHero />
+      <LabTable />
+    </>
+  );
+};
 
-export default Labs
+export default Labs;
