@@ -14,10 +14,14 @@ const Navbar = () => {
   const getActiveParent = () => {
     const parentLink = navigation.find((item) => {
       const isExactMatch = location.pathname === item.path;
-      const isNestedMatch = location.pathname.startsWith(item.path + "/");
+      const isNestedMatch = location.pathname.startsWith(
+        item.path + "/"
+      );
 
       return isExactMatch || isNestedMatch;
     });
+    console.log(parentLink.name);
+
     return parentLink ? parentLink.name : "";
   };
 
@@ -25,22 +29,22 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white">
-        <div className="flex justify-around items-center h-full w-full">
-          <div className="flex justify-between w-full z-50 md:w-auto">
+      <nav className="bg-white z-20 relative font-AvenirMedium">
+        <div className="flex justify-around items-center h-full w-full p-1 lg:p-0">
+          <div className="flex justify-between w-full z-30 px-4 lg:w-auto">
             <img src={profile} alt="Profile" />
             <div
               className="text-3xl lg:hidden p-2"
               onClick={() => setMenuOpen(!open)}
             >
-              {open ? (
-                <h1>X</h1>
-              ) : (
-                <div className="flex flex-col justify-around">
-                  <span className="h-2 bg-black"></span>
-                  <span className="h-2 bg-black"></span>
-                  <span className="h-2 bg-black"></span>
+              {!open ? (
+                <div className="flex flex-col justify-between gap-1 h-8 w-10 mx-auto p-1 bg-transparent">
+                  <span className="h-1 bg-green-200 w-[80%]"></span>
+                  <span className="h-1 bg-red-600 w-[80%]"></span>
+                  <span className="h-1 bg-black w-[80%]"></span>
                 </div>
+              ) : (
+                <h1>X</h1>
               )}
             </div>
           </div>
@@ -51,8 +55,11 @@ const Navbar = () => {
               <li
                 className="relative"
                 key={item.name}
-                onMouseEnter={() => setOpenDropdown(index)}
-                onMouseLeave={() => setOpenDropdown(null)}
+                onClick={() =>
+                  setOpenDropdown(
+                    openDropdown === index ? null : index
+                  )
+                }
               >
                 <div className="flex items-center">
                   {/* If the item has subLinks, disable the link functionality */}
@@ -87,15 +94,23 @@ const Navbar = () => {
 
                 {/* Dropdown for Sublinks */}
                 {item.subLinks && openDropdown === index && (
-                  <ul className="absolute top-full left-0 w-48 bg-white shadow-lg rounded-lg">
+                  <ul
+                    onMouseLeave={() => setOpenDropdown(null)}
+                    className="absolute top-20 left-0 p-2 z-30 flex items-start w-max flex-col justify-between gap-2 bg-white shadow-lg"
+                  >
                     {item.subLinks.map((subLink) => (
                       <li key={subLink.name}>
                         <NavLink
                           to={subLink.path}
+                          onClick={() =>
+                            setOpenDropdown(
+                              openDropdown === index ? null : index
+                            )
+                          }
                           className={({ isActive }) =>
                             isActive
-                              ? "block px-4 py-2 bg-gray-100 text-[#283231]"
-                              : "block px-4 py-2 hover:bg-gray-100"
+                              ? "block px-4 py-2 text-[#03A300]"
+                              : "block px-4 py-2 hover:text-[#03A300]"
                           }
                         >
                           {subLink.name}
@@ -110,7 +125,7 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <ul
-            className={`lg:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 ${
+            className={`lg:hidden bg-white z-20 fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 ${
               open ? "left-0" : "left-[-100%]"
             }`}
           >
@@ -118,9 +133,15 @@ const Navbar = () => {
               <li key={item.name}>
                 <div
                   className="flex justify-between items-center"
-                  onClick={() =>
-                    setOpenDropdown(openDropdown === index ? null : index)
-                  }
+                  onClick={() => {
+                    if (item.subLinks) {
+                      setOpenDropdown(
+                        openDropdown === index ? null : index
+                      );
+                    } else {
+                      setMenuOpen(false); // Close menu when clicking non-sublink nav item
+                    }
+                  }}
                 >
                   {/* If the item has subLinks, disable the link functionality */}
                   {!item.subLinks ? (
@@ -128,7 +149,7 @@ const Navbar = () => {
                       to={item.path}
                       className={({ isActive }) =>
                         isActive || activeParent === item.name
-                          ? "inline-flex items-center font-AvenirMedium border-b-2 border-indigo-500 px-2 py-5 text-sm font-medium text-gray-900"
+                          ? "inline-flex items-center font-AvenirMedium text-indigo-500 px-2 py-5 text-sm font-medium "
                           : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
                       }
                     >
@@ -138,7 +159,7 @@ const Navbar = () => {
                     <button
                       className={
                         activeParent === item.name
-                          ? "inline-flex items-center font-AvenirMedium border-b-2 border-indigo-500 px-2 py-5 text-sm font-medium text-gray-900"
+                          ? "inline-flex items-center font-AvenirMedium  text-indigo-500 px-2 py-5 text-sm font-medium"
                           : "inline-flex items-center font-AvenirMedium px-2 py-5 text-sm font-medium text-gray-900"
                       }
                     >
@@ -159,6 +180,10 @@ const Navbar = () => {
                       <li key={subLink.name}>
                         <NavLink
                           to={subLink.path}
+                          onClick={() => {
+                            setMenuOpen(!open);
+                            setOpenDropdown(null);
+                          }}
                           className={({ isActive }) =>
                             isActive
                               ? "block px-4 py-2 bg-gray-100 text-indigo-500"
@@ -175,9 +200,9 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="hidden lg:flex items-center lg:justify-end">
+          <div className="hidden lg:flex items-center lg:justify-between gap-1">
             <img src={profile} alt="User Profile" />
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               <span className="text-sm font-semibold leading-6 text-gray-900">
                 Super Admin
               </span>
