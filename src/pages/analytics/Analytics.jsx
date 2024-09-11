@@ -26,7 +26,7 @@ const PatientAnalystics = () => {
           <ReportedCasesChart />
         </Card>
       </div>
-      <div className="mt-[32px] lg:w-[743px]">
+      <div className="mt-[32px] lg:w-[50%]">
         <HMOCoverageChart />
       </div>{" "}
     </>
