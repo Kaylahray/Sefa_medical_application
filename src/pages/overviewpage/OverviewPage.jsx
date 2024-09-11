@@ -1,9 +1,7 @@
-import OverviewHero from "../../Components/Content/overview/OverviewHero";
-import OverviewTable from "../../Components/Content/overview/OverviewTable";
-
+import OverviewHero from "../../components/content/overview/OverviewHero";
+import OverviewTable from "../../components/content/overview/OverviewTable";
 
 const OverviewPage = () => {
-
   return (
     <div className="md:mt-20">
       <OverviewHero />

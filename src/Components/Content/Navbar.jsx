@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import profile from "../../assets/profile.svg";
 import down from "../../assets/arrow_down.svg";
 import up from "../../assets/up.svg";
-import { navigation } from "./routes";
+import { navigation } from "../../routes";
 
 const Navbar = () => {
   const [open, setMenuOpen] = useState(false);
@@ -14,9 +14,7 @@ const Navbar = () => {
   const getActiveParent = () => {
     const parentLink = navigation.find((item) => {
       const isExactMatch = location.pathname === item.path;
-      const isNestedMatch = location.pathname.startsWith(
-        item.path + "/"
-      );
+      const isNestedMatch = location.pathname.startsWith(item.path + "/");
 
       return isExactMatch || isNestedMatch;
     });
@@ -121,9 +119,7 @@ const Navbar = () => {
                 <div
                   className="flex justify-between items-center"
                   onClick={() =>
-                    setOpenDropdown(
-                      openDropdown === index ? null : index
-                    )
+                    setOpenDropdown(openDropdown === index ? null : index)
                   }
                 >
                   {/* If the item has subLinks, disable the link functionality */}
