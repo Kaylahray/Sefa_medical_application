@@ -2,9 +2,9 @@ import PatientReportHero from "../../../Components/Content/finance/patientReport
 
 const PatientsReport = () => {
   return (
-  <div>
-    <PatientReportHero />
-  </div>
+    <div>
+      <PatientReportHero />
+    </div>
   );
 };
 
