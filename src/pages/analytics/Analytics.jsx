@@ -1,11 +1,11 @@
 import React from "react";
-import Card from "../../components/shared/Card";
-import PatientChart from "../../components/analytics/PatientLineChart";
-import GenderDonutChart from "../../components/analytics/GenderDonutChart";
-import ReportedCasesChart from "../../components/analytics/ReportedCasesChart";
-import HMOCoverageChart from "../../components/analytics/HMOCoverageChart";
-import TabComponent from "../../components/analytics/TabComponent";
-import Select from "../../components/shared/Select";
+import Card from "../../Components/shared/Card";
+import PatientChart from "../../Components/analytics/PatientLineChart";
+import GenderDonutChart from "../../Components/analytics/GenderDonutChart";
+import ReportedCasesChart from "../../Components/analytics/ReportedCasesChart";
+import HMOCoverageChart from "../../Components/analytics/HMOCoverageChart";
+import TabComponent from "../../Components/analytics/TabComponent";
+import Select from "../../Components/shared/Select";
 import BlankTab from "./BlankTab";
 
 const PatientAnalystics = () => {

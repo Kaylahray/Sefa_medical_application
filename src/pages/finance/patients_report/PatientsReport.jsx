@@ -1,4 +1,4 @@
-import PatientReportHero from "../../../components/Content/finance/patientReportHer";
+import PatientReportHero from "../../../Components/Content/finance/patientReportHer";
 
 const PatientsReport = () => {
   return (
