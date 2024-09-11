@@ -24,7 +24,7 @@ const Tabs = ({ tabs, selectedTab, onTabClick }) => {
   );
 };
 
-const TabCOmponent = ({ tabs }) => {
+const TabComponent = ({ tabs }) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const ActiveComponent = tabs[selectedTab].component;
@@ -38,4 +38,4 @@ const TabCOmponent = ({ tabs }) => {
     </div>
   );
 };
-export default TabCOmponent;
+export default TabComponent;
