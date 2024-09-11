@@ -28,7 +28,7 @@ const PatientAnalystics = () => {
       </div>
       <div className="mt-[32px] lg:w-[50%]">
         <HMOCoverageChart />
-      </div>{" "}
+      </div>
     </>
   );
 };

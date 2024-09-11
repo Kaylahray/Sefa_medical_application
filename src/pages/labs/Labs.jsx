@@ -3,6 +3,7 @@ import Search from "../../components/shared/Search";
 import Select from "../../components/shared/Select";
 import Button from "../../components/shared/Button";
 import LabsHero from "../../components/content/labs/LabsHero";
+import LabTable from "../../components/content/labs/LabTable";
 
 const Labs = () => {
   return (
@@ -16,6 +17,7 @@ const Labs = () => {
         </div>
       </div>
       <LabsHero />
+      <LabTable />
     </>
   );
 };
