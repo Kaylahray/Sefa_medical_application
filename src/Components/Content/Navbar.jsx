@@ -14,9 +14,7 @@ const Navbar = () => {
   const getActiveParent = () => {
     const parentLink = navigation.find((item) => {
       const isExactMatch = location.pathname === item.path;
-      const isNestedMatch = location.pathname.startsWith(
-        item.path + "/"
-      );
+      const isNestedMatch = location.pathname.startsWith(item.path + "/");
 
       return isExactMatch || isNestedMatch;
     });
@@ -121,9 +119,7 @@ const Navbar = () => {
                 <div
                   className="flex justify-between items-center"
                   onClick={() =>
-                    setOpenDropdown(
-                      openDropdown === index ? null : index
-                    )
+                    setOpenDropdown(openDropdown === index ? null : index)
                   }
                 >
                   {/* If the item has subLinks, disable the link functionality */}
