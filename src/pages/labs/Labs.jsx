@@ -1,9 +1,9 @@
 import React from "react";
-import Search from "../../components/shared/Search";
-import Select from "../../components/shared/Select";
-import Button from "../../components/shared/Button";
-import LabsHero from "../../components/Content/labs/LabsHero";
-import LabTable from "../../components/Content/labs/LabTable";
+import Search from "../../Components/shared/Search";
+import Select from "../../Components/shared/Select";
+import Button from "../../Components/shared/Button";
+import LabsHero from "../../Components/Content/labs/LabsHero";
+import LabTable from "../../Components/Content/labs/LabTable";
 
 const Labs = () => {
   return (

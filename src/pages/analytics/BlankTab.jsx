@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../components/shared/DashboardCard";
+import Card from "../../Components/shared/DashboardCard";
 
 const BlankTab = () => {
   return (

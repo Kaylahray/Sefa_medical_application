@@ -1,10 +1,10 @@
 import React from "react";
 import Card from "../../Components/shared/Card";
-import PatientChart from "../../Components/analytics/PatientLineChart";
-import GenderDonutChart from "../../Components/analytics/GenderDonutChart";
-import ReportedCasesChart from "../../Components/analytics/ReportedCasesChart";
-import HMOCoverageChart from "../../Components/analytics/HMOCoverageChart";
-import TabComponent from "../../Components/analytics/TabComponent";
+import PatientChart from "../../Components/Content/analytics/PatientLineChart";
+import GenderDonutChart from "../../Components/Content/analytics/GenderDonutChart";
+import ReportedCasesChart from "../../Components/Content/analytics/ReportedCasesChart";
+import HMOCoverageChart from "../../Components/Content/analytics/HMOCoverageChart";
+import TabComponent from "../../Components/Content/analytics/TabComponent";
 import Select from "../../Components/shared/Select";
 import BlankTab from "./BlankTab";
 
