@@ -1,8 +1,8 @@
 import React from 'react'
 import DashboardCard from '../../shared/DashboardCard'
 import Staff from "../../../assets/img/staff icon.svg";
-import Card from '../../shared/Card'
-import users from '../../../assets/img/users.svg'
+import { FaArrowUp } from "react-icons/fa6";
+
 
 
 function StaffCards() {
@@ -26,7 +26,7 @@ function StaffCards() {
             </div>
           </div>
       </DashboardCard>
-      
+
       <DashboardCard>
       <div className="flex items-center gap-4 ">
             {/* img div */}
