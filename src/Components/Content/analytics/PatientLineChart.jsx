@@ -31,7 +31,7 @@ const PatientChart = () => {
       className="chart-container"
       style={{
         width: "100%",
-        height: "481px",
+        height: "400px",
       }}
     >
       <div className="flex items-center gap-10 mb-[26px]">
@@ -54,7 +54,7 @@ const PatientChart = () => {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height="95%">
+      <ResponsiveContainer width="100%" height="90%">
         <AreaChart
           data={data}
           margin={{ top: 10, right: 30, left: 20, bottom: 20 }}

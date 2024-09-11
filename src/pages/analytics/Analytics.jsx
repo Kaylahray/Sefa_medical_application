@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "../../components/shared/Card";
-import PatientChart from "../../components/analytics/PatientLineChart";
-import GenderDonutChart from "../../components/analytics/GenderDonutChart";
-import ReportedCasesChart from "../../components/analytics/ReportedCasesChart";
-import HMOCoverageChart from "../../components/analytics/HMOCoverageChart";
+import Card from "../../Components/shared/Card";
+import PatientChart from "../../Components/Content/analytics/PatientLineChart";
+import GenderDonutChart from "../../Components/Content/analytics/GenderDonutChart";
+import ReportedCasesChart from "../../Components/Content/analytics/ReportedCasesChart";
+import HMOCoverageChart from "../../Components/Content/analytics/HMOCoverageChart";
 
 const Analytics = () => {
   return (
