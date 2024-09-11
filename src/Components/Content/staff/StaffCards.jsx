@@ -1,125 +1,63 @@
 import React from 'react'
 import DashboardCard from '../../shared/DashboardCard'
-import Staff from "../../../assets/img/staff icon.svg";
-import { FaArrowUp } from "react-icons/fa6";
-
+import users from '../../../assets/img/users.svg'
 
 
 function StaffCards() {
   return (
-    <div>
-      <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              {/* <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span> */}
-            </div>
-          </div>
+    <div className='flex flex-row gap-7'>
+      
+      <DashboardCard className='flex flex-row'>
+      <span className='flex flex-row gap-4'>
+      <img className='w-10 h-10' src={users} alt="users" />
+      <span>
+          <p className='text-[15px]'>Total staff</p>
+          <h1 className='text-[30px]'>10,000</h1>
+      </span>
+      </span>
       </DashboardCard>
 
       <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              {/* <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span> */}
-            </div>
-          </div>
+      <span className='flex flex-row gap-4'>
+      <img className='w-10 h-10' src={users} alt="users" />
+      <span>
+          <p className='text-[15px]'>Nurse on Duty</p>
+          <h1 className='text-[30px]'>10,000</h1>
+      </span>
+      </span>
       </DashboardCard>
 
       <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              {/* <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span> */}
-            </div>
-          </div>
+      <span className='flex flex-row gap-4'>
+      <img className='w-10 h-10' src={users} alt="users" />
+      <span>
+          <p className='text-[15px]'>Doctor on Duty</p>
+          <h1 className='text-[30px]'>10,000</h1>
+      
+      </span>
+      </span>
       </DashboardCard>
 
       <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              {/* <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span> */}
-            </div>
-          </div>
+      <span className='flex flex-row gap-4'>
+      <img className='w-10 h-10' src={users} alt="users" />
+      <span>
+          <p className='text-[15px]'>Active Staff</p>
+          <h1 className='text-[30px]'>10,000</h1>
+      <p className='text-[#03A300] text-xs' >15% of staff</p>
+      </span>
+      </span>
       </DashboardCard>
 
       <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span>
-            </div>
-          </div>
-      </DashboardCard>
-
-      <DashboardCard>
-      <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Staff} alt="patient icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                New Patients
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">10,000</p>
-              <span className="text-activeTextColor text-sm font-semibold  ">
-                <FaArrowUp className="inline text-xs " /> 15% today
-              </span>
-            </div>
-          </div>
+      <span className='flex flex-row gap-4'>
+      <img className='w-10 h-10' src={users} alt="users" />
+      <span>
+          <p className='text-[15px]'>Inactive Staff</p>
+          <h1 className='text-[30px]'>10,000</h1>
+      <p className='text-[#03A300] text-xs' >15% of staff</p>
+      </span>
+      </span>
       </DashboardCard>
     </div>
   )
