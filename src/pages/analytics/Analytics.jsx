@@ -22,27 +22,26 @@ const PatientAnalystics = () => {
         </div>
       </Card>
       <div className="mt-[32px]">
-        <Card>
+        <Card style={"py-2"}>
           <ReportedCasesChart />
         </Card>
       </div>
-      <div className="mt-[32px] lg:w-[50%]">
+      <div className="mt-[32px] lg:w-[50%] py-2">
         <HMOCoverageChart />
       </div>
     </>
   );
 };
 
-const StaffAnalyticis = BlankTab;
-const FInancialAnalytics = BlankTab;
-const PharmacyAnalytics = BlankTab;
-const LabAnalytics = BlankTab;
-
+const StaffAnalytics = () => <BlankTab content="Staff Analytics" />;
+const FinancialAnalytics = () => <BlankTab content="Financial Analytics" />;
+const PharmacyAnalytics = () => <BlankTab content="Pharmacy Analytics" />;
+const LabAnalytics = () => <BlankTab content="Lab Analytics" />;
 const Analytics = () => {
   const tabData = [
     { label: "Patient Analytics", component: PatientAnalystics },
-    { label: "Staff Analytics", component: StaffAnalyticis },
-    { label: "Financia Analytics", component: FInancialAnalytics },
+    { label: "Staff Analytics", component: StaffAnalytics },
+    { label: "Financial Analytics", component: FinancialAnalytics },
     { label: "Pharmacy Analytics", component: PharmacyAnalytics },
     { label: "Lab Analytics", component: LabAnalytics },
   ];
