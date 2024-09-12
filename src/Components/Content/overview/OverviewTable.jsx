@@ -63,7 +63,7 @@ const OverviewTable = () => {
           <TableBody>
             {users.map((user) => {
               return (
-                <tr key={user.id}>
+                <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
                     <input
                       type="checkbox"
