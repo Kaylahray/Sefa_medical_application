@@ -1,19 +1,58 @@
 import Search from "../../shared/Search";
 import Select from "../../shared/Select";
 import DashboardCard from "../../shared/DashboardCard";
+import Profit from "../../../assets/img/profit icon.png";
 
+const style = {
+  width: "md:w-64",
+};
 const patientReportHer = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-        <h1>Patients Report</h1>
+        <h1 className="text-boldColorText text-xl font-semibold ">
+          Patients Report
+        </h1>
         <div className="flex flex-row gap-3 items-center justify-end ">
           <Search />
           <Select />
         </div>
       </div>
-      <div className="">
-        <DashboardCard style={"w-64"}></DashboardCard>
+      <div className=" flex flex-col md:flex-row gap-3 mt-5">
+        <DashboardCard style={style.width}>
+          <div className="flex items-center gap-4 ">
+            {/* img div */}
+            <div className="img">
+              <img src={Profit} alt="profit icon" />
+            </div>
+            {/* side info inside card */}
+            <div className="content">
+              <span className="text-dasboardSmalText text-sm font-semibold">
+                Income From Patients
+              </span>
+              <p className="text-boldColorText text-3xl font-normal ">
+                1,000,000
+              </p>
+            </div>
+          </div>
+        </DashboardCard>
+        <DashboardCard style={style.width}>
+          <div className="flex items-center gap-4 ">
+            {/* img div */}
+            <div className="img">
+              <img src={Profit} alt="profit icon" />
+            </div>
+            {/* side info inside card */}
+            <div className="content">
+              <span className="text-dasboardSmalText text-sm font-semibold">
+                Covered by HMO
+              </span>
+              <p className="text-boldColorText text-3xl font-normal ">
+                1,000,000
+              </p>
+            </div>
+          </div>
+        </DashboardCard>
       </div>
     </div>
   );
