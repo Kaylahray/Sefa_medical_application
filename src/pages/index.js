@@ -5,7 +5,7 @@ import Finance from "./finance/Finance";
 import Analytics from "./analytics/Analytics";
 import Labs from "./labs/Labs";
 import Users from "./users/Users";
-import Pharmacy from "./pharmacyy/Pharmacy";
+import Pharmacy from "./pharmacy/Pharmacy";
 export {
   OverviewPage,
   Patient,

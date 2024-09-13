@@ -1,35 +1,22 @@
 import { useContext } from "react";
-import UsersContext from "../../../context/AuthContext";
-import { IoMdMore } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { FaAngleDown } from "react-icons/fa6";
+import UsersContext from "../../../context/UsersTableContext";
 import TableHeader from "../../shared/TableHeader";
 import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
+import { IoMdMore } from "react-icons/io";
 
-const OverviewTable = () => {
+const UsersTable = () => {
   const { people, loading } = useContext(UsersContext);
-  const users = people.slice(0, 10);
-  const currentTime = new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  // const handleClick = () => {
-  //   const menu = document.getElementById("moreMenu");
-  //   if (menu.style.display === "none") {
-  //     menu.style.display = "block";
-  //   } else {
-  //     menu.style.display = "none";
-  //   }
-  // };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const slicedUsers = people.slice(0, 10);
+
   return (
     <div className="w-full overflow-x-auto ">
-      <div className="flex justify-between font-semibold">
-        <p className="text-boldColorText text-base ">Patients Queued</p>
-        <Link to="#" className="underline text-[#799794] text-sm ">
-          View full list
-        </Link>
-      </div>
+      <h1>Users</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -37,31 +24,27 @@ const OverviewTable = () => {
           <TableHeader>
             <th>
               <span className="pr-1">I.D</span>
-              <FaAngleDown className="inline text-sm" />
+              {/* <FaAngleDown className="inline text-sm" /> */}
             </th>
             <th>
               <span className="pr-1"> Name</span>
-              <FaAngleDown className="inline text-sm" />
+              {/* <FaAngleDown className="inline text-sm" /> */}
             </th>
             <th>
               <span className="pr-1">Email Address</span>
-              <FaAngleDown className="inline text-sm" />
+              {/* <FaAngleDown className="inline text-sm" /> */}
             </th>
             <th>
-              <span className="pr-1">Gender</span>
-              <FaAngleDown className="inline text-sm" />
+              <span className="pr-1">Role</span>
+              {/* <FaAngleDown className="inline text-sm" /> */}
             </th>
             <th>
-              <span className="pr-1">Age</span>
-              <FaAngleDown className="inline text-sm" />
-            </th>
-            <th>
-              <span className="pr-1">Time Queued</span>
-              <FaAngleDown className="inline text-sm" />
+              <span className="pr-1">User Status</span>
+              {/* <FaAngleDown className="inline text-sm" /> */}
             </th>
           </TableHeader>
           <TableBody>
-            {users.map((user) => {
+            {people.map((user) => {
               return (
                 <tr key={user.id}>
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -74,20 +57,18 @@ const OverviewTable = () => {
                     {user.id}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.firstName} {user.lastName}
+                    {user.name}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
                     {user.email}
                   </td>
-                  <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.gender}
+                  <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
+                    {user.role}
                   </td>
-                  <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.age}
+                  <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
+                    {user.status}
                   </td>
-                  <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {currentTime}
-                  </td>
+
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore className="cursor-pointer" />
                   </td>
@@ -101,4 +82,4 @@ const OverviewTable = () => {
   );
 };
 
-export default OverviewTable;
+export default UsersTable;
