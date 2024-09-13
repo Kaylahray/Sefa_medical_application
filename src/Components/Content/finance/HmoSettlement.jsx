@@ -1,13 +1,22 @@
+import { useContext } from "react";
+import UsersContext from "../../../context/AuthContext";
 import Search from "../../shared/Search";
 import Select from "../../shared/Select";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/img/profit icon.png";
 import Bank from "../../../assets/img/bank.svg";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
-const style = {
-  width: "md:w-64",
-};
 const HmoSettlementHero = () => {
+  const style = {
+    width: "md:w-64",
+  };
+  const { people } = useContext(UsersContext);
+
+  const totalHMOIncome = people.reduce((acc, item) => {
+    return (acc += item.HMO.totalAmountPaid);
+  }, 0);
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -31,7 +40,9 @@ const HmoSettlementHero = () => {
               <span className="text-dasboardSmalText text-sm font-semibold">
                 Recognized HMOs
               </span>
-              <p className="text-boldColorText text-3xl font-normal ">1,000</p>
+              <p className="text-boldColorText text-3xl font-normal ">
+                {people.length}
+              </p>
             </div>
           </div>
         </DashboardCard>
@@ -47,7 +58,7 @@ const HmoSettlementHero = () => {
                 Income From HMO
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalHMOIncome} />
               </p>
             </div>
           </div>

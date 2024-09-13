@@ -6,6 +6,7 @@ import TableBody from "../../shared/TableBody";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import Spinner from "../../shared/Spinner";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const LabsReoprtTable = () => {
     const { people, loading } = useContext(UsersContext);
@@ -49,7 +50,7 @@ const LabsReoprtTable = () => {
             </TableHeader>
             <TableBody>
               {users.map((user) => {
-                const {labs, HMO, patients} = user;
+                const {lab, HMO, patients} = user;
                 
                 return (
                   <tr key={user.id} className="shadow-custom">
@@ -60,18 +61,18 @@ const LabsReoprtTable = () => {
                       />
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                      <Link to="#">{labs.name}</Link>
+                      <Link to="#">{lab.name}</Link>
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                       <Link to={`/patients-report/${user.id}`}>
-                        {labs.date}
+                        {lab.date}
                       </Link>
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                      <Link to="#">{patients.pending}</Link>
+                      <Link to="#"><CurrencyFormatter amount={patients.pending} /></Link>
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                      <Link to="#">{HMO.pending}</Link>
+                      <Link to="#"><CurrencyFormatter amount={HMO.pending} /></Link>
                     </td>
                     <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                       <IoMdMore
