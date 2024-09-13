@@ -1,14 +1,32 @@
+import { useContext } from "react";
+import UsersContext from "../../../context/AuthContext";
 import Search from "../../shared/Search";
 import Select from "../../shared/Select";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/img/profit icon.png";
 import Bank from "../../../assets/img/bank.svg";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const style = {
   width: "md:w-64",
 };
 
 const LabsReportHero = () => {
+  const { people } = useContext(UsersContext);
+
+  const totalLabsIncome = people.reduce((acc, items) => {
+    return (acc += items.lab.amount);
+  }, 0) * people.length;
+
+  const totalHMOPending = people.reduce((acc, items) => {
+    return (acc += items.HMO.pending);
+  }, 0);
+
+  const totalPatientsPending = people.reduce((acc, items) => {
+    return (acc += items.patients.pending);
+  }, 0);
+
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -33,7 +51,7 @@ const LabsReportHero = () => {
                 Income from Tests
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalLabsIncome} />
               </p>
             </div>
           </div>
@@ -50,7 +68,7 @@ const LabsReportHero = () => {
                 Pending from Patients
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalPatientsPending} />
               </p>
             </div>
           </div>
@@ -67,7 +85,7 @@ const LabsReportHero = () => {
                 Pending From HMO
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalHMOPending} />
               </p>
             </div>
           </div>

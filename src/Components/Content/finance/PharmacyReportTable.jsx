@@ -6,6 +6,7 @@ import TableBody from "../../shared/TableBody";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import Spinner from "../../shared/Spinner";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PharmacyReportTable = () => {
   const { people, loading } = useContext(UsersContext);
@@ -53,7 +54,6 @@ const PharmacyReportTable = () => {
           <TableBody>
             {people.map((user) => {
                 const { pharmacy, patients, HMO} = user
-                console.log(user)
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -71,13 +71,13 @@ const PharmacyReportTable = () => {
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to="#">{pharmacy.income}</Link>
+                    <Link to="#"><CurrencyFormatter amount={pharmacy.income} /></Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{patients.pending}</Link>
+                    <Link to="#"><CurrencyFormatter amount={patients.pending} /></Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{HMO.pending}</Link>
+                    <Link to="#"><CurrencyFormatter amount={HMO.pending} /></Link>
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore

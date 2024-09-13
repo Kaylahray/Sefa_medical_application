@@ -6,10 +6,11 @@ import TableBody from "../../shared/TableBody";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import Spinner from "../../shared/Spinner";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const HmoSettlementTable = () => {
     const { people, loading } = useContext(UsersContext);
-    const users = people.slice(0, 10);
+    // const users = people.slice(0, 10);
     const handleClick = () => {
       const menu = document.getElementById("moreMenu");
       if (menu.style.display === "none") {
@@ -48,7 +49,7 @@ const HmoSettlementTable = () => {
               </th>
             </TableHeader>
             <TableBody>
-              {users.map((user) => {
+              {people.map((user) => {
                 const {HMO} = user
                 return (
                   <tr key={user.id} className="shadow-custom">
@@ -67,10 +68,10 @@ const HmoSettlementTable = () => {
                       </Link>
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                      <Link to="#">{HMO.pending}</Link>
+                      <Link to="#"><CurrencyFormatter amount={HMO.pending} /></Link>
                     </td>
                     <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                      <Link to="#">{HMO.totalAmountPaid}</Link>
+                      <Link to="#"><CurrencyFormatter amount={HMO.totalAmountPaid} /></Link>
                     </td>
                     <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                       <IoMdMore

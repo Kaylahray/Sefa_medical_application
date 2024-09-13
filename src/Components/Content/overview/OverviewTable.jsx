@@ -9,11 +9,7 @@ import Spinner from "../../shared/Spinner";
 
 const OverviewTable = () => {
   const { people, loading } = useContext(UsersContext);
-  const users = people.slice(0, 10);
-  const currentTime = new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  // const users = people.slice(0, 10);
   // const handleClick = () => {
   //   const menu = document.getElementById("moreMenu");
   //   if (menu.style.display === "none") {
@@ -61,7 +57,8 @@ const OverviewTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {users.map((user) => {
+            {people.map((user) => {
+              const {patients} = user
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -71,22 +68,22 @@ const OverviewTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.id}
+                    {patients.ID_Number}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.firstName} {user.lastName}
+                    {patients.firstName} {patients.lastName}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    {user.email}
+                    {patients.email}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.gender}
+                    {patients.gender}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {user.age}
+                    {patients.age}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {currentTime}
+                    {patients.timeQueued}
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore className="cursor-pointer" />
