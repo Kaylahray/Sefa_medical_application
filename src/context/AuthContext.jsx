@@ -7,10 +7,10 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading]= useState(true)
 
   const fetchPeople = async () => {
-    const res = await fetch("https://dummyjson.com/users");
+    const res = await fetch("https://my.api.mockaroo.com/medical.json?key=d050a920");
     const info = await res.json();
     console.log(info);
-    setPeople(info.users);
+    setPeople(info);
     setLoading(false)
   };
   useEffect(() => {

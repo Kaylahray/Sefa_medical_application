@@ -18,6 +18,7 @@ import PharmacyReport from "./pages/finance/pharmacy_report/PharmacyReport";
 import LabReport from "./pages/finance/lab_report/LabReport";
 import StaffPayroll from "./pages/finance/staff_payroll/StaffPayroll";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
+import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
 function App() {
   return (
     <>
@@ -45,13 +46,16 @@ function App() {
             <Route
               path="pharmacy-report"
               element={<PharmacyReport />}
-            />
+            > 
+              <Route path="pharmacy-report/:id" element={<EachPatientReport />} />
+            </Route>
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="labs" element={<Labs />} />
           <Route path="users" element={<Users />} />
+          
         </Route>
       </Routes>
     </>
