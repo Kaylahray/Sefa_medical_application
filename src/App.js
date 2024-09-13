@@ -39,6 +39,10 @@ function App() {
               element={<PatientsReport />}
             />
             <Route
+              path="patients-report/:id"
+              element={<EachPatientReport />}
+            />
+            <Route
               path="hmo-settlement"
               element={<HMOSettlement />}
             />
@@ -46,16 +50,18 @@ function App() {
             <Route
               path="pharmacy-report"
               element={<PharmacyReport />}
-            > 
-              <Route path="pharmacy-report/:id" element={<EachPatientReport />} />
-            </Route>
+            />
+            <Route
+              path="pharmacy-report/:id"
+              element={<EachPatientReport />}
+            />
+
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="labs" element={<Labs />} />
           <Route path="users" element={<Users />} />
-          
         </Route>
       </Routes>
     </>

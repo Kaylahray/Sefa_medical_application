@@ -53,7 +53,7 @@ const PatientReportTable = () => {
           </TableHeader>
           <TableBody>
             {people.map((user) => {
-              const {patients} = user
+              const { patients } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -66,7 +66,7 @@ const PatientReportTable = () => {
                     <Link to="#">{patients.ID_Number}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       {patients.firstName} {patients.lastName}
                     </Link>
                   </td>
