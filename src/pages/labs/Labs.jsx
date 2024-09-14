@@ -8,8 +8,8 @@ import LabTable from "../../Components/Content/labs/LabTable";
 const Labs = () => {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <h3>Labs</h3>
+      <div className="flex items-center justify-between mb-[40px]">
+        <span className="font-[600] md:text-[32px] text-[#292929]">Labs</span>
         <div className="flex items-center gap-[24px] justify-between">
           <Search />
           <Select />
