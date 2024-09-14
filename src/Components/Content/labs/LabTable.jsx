@@ -5,22 +5,28 @@ import { FaAngleDown } from "react-icons/fa6";
 import TableHeader from "../../shared/TableHeader";
 import TableBody from "../../shared/TableBody";
 import UsersContext from "../../../context/AuthContext";
+import Pagination from "../../shared/Pagination";
+import Spinner from "../../shared/Spinner";
 
 const LabTable = () => {
-  const { people } = useContext(UsersContext);
-  const users = people.slice(0, 10);
+  const {
+    people,
+    currentItems,
+    loading,
+    currentPage,
+    itemsPerPage,
+    totalItems,
+    paginate,
+  } = useContext(UsersContext);
+  const users = currentItems;
+
   const currentTime = new Date().toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
-  // const handleClick = () => {
-  //   const menu = document.getElementById("moreMenu");
-  //   if (menu.style.display === "none") {
-  //     menu.style.display = "block";
-  //   } else {
-  //     menu.style.display = "none";
-  //   }
-  // };
+
+  if (loading) return <Spinner />;
+
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex justify-between font-semibold">
@@ -32,32 +38,26 @@ const LabTable = () => {
       <table className="table w-full border-separate border-spacing-y-2 text-tableTextColor">
         <TableHeader>
           <th>
-            <span className="pr-1">I.D</span>
-            <FaAngleDown className="inline text-sm" />
-          </th>
-          <th>
             <span className="pr-1"> Name</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Email Address</span>
+            <span className="pr-1">Test Done</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Gender</span>
+            <span className="pr-1">Amount</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Age</span>
-            <FaAngleDown className="inline text-sm" />
-          </th>
-          <th>
-            <span className="pr-1">Time Queued</span>
+            <span className="pr-1">Date</span>
             <FaAngleDown className="inline text-sm" />
           </th>
         </TableHeader>
         <TableBody>
           {users.map((user) => {
+            const { patients, lab } = user;
+            // console.log(users[1], "from lab");
             return (
               <tr key={user.id}>
                 <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -66,32 +66,28 @@ const LabTable = () => {
                     className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-[#8F8F8F] text-indigo-600 focus:ring-indigo-600"
                   />
                 </td>
+
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {user.id}
-                </td>
-                <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {user.firstName} {user.lastName}
+                  {patients.firstName} {patients.lastName}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                  {user.email}
+                  {lab.name}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {user.gender}
+                  {lab.amount}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {user.age}
-                </td>
-                <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {currentTime}
+                  {lab.date} {lab.time || currentTime}
                 </td>
                 <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
-                  <IoMdMore className="cursor-pointer" />
+                  U pdate
                 </td>
               </tr>
             );
           })}
         </TableBody>
       </table>
+      <Pagination />
     </div>
   );
 };
