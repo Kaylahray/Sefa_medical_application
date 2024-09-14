@@ -17,7 +17,7 @@ const Pagination = () => {
         <FaAngleLeft />
       </button>
       <span className="text-[#3D3D3D] font-normal tracking-wide">
-        {currentPage} of {totalPages}
+        {itemsPerPage} of {totalItems}
       </span>
       <button
         onClick={() => paginate(currentPage + 1)}
