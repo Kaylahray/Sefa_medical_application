@@ -9,8 +9,8 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PharmacyReportTable = () => {
-  const { people, loading } = useContext(UsersContext);
-  const users = people.slice(0, 10);
+  const { currentItems, loading } = useContext(UsersContext);
+  const users = currentItems;
   const handleClick = () => {
     const menu = document.getElementById("moreMenu");
     if (menu.style.display === "none") {

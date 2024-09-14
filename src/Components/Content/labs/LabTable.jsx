@@ -9,15 +9,7 @@ import Pagination from "../../shared/Pagination";
 import Spinner from "../../shared/Spinner";
 
 const LabTable = () => {
-  const {
-    people,
-    currentItems,
-    loading,
-    currentPage,
-    itemsPerPage,
-    totalItems,
-    paginate,
-  } = useContext(UsersContext);
+  const { currentItems, loading } = useContext(UsersContext);
   const users = currentItems;
 
   const currentTime = new Date().toLocaleTimeString([], {
@@ -80,7 +72,7 @@ const LabTable = () => {
                   {lab.date} {lab.time || currentTime}
                 </td>
                 <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
-                  U pdate
+                  Update
                 </td>
               </tr>
             );

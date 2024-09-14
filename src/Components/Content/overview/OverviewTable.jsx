@@ -8,7 +8,7 @@ import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 
 const OverviewTable = () => {
-  const { people, loading } = useContext(UsersContext);
+  const { currentItems, loading } = useContext(UsersContext);
   // const users = people.slice(0, 10);
   // const handleClick = () => {
   //   const menu = document.getElementById("moreMenu");
@@ -57,8 +57,8 @@ const OverviewTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {people.map((user) => {
-              const {patients} = user
+            {currentItems.map((user) => {
+              const { patients } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">

@@ -1,10 +1,18 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 const UsersContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [people, setPeople] = useState([]);
+  const [paginationState, setPaginationState] = useState({
+    lab: 1,
+    pharmacy: 1,
+  });
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
   const hasFetched = React.useRef(false);
 
   const fetchPeople = async () => {
