@@ -1,13 +1,26 @@
+import { useContext } from "react";
+import UsersContext from "../../../context/AuthContext";
 import Search from "../../shared/Search";
 import Select from "../../shared/Select";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/img/profit icon.png";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 
-const style = {
-  width: "md:w-64",
-};
-const patientReportHer = () => {
+const PatientReportHero = () => {
+  const { people} = useContext(UsersContext)
+  const style = {
+    width: "md:w-64",
+  };
+
+  const patientsIncome = people.reduce((acc, item) => {
+    return acc += item.patients.totalPaid
+  }, 0) 
+
+  const patientsHMOCovered = people.reduce((acc, item) => {
+    return acc += item.patients.coveredHMO
+  }, 0)
+
   return (
     <div>
 
@@ -34,7 +47,7 @@ const patientReportHer = () => {
                 Income From Patients
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={patientsIncome} />
               </p>
             </div>
           </div>
@@ -51,7 +64,7 @@ const patientReportHer = () => {
                 Covered by HMO
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={patientsHMOCovered} />
               </p>
             </div>
           </div>
@@ -62,4 +75,4 @@ const patientReportHer = () => {
   );
 };
 
-export default patientReportHer;
+export default PatientReportHero;

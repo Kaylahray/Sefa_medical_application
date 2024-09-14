@@ -16,9 +16,9 @@ import Appointments from "./pages/patient/appointments/Appointments";
 import PatientsReport from "./pages/finance/patients_report/PatientsReport";
 import PharmacyReport from "./pages/finance/pharmacy_report/PharmacyReport";
 import LabReport from "./pages/finance/lab_report/LabReport";
-import StaffPayroll from "./pages/finance/staff_payroll/StaffPayroll";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
 import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
+import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
 function App() {
   return (
     <>
@@ -38,24 +38,26 @@ function App() {
               path="patients-report"
               element={<PatientsReport />}
             />
+
             <Route
               path="patients-report/:id"
               element={<EachPatientReport />}
             />
+
             <Route
               path="hmo-settlement"
               element={<HMOSettlement />}
             />
-            <Route path="staff-payroll" element={<StaffPayroll />} />
+
+            <Route
+              path="hmo-settlement-report/:id"
+              element={<EachHmoReport />}
+            />
+
             <Route
               path="pharmacy-report"
               element={<PharmacyReport />}
             />
-            <Route
-              path="pharmacy-report/:id"
-              element={<EachPatientReport />}
-            />
-
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />

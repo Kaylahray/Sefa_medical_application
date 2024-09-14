@@ -1,13 +1,26 @@
+import { useContext } from "react";
+import UsersContext from "../../../context/AuthContext";
 import Search from "../../shared/Search";
 import Select from "../../shared/Select";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/img/profit icon.png";
 import Bank from "../../../assets/img/bank.svg";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const style = {
   width: "md:w-64",
 };
 const PharmacyReport = () => {
+  const { people } = useContext(UsersContext);
+
+  const totalPending = people.reduce((acc, items) => {
+    return (acc += items.HMO.pending);
+  }, 0);
+
+  const totalIncome = people.reduce((acc, items) => {
+    return (acc += items.pharmacy.income);
+  }, 0);
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -32,7 +45,7 @@ const PharmacyReport = () => {
                 Income from Meds
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalIncome} />
               </p>
             </div>
           </div>
@@ -49,7 +62,7 @@ const PharmacyReport = () => {
                 Pending From HMO
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                1,000,000
+                <CurrencyFormatter amount={totalPending} />
               </p>
             </div>
           </div>
