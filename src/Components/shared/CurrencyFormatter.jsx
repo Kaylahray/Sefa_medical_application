@@ -11,7 +11,7 @@ const CurrencyFormatter = ({amount}) => {
   const formattedAmount = formatter.format(amount);
 
   return (
-    <p>{formattedAmount}</p>
+    <>{formattedAmount}</>
   )
 }
 
