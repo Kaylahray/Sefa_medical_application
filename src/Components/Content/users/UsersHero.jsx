@@ -9,10 +9,13 @@ const UsersHero = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+        <h1 className="text-boldColorText text-xl font-semibold ">
+          {/* Patients Report */}
+        </h1>
         <div className="flex flex-row gap-3 items-center justify-end ">
           <Search />
           <Select />
-          <Button type="submit">New User</Button>
+          <Button>New User</Button>
         </div>
       </div>
 
