@@ -10,7 +10,7 @@ const Appointments = () => {
         <span className="font-[600] md:text-[32px] text-[#292929]">
           Appointments
         </span>
-        <div className="flex items-center gap-[24px] justify-between">
+        <div className="flex items-center gap-[24px] justify-between ">
           <Search />
           <Select />
         </div>

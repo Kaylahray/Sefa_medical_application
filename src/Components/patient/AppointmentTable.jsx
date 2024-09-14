@@ -22,7 +22,7 @@ const AppointmentTable = () => {
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex justify-between font-semibold">
-        <p className="text-boldColorText text-base ">Patients Queued</p>
+        <p className="text-boldColorText text-base  ">Patients Queued</p>
       </div>
       <table className="table w-full border-separate border-spacing-y-2 text-tableTextColor">
         <TableHeader>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Select = () => {
   return (
-    <div className="mb-2">
+    <div className="mb-2 ">
       <select
         id="date"
         name="date"
