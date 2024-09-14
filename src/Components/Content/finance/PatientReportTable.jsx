@@ -6,10 +6,11 @@ import TableBody from "../../shared/TableBody";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import Spinner from "../../shared/Spinner";
+import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PatientReportTable = () => {
   const { people, loading } = useContext(UsersContext);
-  // const users = people.slice(0, 10);
+  const users = people.slice(0, 10);
   const handleClick = () => {
     const menu = document.getElementById("moreMenu");
     if (menu.style.display === "none") {
@@ -52,8 +53,8 @@ const PatientReportTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {people.map((user) => {
-              const {patients} = user
+            {users.map((user) => {
+              const { patients } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -63,7 +64,9 @@ const PatientReportTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{patients.ID_Number}</Link>
+                    <Link to={`/patients-report/${user.id}`}>
+                      {patients.ID_Number}
+                    </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                     <Link to={`/patients-report/${user.id}`}>
@@ -71,13 +74,19 @@ const PatientReportTable = () => {
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to="#">{patients.totalPaid}</Link>
+                    <Link to={`/patients-report/${user.id}`}>
+                      <CurrencyFormatter amount={patients.totalPaid} />
+                    </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{patients.pending}</Link>
+                    <Link to={`/patients-report/${user.id}`}>
+                      <CurrencyFormatter amount={patients.pending} />
+                    </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{patients.coveredHMO}</Link>
+                    <Link to={`/patients-report/${user.id}`}>
+                      <CurrencyFormatter amount={patients.coveredHMO} />
+                    </Link>
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore

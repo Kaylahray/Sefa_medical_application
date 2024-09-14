@@ -5,9 +5,7 @@ const UsersContext = createContext();
 export const UserProvider = ({ children }) => {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const hasFetched = React.useRef(false);
 
   const fetchPeople = async () => {
     const res = await fetch(
@@ -18,8 +16,12 @@ export const UserProvider = ({ children }) => {
     setPeople(info);
     setLoading(false);
   };
+  // https://dummyjson.com/users https://my.api.mockaroo.com/medical.json?key=d050a920
   useEffect(() => {
-    fetchPeople();
+    if (!hasFetched.current) {
+      hasFetched.current = true;
+      fetchPeople();
+    }
   }, []);
 
   // my pagination logic
