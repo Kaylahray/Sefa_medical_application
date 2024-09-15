@@ -46,7 +46,7 @@ function App() {
               element={<HMOSettlement />}
             />
 
-            <Route path="hmo-settlement-report/:id" element={<EachHmoReport />} />
+            <Route path="hmo-settlement-report/:name" element={<EachHmoReport />} />
 
             <Route
               path="pharmacy-report"

@@ -39,6 +39,45 @@ export const UserProvider = ({ children }) => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // some functions
+
+  const handleClick = () => {
+    const menu = document.getElementById("moreMenu");
+    if (menu.style.display === "none") {
+      menu.style.display = "block";
+    } else {
+      menu.style.display = "none";
+    }
+  };
+
+  const totalHMOIncome = people.reduce((acc, item) => {
+    return (acc += item.HMO.totalAmountPaid);
+  }, 0);
+
+  const totalHMOPending = people.reduce((acc, items) => {
+    return (acc += items.HMO.pending);
+  }, 0);
+
+  const patientsIncome = people.reduce((acc, item) => {
+    return acc += item.patients.totalPaid
+  }, 0) 
+
+  const patientsHMOCovered = people.reduce((acc, item) => {
+    return acc += item.patients.coveredHMO
+  }, 0)
+
+  const totalLabsIncome = people.reduce((acc, items) => {
+    return (acc += items.lab.amount);
+  }, 0) * people.length;
+
+  const totalPatientsPending = people.reduce((acc, items) => {
+    return (acc += items.patients.pending);
+  }, 0);
+
+  const totalIncome = people.reduce((acc, items) => {
+    return (acc += items.pharmacy.income);
+  }, 0);
+
   const contextValue = {
     people,
     currentItems,
@@ -47,6 +86,14 @@ export const UserProvider = ({ children }) => {
     itemsPerPage,
     totalItems: people.length,
     paginate,
+    handleClick,
+    totalHMOIncome,
+    totalHMOPending,
+    patientsIncome,
+    patientsHMOCovered,
+    totalLabsIncome,
+    totalPatientsPending,
+    totalIncome
   };
   return (
     <UsersContext.Provider value={contextValue}>

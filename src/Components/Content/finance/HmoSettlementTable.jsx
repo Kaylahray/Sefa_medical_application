@@ -9,16 +9,9 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const HmoSettlementTable = () => {
-  const { currentItems, loading } = useContext(UsersContext);
+  const { currentItems, loading, handleClick } = useContext(UsersContext);
   const users = currentItems;
-  const handleClick = () => {
-    const menu = document.getElementById("moreMenu");
-    if (menu.style.display === "none") {
-      menu.style.display = "block";
-    } else {
-      menu.style.display = "none";
-    }
-  };
+  
   return (
     <div className="w-full mt-5 overflow-x-auto">
       <div>
@@ -60,22 +53,22 @@ const HmoSettlementTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/hmo-settlement-report/${user.id}`}>
+                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
                       {HMO.hmoName}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/hmo-settlement-report/${user.id}`}>
+                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
                       {HMO.patientCovered}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to={`/hmo-settlement-report/${user.id}`}>
+                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
                       <CurrencyFormatter amount={HMO.pending} />
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/hmo-settlement-report/${user.id}`}>
+                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
                       <CurrencyFormatter amount={HMO.totalAmountPaid} />
                     </Link>
                   </td>
@@ -90,13 +83,13 @@ const HmoSettlementTable = () => {
                     >
                       <div className="py-1">
                         <Link
-                          to={`/hmo-settlement-report/${user.id}`}
+                          to={`/finance/hmo-settlement-report/${HMO.hmoName}`}
                           className="block px-4 py-2 text-sm border-b hover:bg-[#E4EAEA] "
                         >
                           View
                         </Link>
                         <Link
-                          to={`/hmo-settlement-report/${user.id}`}
+                          to={`/finance/hmo-settlement-report/${HMO.hmoName}`}
                           className="block px-4 py-2 text-sm hover:bg-[#E4EAEA]"
                         >
                           Edit
