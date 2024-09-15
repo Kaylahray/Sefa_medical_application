@@ -57,6 +57,7 @@ const PatientReportTable = () => {
               const { patients } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
+                  {/* {console.log(user.id, "hey")} */}
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
                     <input
                       type="checkbox"
@@ -64,7 +65,7 @@ const PatientReportTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       {patients.ID_Number}
                     </Link>
                   </td>
