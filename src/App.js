@@ -25,7 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Child routes */}
-          <Route index element={<OverviewPage />} /> {/* Default route */}
+          <Route index element={<OverviewPage />} />{" "}
+          {/* Default route */}
           <Route path="patient" element={<Patient />}>
             <Route path="all" element={<AllPatients />} />
             <Route path="appointment" element={<Appointments />} />
@@ -33,11 +34,20 @@ function App() {
           <Route path="staff" element={<Staff />} />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
-            <Route path="patients-report" element={<PatientsReport />} />
+            <Route
+              path="patients-report"
+              element={<PatientsReport />}
+            />
 
-            <Route path="patients-report/:id" element={<EachPatientReport />} />
+            <Route
+              path="patients-report/:id"
+              element={<EachPatientReport />}
+            />
 
-            <Route path="hmo-settlement" element={<HMOSettlement />} />
+            <Route
+              path="hmo-settlement"
+              element={<HMOSettlement />}
+            />
 
             <Route
               path="hmo-settlement-report/:id"
@@ -49,7 +59,10 @@ function App() {
               element={<EachHmoReport />}
             />
 
-            <Route path="pharmacy-report" element={<PharmacyReport />} />
+            <Route
+              path="pharmacy-report"
+              element={<PharmacyReport />}
+            />
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />

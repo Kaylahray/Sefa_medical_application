@@ -9,9 +9,10 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PatientReportTable = () => {
-  const { currentItems, loading, handleClick } = useContext(UsersContext);
+  const { currentItems, loading, handleClick } =
+    useContext(UsersContext);
   const users = currentItems;
- 
+
   return (
     <div className="w-full mt-5 overflow-x-auto">
       <div>
@@ -69,7 +70,9 @@ const PatientReportTable = () => {
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
                     <Link to={`/finance/patients-report/${user.id}`}>
-                      <CurrencyFormatter amount={patients.totalPaid} />
+                      <CurrencyFormatter
+                        amount={patients.totalPaid}
+                      />
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
@@ -79,7 +82,9 @@ const PatientReportTable = () => {
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                     <Link to={`/finance/patients-report/${user.id}`}>
-                      <CurrencyFormatter amount={patients.coveredHMO} />
+                      <CurrencyFormatter
+                        amount={patients.coveredHMO}
+                      />
                     </Link>
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
