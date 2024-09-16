@@ -5,6 +5,7 @@ import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Pagination from "../../shared/Pagination";
 
 const UsersTable = () => {
   const { currentItems, loading } = useContext(UsersContext);
@@ -39,6 +40,7 @@ const UsersTable = () => {
             </th>
           </TableHeader>
           <TableBody>
+            {currentItems.map((user) => {
             {currentItems.map((user) => {
               const { admin } = user;
               return (
@@ -79,6 +81,7 @@ const UsersTable = () => {
           </TableBody>
         </table>
       )}
+      <Pagination />
     </div>
   );
 };
