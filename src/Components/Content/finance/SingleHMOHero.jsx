@@ -13,13 +13,14 @@ const SingleHMOHero = () => {
   const { currentItems, people, totalHMOIncome, totalHMOPending } =
     useContext(UsersContext);
   const { id } = useParams();
+  const ID = Number(id)
   const style = {
     width: "md:w-64",
   };
 
   const paitentsCoveredHMO =
     currentItems
-      .filter((person) => person.id === id)
+      .filter((person) => person.id === ID)
       .reduce((acc, item) => {
         return (acc += item.HMO.patientCovered);
       }, 0) + people.length;
@@ -37,7 +38,7 @@ const SingleHMOHero = () => {
       </div>
 
       {currentItems
-        .filter((person) => person.id === id)
+        .filter((person) => person.id === ID)
         .map((person) => (
           <p
             key={person.id}
