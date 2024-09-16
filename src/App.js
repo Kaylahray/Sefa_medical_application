@@ -19,14 +19,15 @@ import LabReport from "./pages/finance/lab_report/LabReport";
 import StaffPayroll from "./pages/finance/staff_payroll/StaffPayroll";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
 import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
+import NewUser from "./pages/users/NewUser";
+import UserDetails from "./pages/users/UserDetails";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Child routes */}
-          <Route index element={<OverviewPage />} />{" "}
-          {/* Default route */}
+          <Route index element={<OverviewPage />} /> {/* Default route */}
           <Route path="patient" element={<Patient />}>
             <Route path="all" element={<AllPatients />} />
             <Route path="appointment" element={<Appointments />} />
@@ -34,20 +35,14 @@ function App() {
           <Route path="staff" element={<Staff />} />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
-            <Route
-              path="patients-report"
-              element={<PatientsReport />}
-            />
-            <Route
-              path="hmo-settlement"
-              element={<HMOSettlement />}
-            />
+            <Route path="patients-report" element={<PatientsReport />} />
+            <Route path="hmo-settlement" element={<HMOSettlement />} />
             <Route path="staff-payroll" element={<StaffPayroll />} />
-            <Route
-              path="pharmacy-report"
-              element={<PharmacyReport />}
-            > 
-              <Route path="pharmacy-report/:id" element={<EachPatientReport />} />
+            <Route path="pharmacy-report" element={<PharmacyReport />}>
+              <Route
+                path="pharmacy-report/:id"
+                element={<EachPatientReport />}
+              />
             </Route>
             <Route path="lab-report" element={<LabReport />} />
           </Route>
@@ -55,7 +50,8 @@ function App() {
           <Route path="analytics" element={<Analytics />} />
           <Route path="labs" element={<Labs />} />
           <Route path="users" element={<Users />} />
-          
+          <Route path="newuser" element={<NewUser />} />
+          <Route path="userdetails" element={<UserDetails />} />
         </Route>
       </Routes>
     </>

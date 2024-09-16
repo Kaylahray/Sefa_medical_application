@@ -4,6 +4,7 @@ import Select from "../../shared/Select";
 import Button from "../../shared/Button";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/profile.svg";
+import { Link } from "react-router-dom";
 
 const UsersHero = () => {
   return (
@@ -15,7 +16,9 @@ const UsersHero = () => {
         <div className="flex flex-row gap-3 items-center justify-end ">
           <Search />
           <Select />
-          <Button>New User</Button>
+          <Link to="/newuser">
+            <Button className="px-10">New Medication</Button>
+          </Link>
         </div>
       </div>
 
