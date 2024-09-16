@@ -16,13 +16,16 @@ export const UserProvider = ({ children }) => {
   const hasFetched = React.useRef(false);
 
   const fetchPeople = async () => {
-    const res = await fetch(
-      "https://my.api.mockaroo.com/medical.json?key=d050a920"
-    );
-    const info = await res.json();
-    console.log(info);
-    setPeople(info);
-    setLoading(false);
+    try {
+      const res = await fetch("http://localhost:8000/medical");
+      const info = await res.json();
+      console.log(info);
+      setPeople(info);
+    } catch (err) {
+      console.log("error fetching data",err);
+    } finally {
+      setLoading(false);
+    }
   };
   // https://dummyjson.com/users https://my.api.mockaroo.com/medical.json?key=d050a920
   useEffect(() => {
@@ -59,16 +62,17 @@ export const UserProvider = ({ children }) => {
   }, 0);
 
   const patientsIncome = people.reduce((acc, item) => {
-    return acc += item.patients.totalPaid
-  }, 0) 
+    return (acc += item.patients.totalPaid);
+  }, 0);
 
   const patientsHMOCovered = people.reduce((acc, item) => {
-    return acc += item.patients.coveredHMO
-  }, 0)
+    return (acc += item.patients.coveredHMO);
+  }, 0);
 
-  const totalLabsIncome = people.reduce((acc, items) => {
-    return (acc += items.lab.amount);
-  }, 0) * people.length;
+  const totalLabsIncome =
+    people.reduce((acc, items) => {
+      return (acc += items.lab.amount);
+    }, 0) * people.length;
 
   const totalPatientsPending = people.reduce((acc, items) => {
     return (acc += items.patients.pending);
@@ -93,7 +97,7 @@ export const UserProvider = ({ children }) => {
     patientsHMOCovered,
     totalLabsIncome,
     totalPatientsPending,
-    totalIncome
+    totalIncome,
   };
   return (
     <UsersContext.Provider value={contextValue}>
