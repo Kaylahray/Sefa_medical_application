@@ -41,7 +41,6 @@ const UsersTable = () => {
           </TableHeader>
           <TableBody>
             {currentItems.map((user) => {
-            {currentItems.map((user) => {
               const { admin } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
@@ -71,7 +70,8 @@ const UsersTable = () => {
                         admin.status === "online"
                           ? "bg-green-100 text-green-600"
                           : "bg-orange-100 text-orange-600"
-                      }`}>
+                      }`}
+                    >
                       <Link to={`/users/${user.id}`}>{admin.status}</Link>
                     </span>
                   </td>
@@ -81,7 +81,6 @@ const UsersTable = () => {
           </TableBody>
         </table>
       )}
-      <Pagination />
     </div>
   );
 };
