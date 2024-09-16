@@ -4,20 +4,26 @@ import TimelineItem from "./Timeline";
 
 const MedicalAccordion = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [notify, setNotify] = useState(true);
+  // const toggleNotify = (index)=>{
+
+  // }
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 space-y-4">
+    <div className="w-full max-w-7xl mx-auto mt-8 space-y-4">
       {/* Accordion Items */}
       <AccordionItem
         title="Tests and Results"
         isActive={activeIndex === 0}
         onClick={() => toggleAccordion(0)}
+        notify={notify}
+        setNotify={setNotify}
       >
-        <div className="bg-gray-100 p-4 rounded-lg">
+        <div className="bg-white p-4 rounded-lg">
           <div className="space-y-4">
             <TimelineItem
               number="3"
@@ -55,6 +61,8 @@ const MedicalAccordion = () => {
         title="Scans"
         isActive={activeIndex === 3}
         onClick={() => toggleAccordion(3)}
+        notify={notify}
+        setNotify={setNotify}
       >
         <p className="p-4">No Scans Available.</p>
       </AccordionItem>

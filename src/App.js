@@ -21,35 +21,58 @@ import EachPatientReport from "./pages/finance/patients_report/EachPatientReport
 import NewUser from "./pages/users/NewUser";
 import UserDetails from "./pages/users/UserDetails";
 import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
-
+import PatientDetails from "./pages/patient/all_patients/PatientDetails";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Child routes */}
-          <Route index element={<OverviewPage />} /> {/* Default route */}
+          <Route index element={<OverviewPage />} />{" "}
+          {/* Default route */}
           <Route path="patient" element={<Patient />}>
             <Route path="all" element={<AllPatients />} />
             <Route path="appointment" element={<Appointments />} />
           </Route>
+          <Route
+            path="patient/:patientID"
+            element={<PatientDetails />}
+          />
           <Route path="staff" element={<Staff />} />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
-            <Route path="patients-report" element={<PatientsReport />} />
-            <Route path="hmo-settlement" element={<HMOSettlement />} />
+            <Route
+              path="patients-report"
+              element={<PatientsReport />}
+            />
+            <Route
+              path="hmo-settlement"
+              element={<HMOSettlement />}
+            />
             {/* <Route path="staff-payroll" element={<StaffPayroll />} /> */}
-            <Route path="pharmacy-report" element={<PharmacyReport />}>
+            <Route
+              path="pharmacy-report"
+              element={<PharmacyReport />}
+            >
               <Route
                 path="pharmacy-report/:id"
                 element={<EachPatientReport />}
               />
             </Route>
-            <Route path="patients-report" element={<PatientsReport />} />
+            <Route
+              path="patients-report"
+              element={<PatientsReport />}
+            />
 
-            <Route path="patients-report/:id" element={<EachPatientReport />} />
+            <Route
+              path="patients-report/:id"
+              element={<EachPatientReport />}
+            />
 
-            <Route path="hmo-settlement" element={<HMOSettlement />} />
+            <Route
+              path="hmo-settlement"
+              element={<HMOSettlement />}
+            />
 
             <Route
               path="hmo-settlement-report/:id"
@@ -61,7 +84,10 @@ function App() {
               element={<EachHmoReport />}
             />
 
-            <Route path="pharmacy-report" element={<PharmacyReport />} />
+            <Route
+              path="pharmacy-report"
+              element={<PharmacyReport />}
+            />
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />

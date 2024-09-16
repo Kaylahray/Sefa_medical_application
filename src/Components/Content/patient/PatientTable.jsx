@@ -72,10 +72,7 @@ const PatientTable = () => {
                     {patients.ID_Number}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0">
-                    <Link
-                      to={`/patient/${patients.ID_Number}`}
-                      className="underline text-blue-600"
-                    >
+                    <Link to={`/patient/${patients.ID_Number}`}>
                       {patients.firstName} {patients.lastName}
                     </Link>
                   </td>
