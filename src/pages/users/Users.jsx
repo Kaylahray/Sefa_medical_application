@@ -1,11 +1,17 @@
 import React from "react";
-import Button from "../../Components/shared/Button";
+import UsersTable from "../../Components/Content/users/UsersTable";
+import UsersHero from "../../Components/Content/users/UsersHero";
+import Pagination from "../../Components/shared/Pagination";
 
 const Users = () => {
   return (
-    <div>
-      <Button children={"Pay me my money"} />
-    </div>
+    <>
+      <UsersHero />
+      <UsersTable />
+      <div className="">
+        <Pagination />
+      </div>
+    </>
   );
 };
 

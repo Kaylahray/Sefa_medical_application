@@ -53,22 +53,22 @@ const HmoSettlementTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
+                    <Link to={`/finance/hmo-settlement-report/${user.id}`}>
                       {HMO.hmoName}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
+                    <Link to={`/finance/hmo-settlement-report/${user.id}`}>
                       {HMO.patientCovered}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
+                    <Link to={`/finance/hmo-settlement-report/${user.id}`}>
                       <CurrencyFormatter amount={HMO.pending} />
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/finance/hmo-settlement-report/${HMO.hmoName}`}>
+                    <Link to={`/finance/hmo-settlement-report/${user.id}`}>
                       <CurrencyFormatter amount={HMO.totalAmountPaid} />
                     </Link>
                   </td>
@@ -83,13 +83,13 @@ const HmoSettlementTable = () => {
                     >
                       <div className="py-1">
                         <Link
-                          to={`/finance/hmo-settlement-report/${HMO.hmoName}`}
+                          to={`/finance/hmo-settlement-report/${user.id}`}
                           className="block px-4 py-2 text-sm border-b hover:bg-[#E4EAEA] "
                         >
                           View
                         </Link>
                         <Link
-                          to={`/finance/hmo-settlement-report/${HMO.hmoName}`}
+                          to={`/finance/hmo-settlement-report/${user.id}`}
                           className="block px-4 py-2 text-sm hover:bg-[#E4EAEA]"
                         >
                           Edit
