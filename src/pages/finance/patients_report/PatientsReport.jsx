@@ -8,7 +8,7 @@ const PatientsReport = () => {
       <PatientReportHero />
       <PatientReportTable />
       <div className="">
-        <Pagination totalItems={100000} itemsPerPage={10} />
+        <Pagination />
       </div>
     </div>
   );

@@ -9,16 +9,9 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PatientReportTable = () => {
-  const { currentItems, loading } = useContext(UsersContext);
+  const { currentItems, loading, handleClick } = useContext(UsersContext);
   const users = currentItems;
-  const handleClick = () => {
-    const menu = document.getElementById("moreMenu");
-    if (menu.style.display === "none") {
-      menu.style.display = "block";
-    } else {
-      menu.style.display = "none";
-    }
-  };
+ 
   return (
     <div className="w-full mt-5 overflow-x-auto">
       <div>
@@ -70,22 +63,22 @@ const PatientReportTable = () => {
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       {patients.firstName} {patients.lastName}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       <CurrencyFormatter amount={patients.totalPaid} />
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       <CurrencyFormatter amount={patients.pending} />
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/patients-report/${user.id}`}>
+                    <Link to={`/finance/patients-report/${user.id}`}>
                       <CurrencyFormatter amount={patients.coveredHMO} />
                     </Link>
                   </td>
@@ -100,13 +93,13 @@ const PatientReportTable = () => {
                     >
                       <div className="py-1">
                         <Link
-                          to={"/"}
+                          to={`/finance/patients-report/${user.id}`}
                           className="block px-4 py-2 text-sm border-b hover:bg-[#E4EAEA] "
                         >
                           View
                         </Link>
                         <Link
-                          to={"/"}
+                          to={`/finance/patients-report/${user.id}`}
                           className="block px-4 py-2 text-sm hover:bg-[#E4EAEA]"
                         >
                           Edit
