@@ -3,9 +3,21 @@ import Card from '../../Components/shared/Card';
 import profile from '../../assets/profile.svg'
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useParams } from "react-dom"
+
+const { id } = useParams();
+  const ID = Number(id);
 
 
 function StaffDet() {
+
+  {currentItems
+    .filter((person) => person.id === ID)
+    .map((person) => (
+      <p className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
+        {person.patients.firstName} {person.patients.lastName}
+      </p>
+    ))}
 
   const style  = {
     width : 'md:w-[45%]'
