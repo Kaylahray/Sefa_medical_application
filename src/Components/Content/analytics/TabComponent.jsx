@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // general Tab Component
 const Tabs = ({ tabs, selectedTab, onTabClick }) => {
   return (
-    <div className="flex border-b lg:gap-[50px] border-gray-200">
+    <div className="flex border-b lg:gap-[20px] border-gray-200">
       {tabs.map((tab, index) => (
         <div
           key={tab.label}
@@ -31,7 +31,11 @@ const TabComponent = ({ tabs }) => {
 
   return (
     <div className="container mx-auto px-2 md:px-4">
-      <Tabs tabs={tabs} selectedTab={selectedTab} onTabClick={setSelectedTab} />
+      <Tabs
+        tabs={tabs}
+        selectedTab={selectedTab}
+        onTabClick={setSelectedTab}
+      />
       <div className="py-6">
         <ActiveComponent />
       </div>

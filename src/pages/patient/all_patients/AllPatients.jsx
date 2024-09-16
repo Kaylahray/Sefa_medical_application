@@ -3,6 +3,7 @@ import Select from "../../../Components/shared/Select";
 import Button from "../../../Components/shared/Button";
 import Search from "../../../Components/shared/Search";
 import PatientCard from "../../../Components/Content/patient/PatientCard";
+import PatientTable from "../../../Components/Content/patient/PatientTable";
 // import AllPatientsHero from "../../Components/Content/labs/LabsHero";
 // import AllPatientsTable from "../../Components/Content/labs/LabTable";
 
@@ -19,7 +20,7 @@ const AllPatients = () => {
       </div>
       <PatientCard />
       {/* <LabsHero /> */}
-      {/* <LabTable /> */}
+      <PatientTable />
     </>
   );
 };
