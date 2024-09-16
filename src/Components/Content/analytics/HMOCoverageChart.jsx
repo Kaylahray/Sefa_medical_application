@@ -28,7 +28,7 @@ const data = [
 const HMOCoverageChart = () => {
   return (
     <Card>
-      <div className="w-[733px] h-[481px] p-4 ">
+      <div className="w-full h-[481px] p-4 ">
         <h3 className="text-[20px] font-[600] mb-[56px] text-[#3D3D3D]">
           HMOs And Patients Covered
         </h3>
@@ -45,7 +45,7 @@ const HMOCoverageChart = () => {
                     %)
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 h-1">
+                <div className="w-full bg-gray-200 h-[2px]">
                   <div
                     className={`h-full ${item.color}`}
                     style={{ width: `${100 - item.percentage}%` }}

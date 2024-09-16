@@ -14,9 +14,7 @@ const Navbar = () => {
   const getActiveParent = () => {
     const parentLink = navigation.find((item) => {
       const isExactMatch = location.pathname === item.path;
-      const isNestedMatch = location.pathname.startsWith(
-        item.path + "/"
-      );
+      const isNestedMatch = location.pathname.startsWith(item.path + "/");
 
       return isExactMatch || isNestedMatch;
     });
@@ -56,9 +54,7 @@ const Navbar = () => {
                 className="relative"
                 key={item.name}
                 onClick={() =>
-                  setOpenDropdown(
-                    openDropdown === index ? null : index
-                  )
+                  setOpenDropdown(openDropdown === index ? null : index)
                 }
               >
                 <div className="flex items-center">
@@ -135,9 +131,7 @@ const Navbar = () => {
                   className="flex justify-between items-center"
                   onClick={() => {
                     if (item.subLinks) {
-                      setOpenDropdown(
-                        openDropdown === index ? null : index
-                      );
+                      setOpenDropdown(openDropdown === index ? null : index);
                     } else {
                       setMenuOpen(false); // Close menu when clicking non-sublink nav item
                     }

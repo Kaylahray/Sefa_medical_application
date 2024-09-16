@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiSearch } from "react-icons/ci";
+import UsersContext from "../../context/AuthContext";
 
 const Search = () => {
+  const { handleSearch, searchQuery } = useContext(UsersContext);
+
   return (
     <div className="mb-3 md:w-full max-w-sm">
       <div className="relative mt-2 rounded-md shadow-sm">
@@ -13,6 +16,8 @@ const Search = () => {
           name="search"
           type="search"
           placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
           className="bg-white block w-full rounded-md border-[0.5px] border-[#E0E0E0] py-3 pl-12 pr-3 placeholder:text-[#666666] placeholder:text-base placeholder:font-normal outline-none sm:text-sm sm:leading-6"
         />
       </div>

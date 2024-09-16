@@ -52,3 +52,19 @@ Content Folder: it is for components that are not reusable that are just static.
 while
 
 Shared Folder: it is for components that are resuable, and can be called and be used anywhere.
+
+<!-- Get -->
+
+https://my.api.mockaroo.com/medical.json?key=d050a920
+
+<!-- post -->
+
+https://my.api.mockaroo.com/medical.json?key=d050a920&__method=POST
+
+<!-- put -->
+
+https://my.api.mockaroo.com/medical.json?key=d050a920&__method=PUT
+
+<!-- DELETE -->
+
+https://my.api.mockaroo.com/medical.json?key=d050a920&__method=DELETE

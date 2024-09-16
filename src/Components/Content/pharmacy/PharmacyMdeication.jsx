@@ -1,4 +1,5 @@
 import React from 'react';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardCard from '../../shared/DashboardCard';
 import box1 from "../../../assets/pbox1.svg"
 import box2 from "../../../assets/pbox2.svg"
@@ -15,7 +16,7 @@ const Statistics = () => {
     <div className="flex flex-row gap-3 items-center justify-end ">
       <Search />
       <Select />
-<Button class="p-17px, 106px, 17px, 106px"> New Medication</Button>
+<Button class="p-17px, 106px, 17px, 106px"> New Medication</Button> 
     </div>
 
     <div className="flex flex-col md:flex-row gap-4 mb-6">
