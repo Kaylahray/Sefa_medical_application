@@ -5,10 +5,8 @@ import TableBody from '../../shared/TableBody'
 import UsersContext from "../../../context/AuthContext";
 import { useContext } from 'react';
 import { IoMdMore } from "react-icons/io";
-import { IoIosArrowDropleftCircle } from "react-icons/io";
-import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
-
+import Pagination from "../../../Components/shared/Pagination";
 
 
 function StaffTable() {
@@ -66,7 +64,7 @@ function StaffTable() {
                   />
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                <Link to={'/'} >{user.firstName } {user.lastName}</Link>
+                <Link to={'/staff'} >{user.firstName } {user.lastName}</Link>
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                   <Link to={'/'}>alkjhgfdsawertyuiopiklm</Link>
@@ -113,9 +111,7 @@ function StaffTable() {
 
 
       <div class="flex justify-end text-xs">
-                  <button class="py-1 px-2  text--gray-700 flex flex-row gap-2"> <IoIosArrowDropleftCircle/>10</button>
-                  <button class=" text-gray-700">of</button>
-                  <button class="py-1 px-2  text-gray-700 flex flex-row gap-2">10,000 <IoIosArrowDroprightCircle /></button>
+      <Pagination />
             </div>
     
     </div>

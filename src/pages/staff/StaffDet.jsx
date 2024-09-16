@@ -1,16 +1,22 @@
 import React from 'react'
-import Card from '../../shared/Card'
-import profile from '../../../assets/img/profile.svg'
+import Card from '../../Components/shared/Card';
+import profile from '../../assets/profile.svg'
 import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 function StaffDet() {
+
+  const style  = {
+    width : 'md:w-[45%]'
+  }
+
   return (
     <div>
       <h1>Staff Details</h1>
-      <FaArrowLeft />
+      <Link to={'/'} ><FaArrowLeft /></Link>
       <Card>
         
-
 
     <div class="grid grid-cols- md:grid-cols-2 gap-6">
   

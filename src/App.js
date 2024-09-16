@@ -19,6 +19,10 @@ import LabReport from "./pages/finance/lab_report/LabReport";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
 import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
 import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
+import StaffDet from "./pages/staff/StaffDet";
+import NewStaff from "./pages/staff/NewStaff";
+
+
 function App() {
   return (
     <>
@@ -31,6 +35,8 @@ function App() {
             <Route path="appointment" element={<Appointments />} />
           </Route>
           <Route path="staff" element={<Staff />} />
+          <Route path="staff/staffdet" element={<StaffDet/>}  />
+          <Route path="staff/newstaff" element={<NewStaff/>}  />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
             <Route path="patients-report" element={<PatientsReport />} />
