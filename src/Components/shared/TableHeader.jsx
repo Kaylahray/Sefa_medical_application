@@ -1,6 +1,6 @@
 import React from "react";
 
-const TableHeader = ({children}) => {
+const TableHeader = ({children, hidden = false}) => {
   return (
     <thead className="bg-[#E4EAEA] text-left text-sm font-semibold">
       <tr>
@@ -10,7 +10,7 @@ const TableHeader = ({children}) => {
         >
           <input
             type="checkbox"
-            className="absolute left-4 top-1/2 -mt-2 h-4 w-4  rounded border-[#8F8F8F] text-indigo-600 focus:ring-indigo-600"
+            className={`absolute left-4 top-1/2 -mt-2 h-4 w-4  rounded border-[#8F8F8F] text-indigo-600 focus:ring-indigo-600 ${hidden && 'invisible'}`}
           />
         </th>
         {children}

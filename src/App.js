@@ -18,6 +18,8 @@ import PharmacyReport from "./pages/finance/pharmacy_report/PharmacyReport";
 import LabReport from "./pages/finance/lab_report/LabReport";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
 import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
+import NewUser from "./pages/users/NewUser";
+import UserDetails from "./pages/users/UserDetails";
 import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
 import PatientDetails from "./pages/patient/all_patients/PatientDetails";
 function App() {
@@ -39,6 +41,24 @@ function App() {
           <Route path="staff" element={<Staff />} />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
+            <Route
+              path="patients-report"
+              element={<PatientsReport />}
+            />
+            <Route
+              path="hmo-settlement"
+              element={<HMOSettlement />}
+            />
+            {/* <Route path="staff-payroll" element={<StaffPayroll />} /> */}
+            <Route
+              path="pharmacy-report"
+              element={<PharmacyReport />}
+            >
+              <Route
+                path="pharmacy-report/:id"
+                element={<EachPatientReport />}
+              />
+            </Route>
             <Route
               path="patients-report"
               element={<PatientsReport />}
@@ -74,6 +94,9 @@ function App() {
           <Route path="analytics" element={<Analytics />} />
           <Route path="labs" element={<Labs />} />
           <Route path="users" element={<Users />} />
+          <Route path="users/:id" element={<UserDetails />} />
+          <Route path="newuser" element={<NewUser />} />
+          <Route path="userdetails" element={<UserDetails />} />
         </Route>
       </Routes>
     </>

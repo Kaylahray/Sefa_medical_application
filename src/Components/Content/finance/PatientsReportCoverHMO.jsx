@@ -13,7 +13,7 @@ const PatientsReportCoverHMO = () => {
   return (
     <div className="w-full overflow-x-auto">
       <table className="table w-full border-separate border-spacing-y-2 text-tableTextColor">
-        <TableHeader>
+        <TableHeader hidden={true}>
           <th>
             <span className="pr-1">Paid For</span>
             <FaAngleDown className="inline text-sm" />
@@ -37,10 +37,6 @@ const PatientsReportCoverHMO = () => {
             return (
               <tr key={user.id} className="shadow-custom">
                 <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
-                  {/* <input
-                    type="checkbox"
-                    className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-[#8F8F8F] text-indigo-600 focus:ring-indigo-600"
-                  /> */}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                   {lab.name}
@@ -53,10 +49,10 @@ const PatientsReportCoverHMO = () => {
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                   <span
-                    className={` w-[104px] px-3 py-1 rounded ${
-                      HMO.status === "Paid"
-                        ? "bg-activerBgColor text-activeTextColor"
-                        : "bg-inactiveBgColor text-inactiveTextColor"
+                    className={` py-1.5 rounded ${
+                      HMO.status === "paid"
+                        ? "bg-activerBgColor text-activeTextColor px-8"
+                        : "bg-inactiveBgColor text-inactiveTextColor px-5"
                     }`}
                   >
                     {HMO.status}
