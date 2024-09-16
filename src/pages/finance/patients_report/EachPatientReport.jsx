@@ -10,12 +10,11 @@ const EachPatientReport = () => {
   const { currentItems } = useContext(UsersContext);
   const { id } = useParams();
   const ID = Number(id);
-  console.log(ID);
   const tabData = [
     { label: "Total Paid", component: PatientsReportsTotalPaid },
     { label: "Covered By HMO", component: PatientsReportCoverHMO },
   ];
-
+  const current = currentItems.filter((person) => person.id === ID);
   return (
     <div>
       <Link to={"/finance/patients-report"} className="mb-5 text-boldColorText">
@@ -28,6 +27,7 @@ const EachPatientReport = () => {
             {person.patients.firstName} {person.patients.lastName}
           </p>
         ))}
+
       <TabComponent tabs={tabData} />
     </div>
   );

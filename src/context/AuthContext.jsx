@@ -18,13 +18,16 @@ export const UserProvider = ({ children }) => {
   const hasFetched = React.useRef(false);
 
   const fetchPeople = async () => {
-    const res = await fetch(
-      "https://my.api.mockaroo.com/medical.json?key=d050a920"
-    );
-    const info = await res.json();
-    console.log(info);
-    setPeople(info);
-    setLoading(false);
+    try {
+      const res = await fetch("http://localhost:8000/medical");
+      const info = await res.json();
+      console.log(info);
+      setPeople(info);
+    } catch (err) {
+      console.log("error fetching data", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -92,8 +95,7 @@ export const UserProvider = ({ children }) => {
     return (acc += item.patients.coveredHMO);
   }, 0);
 
-  const totalLabsIncome =
-    people.reduce((acc, items) => {
+  const totalLabsIncome = people.reduce((acc, items) => {
       return (acc += items.lab.amount);
     }, 0) * people.length;
 

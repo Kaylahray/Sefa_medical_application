@@ -24,7 +24,7 @@ const SingleHMOHero = () => {
         return (acc += item.HMO.patientCovered);
       }) * people.length;
   console.log(paitentsCoveredHMO);
-  
+
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -40,7 +40,7 @@ const SingleHMOHero = () => {
       {currentItems
         .filter((person) => person.HMO.hmoName === name)
         .map((person) => (
-          <p className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
+          <p key={person.id} className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
             {person.HMO.hmoName}
           </p>
         ))}
