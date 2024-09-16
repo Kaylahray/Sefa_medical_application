@@ -78,7 +78,8 @@ function StaffTable() {
                   <Link to={'/'} >alkjhgfdsawertyuiopiklm</Link>
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0">
-                <Link to={'/'}>Status</Link>
+                <Link to={'/'}> <span className='bg-activeTextColor px-4 py-2 rounded-2xl'>Active</span> 
+                <span className='bg-inactiveTextColor px-4 py-2 rounded-2xl'>Inactive</span> </Link>
                 </td>
                 <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                 <IoMdMore onClick={() =>{handleClick()}} className="cursor-pointer" />
