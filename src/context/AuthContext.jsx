@@ -97,7 +97,7 @@ export const UserProvider = ({ children }) => {
 
   const totalLabsIncome = people.reduce((acc, items) => {
       return (acc += items.lab.amount);
-    }, 0) * people.length;
+    }, 0)
 
   const totalPatientsPending = people.reduce((acc, items) => {
     return (acc += items.patients.pending);

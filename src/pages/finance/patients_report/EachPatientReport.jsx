@@ -9,19 +9,18 @@ import { FaArrowLeft } from "react-icons/fa6";
 const EachPatientReport = () => {
   const { currentItems } = useContext(UsersContext);
   const { id } = useParams();
-  const ID = Number(id);
   const tabData = [
     { label: "Total Paid", component: PatientsReportsTotalPaid },
     { label: "Covered By HMO", component: PatientsReportCoverHMO },
   ];
-  const current = currentItems.filter((person) => person.id === ID);
+
   return (
     <div>
       <Link to={"/finance/patients-report"} className="mb-5 text-boldColorText">
         <FaArrowLeft />
       </Link>
       {currentItems
-        .filter((person) => person.id === ID)
+        .filter((person) => person.id === id)
         .map((person) => (
           <p className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
             {person.patients.firstName} {person.patients.lastName}
