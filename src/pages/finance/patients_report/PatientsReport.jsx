@@ -6,7 +6,7 @@ const PatientsReport = () => {
   return (
     <div>
       <PatientReportHero />
-      <PatientReportTable /> 
+      <PatientReportTable />
       <div className="">
         <Pagination />
       </div>

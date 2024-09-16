@@ -5,6 +5,8 @@ const UsersContext = createContext();
 export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [people, setPeople] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredPeople, setFilteredPeople] = useState([]);
   // const [paginationState, setPaginationState] = useState({
   //   lab: 1,
   //   pharmacy: 1,
@@ -27,7 +29,7 @@ export const UserProvider = ({ children }) => {
       setLoading(false);
     }
   };
-  // https://dummyjson.com/users https://my.api.mockaroo.com/medical.json?key=d050a920
+
   useEffect(() => {
     if (!hasFetched.current) {
       hasFetched.current = true;
@@ -35,10 +37,34 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  // my pagination logic
+  // my search logic: search across all `people`
+  useEffect(() => {
+    const lowercasedSearchTerm = searchQuery.toLowerCase();
+    const filtered = people.filter((item) => {
+      const patientName = `${item.patients?.firstName || ""} ${
+        item.patients?.lastName || ""
+      }`.toLowerCase();
+      const patientEmail = (item.patients?.email || "").toLowerCase();
+      const staffName = `${item.staff?.firstName || ""} ${
+        item.staff?.lastName || ""
+      }`.toLowerCase();
+      const staffEmail = (item.staff?.email || "").toLowerCase();
+
+      return (
+        patientName.includes(lowercasedSearchTerm) ||
+        patientEmail.includes(lowercasedSearchTerm) ||
+        staffName.includes(lowercasedSearchTerm) ||
+        staffEmail.includes(lowercasedSearchTerm)
+      );
+    });
+
+    setFilteredPeople(filtered);
+  }, [searchQuery, people]);
+
+  // pagination logic applied to filteredPeople
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = people.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredPeople.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -66,13 +92,14 @@ export const UserProvider = ({ children }) => {
   }, 0);
 
   const patientsHMOCovered = people.reduce((acc, item) => {
-    return (acc += item.patients.coveredHMO);
-  }, 0);
+    return acc += item.patients.coveredHMO
+  }, 0)
 
   const totalLabsIncome =
+   
     people.reduce((acc, items) => {
-      return (acc += items.lab.amount);
-    }, 0) * people.length;
+        return (acc += items.lab.amount);
+      }, 0) * people.length;
 
   const totalPatientsPending = people.reduce((acc, items) => {
     return (acc += items.patients.pending);
@@ -82,13 +109,19 @@ export const UserProvider = ({ children }) => {
     return (acc += items.pharmacy.income);
   }, 0);
 
+  const handleSearch = (searchTerm) => {
+    setSearchQuery(searchTerm);
+    setCurrentPage(1);
+  };
+
   const contextValue = {
     people,
     currentItems,
+    filteredPeople,
     loading,
     currentPage,
     itemsPerPage,
-    totalItems: people.length,
+    totalItems: filteredPeople.length,
     paginate,
     handleClick,
     totalHMOIncome,
@@ -98,7 +131,10 @@ export const UserProvider = ({ children }) => {
     totalLabsIncome,
     totalPatientsPending,
     totalIncome,
+    handleSearch,
+    searchQuery,
   };
+
   return (
     <UsersContext.Provider value={contextValue}>
       {children}
