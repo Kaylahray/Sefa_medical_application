@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchPeople = async () => {
     try {
-      const res = await fetch("https://portabledd.github.io/medical/db.json");
+      const res = await fetch("http://localhost:8000/medical");
       const info = await res.json();
       console.log(info);
       setPeople(info);
