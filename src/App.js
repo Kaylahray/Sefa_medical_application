@@ -55,6 +55,11 @@ function App() {
             />
 
             <Route
+              path="hmo-settlement-report/:name"
+              element={<EachHmoReport />}
+            />
+
+            <Route
               path="pharmacy-report"
               element={<PharmacyReport />}
             />

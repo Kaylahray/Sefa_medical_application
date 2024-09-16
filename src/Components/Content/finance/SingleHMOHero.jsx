@@ -1,44 +1,75 @@
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import UsersContext from "../../../context/AuthContext";
-import Search from "../../shared/Search";
+import { FaArrowLeft } from "react-icons/fa6";
 import Select from "../../shared/Select";
+import Search from "../../shared/Search";
 import DashboardCard from "../../shared/DashboardCard";
 import Profit from "../../../assets/img/profit icon.png";
-import Bank from "../../../assets/img/bank.svg";
+import Patient from "../../../assets/img/patient.svg";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
-const style = {
-  width: "md:w-64",
-};
+const SingleHMOHero = () => {
+  const { currentItems, people, totalHMOIncome, totalHMOPending } =
+    useContext(UsersContext);
+  const { name } = useParams();
+  const style = {
+    width: "md:w-64",
+  };
 
-const LabsReportHero = () => {
-  const { totalHMOPending, totalLabsIncome, totalPatientsPending } = useContext(UsersContext);
-
+  const paitentsCoveredHMO =
+    currentItems
+      .filter((person) => person.HMO.hmoName === name)
+      .reduce((acc, item) => {
+        return (acc += item.HMO.patientCovered);
+      }) * people.length;
+  console.log(paitentsCoveredHMO);
+  
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-        <h1 className="text-boldColorText text-xl font-semibold ">
-          Lab Report
-        </h1>
+        <Link to={"/finance/hmo-settlement"} className="text-boldColorText">
+          <FaArrowLeft />
+        </Link>
         <div className="flex flex-row gap-3 items-center justify-end ">
           <Search />
           <Select />
         </div>
       </div>
-      <div className=" flex flex-col md:flex-row gap-3 mt-5">
+
+      {currentItems
+        .filter((person) => person.HMO.hmoName === name)
+        .map((person) => (
+          <p className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
+            {person.HMO.hmoName}
+          </p>
+        ))}
+
+      <div className="">
         <DashboardCard style={style.width}>
           <div className="flex items-center gap-4 ">
             {/* img div */}
             <div className="img">
-              <img src={Profit} alt="profit icon" />
+              <img src={Patient} alt="patient icon" />
             </div>
             {/* side info inside card */}
             <div className="content">
               <span className="text-dasboardSmalText text-sm font-semibold">
-                Income from Tests
+                Patients Covered
               </span>
+
+              {/* {currentItems
+                .filter((person) => person.HMO.hmoName === name)
+                .map((person) => (
+                  <p className="text-boldColorText text-3xl font-normal ">
+                    {person.HMO.patientCovered}
+                  </p>
+                ))} */}
               <p className="text-boldColorText text-3xl font-normal ">
-                <CurrencyFormatter amount={totalLabsIncome} />
+                {
+                  currentItems.filter((person) => person.HMO.hmoName === name)
+                    .length
+                }
               </p>
             </div>
           </div>
@@ -47,32 +78,32 @@ const LabsReportHero = () => {
           <div className="flex items-center gap-4 ">
             {/* img div */}
             <div className="img">
-              <img src={Bank} alt="profit icon" />
+              <img src={Profit} alt="patient icon" />
             </div>
             {/* side info inside card */}
             <div className="content">
               <span className="text-dasboardSmalText text-sm font-semibold">
-                Pending from Patients
+                Pending Payments
               </span>
-              <p className="text-boldColorText text-3xl font-normal ">
-                <CurrencyFormatter amount={totalPatientsPending} />
-              </p>
-            </div>
-          </div>
-        </DashboardCard>
-        <DashboardCard style={style.width}>
-          <div className="flex items-center gap-4 ">
-            {/* img div */}
-            <div className="img">
-              <img src={Bank} alt="profit icon" />
-            </div>
-            {/* side info inside card */}
-            <div className="content">
-              <span className="text-dasboardSmalText text-sm font-semibold">
-                Pending From HMO
-              </span>
-              <p className="text-boldColorText text-3xl font-normal ">
+              <p className="text-boldColorText text-3xl font-normal">
                 <CurrencyFormatter amount={totalHMOPending} />
+              </p>
+            </div>
+          </div>
+        </DashboardCard>
+        <DashboardCard style={style.width}>
+          <div className="flex items-center gap-4 ">
+            {/* img div */}
+            <div className="img">
+              <img src={Profit} alt="patient icon" />
+            </div>
+            {/* side info inside card */}
+            <div className="content">
+              <span className="text-dasboardSmalText text-sm font-semibold">
+                Total Amount Paid
+              </span>
+              <p className="text-boldColorText text-3xl font-normal ">
+                <CurrencyFormatter amount={totalHMOIncome} />
               </p>
             </div>
           </div>
@@ -82,4 +113,4 @@ const LabsReportHero = () => {
   );
 };
 
-export default LabsReportHero;
+export default SingleHMOHero;

@@ -8,18 +8,11 @@ import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 
 const PatientReportHero = () => {
-  const { people} = useContext(UsersContext)
+  const { patientsIncome, patientsHMOCovered} = useContext(UsersContext)
   const style = {
     width: "md:w-64",
   };
 
-  const patientsIncome = people.reduce((acc, item) => {
-    return acc += item.patients.totalPaid
-  }, 0) 
-
-  const patientsHMOCovered = people.reduce((acc, item) => {
-    return acc += item.patients.coveredHMO
-  }, 0)
 
   return (
     <div>
