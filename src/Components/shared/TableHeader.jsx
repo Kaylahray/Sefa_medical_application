@@ -2,7 +2,7 @@ import React from "react";
 
 const TableHeader = ({children}) => {
   return (
-    <thead className="bg-[#E4EAEA] text-left text-base font-semibold">
+    <thead className="bg-[#E4EAEA] text-left text-sm font-semibold">
       <tr>
         <th
           scope="col"
