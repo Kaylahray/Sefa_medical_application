@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
       console.log(info);
       setPeople(info);
     } catch (err) {
-      console.log("error fetching data",err);
+      console.log("error fetching data", err);
     } finally {
       setLoading(false);
     }
@@ -92,14 +92,12 @@ export const UserProvider = ({ children }) => {
   }, 0);
 
   const patientsHMOCovered = people.reduce((acc, item) => {
-    return acc += item.patients.coveredHMO
-  }, 0)
+    return (acc += item.patients.coveredHMO);
+  }, 0);
 
-  const totalLabsIncome =
-   
-    people.reduce((acc, items) => {
-        return (acc += items.lab.amount);
-      }, 0) * people.length;
+  const totalLabsIncome = people.reduce((acc, items) => {
+      return (acc += items.lab.amount);
+    }, 0) * people.length;
 
   const totalPatientsPending = people.reduce((acc, items) => {
     return (acc += items.patients.pending);
