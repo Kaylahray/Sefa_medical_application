@@ -11,11 +11,7 @@ const HmoSettlementHero = () => {
   const style = {
     width: "md:w-64",
   };
-  const { people } = useContext(UsersContext);
-
-  const totalHMOIncome = people.reduce((acc, item) => {
-    return (acc += item.HMO.totalAmountPaid);
-  }, 0);
+  const { people, totalHMOIncome } = useContext(UsersContext);
 
   return (
     <div>

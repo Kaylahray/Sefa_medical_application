@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom"
+import SingleHMOHero from "../../../Components/Content/finance/SingleHMOHero"
+import SingleHMOTable from "../../../Components/Content/finance/SingleHMOTable"
 
 const EachHmoReport = () => {
-    const params = useParams()
-    const {id} = params
   return (
-    <div>EachHmoReport{id}</div>
+    <div>
+      <SingleHMOHero/>
+      <SingleHMOTable />
+    </div>
   )
 }
 

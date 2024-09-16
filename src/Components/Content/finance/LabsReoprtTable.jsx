@@ -9,16 +9,9 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const LabsReoprtTable = () => {
-  const { currentItems, loading } = useContext(UsersContext);
+  const { currentItems, loading, handleClick } = useContext(UsersContext);
   const users = currentItems;
-  const handleClick = () => {
-    const menu = document.getElementById("moreMenu");
-    if (menu.style.display === "none") {
-      menu.style.display = "block";
-    } else {
-      menu.style.display = "none";
-    }
-  };
+ 
   return (
     <div className="w-full mt-5 overflow-x-auto">
       <div>
