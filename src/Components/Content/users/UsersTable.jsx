@@ -5,9 +5,10 @@ import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Pagination from "../../shared/Pagination";
 
 const UsersTable = () => {
-  const { people, loading } = useContext(UsersContext);
+  const {  loading, currentItems } = useContext(UsersContext);
 
   return (
     <div className="w-full overflow-x-auto ">
@@ -39,7 +40,7 @@ const UsersTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {people.map((user) => {
+            {currentItems.map((user) => {
               const { admin } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
@@ -79,6 +80,7 @@ const UsersTable = () => {
           </TableBody>
         </table>
       )}
+      <Pagination />
     </div>
   );
 };
