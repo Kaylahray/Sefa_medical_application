@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  // Search logic: search across all `people`
+  // my search logic: search across all `people`
   useEffect(() => {
     const lowercasedSearchTerm = searchQuery.toLowerCase();
     const filtered = people.filter((item) => {
@@ -58,7 +58,7 @@ export const UserProvider = ({ children }) => {
     setFilteredPeople(filtered);
   }, [searchQuery, people]);
 
-  // Pagination logic applied to filteredPeople
+  // pagination logic applied to filteredPeople
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPeople.slice(indexOfFirstItem, indexOfLastItem);
@@ -107,17 +107,17 @@ export const UserProvider = ({ children }) => {
 
   const handleSearch = (searchTerm) => {
     setSearchQuery(searchTerm);
-    setCurrentPage(1); // Reset to the first page when searching
+    setCurrentPage(1);
   };
 
   const contextValue = {
     people,
-    currentItems, // Display the current page items
-    filteredPeople, // All filtered items
+    currentItems,
+    filteredPeople,
     loading,
     currentPage,
     itemsPerPage,
-    totalItems: filteredPeople.length, // Use the filtered items length for pagination
+    totalItems: filteredPeople.length,
     paginate,
     handleClick,
     totalHMOIncome,
