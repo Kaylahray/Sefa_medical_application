@@ -20,6 +20,9 @@ module.exports = {
         warning: "#CC0000",
         tableTextColor: '#525252',
       },
+      boxShadow: {
+        'custom': '0px 0px 4px 2px rgba(121, 151, 148, 0.12)',
+      },
     },
   },
   plugins: [require("daisyui")],

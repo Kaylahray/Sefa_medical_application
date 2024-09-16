@@ -35,7 +35,7 @@ const ReportedCasesChart = () => {
       <h3 className="font-[600] ml-1 text-[#3D3D3D] text-[20px] mb-[56px]">
         Reported Cases
       </h3>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="85%">
         <BarChart
           data={data}
           layout="horizontal"

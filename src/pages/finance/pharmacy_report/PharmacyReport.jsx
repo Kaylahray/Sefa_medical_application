@@ -1,8 +1,16 @@
-import React from 'react'
+import PharmacyReportHero from "../../../Components/Content/finance/PharmacyReport";
+import PharmacyReportTable from "../../../Components/Content/finance/PharmacyReportTable";
+import Pagination from "../../../Components/shared/Pagination";
 
 const PharmacyReport = () => {
   return (
-    <div>PharmacyReport</div>
+    <div>
+      <PharmacyReportHero />
+      <PharmacyReportTable />
+      <div className="">
+        <Pagination />
+      </div>
+    </div>
   )
 }
 

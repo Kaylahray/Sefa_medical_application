@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 
 const medicationData = [
   { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
   { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Unavailable' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Unavailable' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Unavailable' },
+  { name: 'Paracetamol', classification: 'Analgesics and antipyretics', quantity: '1,000', price: '₦4,000', status: 'Available' },
   // Add more data rows as needed
 ];
 
@@ -95,4 +103,5 @@ const MedicationTable = () => {
 
 
 export default MedicationTable;
+
 
