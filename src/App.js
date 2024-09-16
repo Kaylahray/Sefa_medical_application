@@ -29,10 +29,13 @@ function App() {
           <Route index element={<OverviewPage />} />{" "}
           {/* Default route */}
           <Route path="patient" element={<Patient />}>
-            <Route path="patient/:PatientId" element={<PatientDetails />} />
             <Route path="all" element={<AllPatients />} />
             <Route path="appointment" element={<Appointments />} />
           </Route>
+          <Route
+            path="patient/:patientID"
+            element={<PatientDetails />}
+          />
           <Route path="staff" element={<Staff />} />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}

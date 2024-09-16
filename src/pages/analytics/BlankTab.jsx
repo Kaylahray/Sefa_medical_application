@@ -4,7 +4,7 @@ import Card from "../../Components/shared/DashboardCard";
 const BlankTab = ({ content }) => {
   return (
     <Card>
-      <div className="h-[480px] w-full">{content}</div>
+      <div className="min-h-[480px] w-full">{content}</div>
     </Card>
   );
 };
