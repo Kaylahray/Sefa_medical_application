@@ -12,18 +12,17 @@ import CurrencyFormatter from "../../shared/CurrencyFormatter";
 const SingleHMOHero = () => {
   const { currentItems, people, totalHMOIncome, totalHMOPending } =
     useContext(UsersContext);
-  const { name } = useParams();
+  const { id } = useParams();
   const style = {
     width: "md:w-64",
   };
 
   const paitentsCoveredHMO =
     currentItems
-      .filter((person) => person.HMO.hmoName === name)
+      .filter((person) => person.id === id)
       .reduce((acc, item) => {
         return (acc += item.HMO.patientCovered);
-      }) * people.length;
-  console.log(paitentsCoveredHMO);
+      }, 0) + people.length;
 
   return (
     <div>
@@ -38,14 +37,17 @@ const SingleHMOHero = () => {
       </div>
 
       {currentItems
-        .filter((person) => person.HMO.hmoName === name)
+        .filter((person) => person.id === id)
         .map((person) => (
-          <p key={person.id} className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
+          <p
+            key={person.id}
+            className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl"
+          >
             {person.HMO.hmoName}
           </p>
         ))}
 
-      <div className="">
+      <div className="flex flex-col md:flex-row gap-3">
         <DashboardCard style={style.width}>
           <div className="flex items-center gap-4 ">
             {/* img div */}
@@ -58,18 +60,8 @@ const SingleHMOHero = () => {
                 Patients Covered
               </span>
 
-              {/* {currentItems
-                .filter((person) => person.HMO.hmoName === name)
-                .map((person) => (
-                  <p className="text-boldColorText text-3xl font-normal ">
-                    {person.HMO.patientCovered}
-                  </p>
-                ))} */}
               <p className="text-boldColorText text-3xl font-normal ">
-                {
-                  currentItems.filter((person) => person.HMO.hmoName === name)
-                    .length
-                }
+                {paitentsCoveredHMO}
               </p>
             </div>
           </div>
