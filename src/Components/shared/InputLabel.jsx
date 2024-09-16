@@ -1,8 +1,8 @@
 import React from "react";
 
-const InputLabel = ({ title, type}) => {
+const InputLabel = ({ title, type, style}) => {
   return (
-    <div className="text-tableTextColor mb-3 text-base ">
+    <div className={`text-tableTextColor mb-3 text-base ${style}`}>
       {/* <label
         htmlFor="email"
         className="block text-sm font-medium leading-6 text-gray-900"
@@ -33,7 +33,7 @@ const InputLabel = ({ title, type}) => {
           id="email"
           name="email"
           type={type}
-          className="bg-[#F6F8F9] block w-full md:w-[45%] rounded-md border border-[#666666] py-3 px-3 focus:ring-[#666666] sm:text-sm sm:leading-6 "
+          className="bg-[#F6F8F9] block w-full rounded-md border border-[#666666] py-3 px-3 focus:ring-[#666666] sm:text-sm sm:leading-6 "
         />
       </div>
 
