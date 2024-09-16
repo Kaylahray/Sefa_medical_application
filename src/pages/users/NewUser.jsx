@@ -37,7 +37,7 @@ const NewUser = () => {
 
           {/* Button */}
           <div className="text-right">
-            <Link to="/userdetails">
+            <Link to="/users">
               <Button className="px-10">Create User </Button>
             </Link>
           </div>

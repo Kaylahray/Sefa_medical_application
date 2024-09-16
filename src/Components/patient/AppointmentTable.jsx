@@ -1,13 +1,14 @@
 import { useContext } from "react";
+import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
-import TableHeader from "../../shared/TableHeader";
-import TableBody from "../../shared/TableBody";
-import UsersContext from "../../../context/AuthContext";
-import Pagination from "../../shared/Pagination";
-import Spinner from "../../shared/Spinner";
+import TableHeader from "../shared/TableHeader";
+import TableBody from "../shared/TableBody";
+import UsersContext from "../../context/AuthContext";
+import Pagination from "../shared/Pagination";
+import Spinner from "../shared/Spinner";
 
-const LabTable = () => {
+const AppointmentTable = () => {
   const { currentItems, loading } = useContext(UsersContext);
   const users = currentItems;
 
@@ -21,33 +22,38 @@ const LabTable = () => {
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex justify-between font-semibold">
-        <p className="text-boldColorText text-base ">Patients Queued</p>
-        <Link to="#" className="underline text-[#799794] text-sm ">
-          View full list
-        </Link>
+        <p className="text-boldColorText text-base  ">Patients Queued</p>
       </div>
       <table className="table w-full border-separate border-spacing-y-2 text-tableTextColor">
         <TableHeader>
+          <th>
+            <span className="pr-1"> ID</span>
+            <FaAngleDown className="inline text-sm" />
+          </th>
           <th>
             <span className="pr-1"> Name</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Test Done</span>
+            <span className="pr-1">Email Address</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Amount</span>
+            <span className="pr-1">Gender</span>
             <FaAngleDown className="inline text-sm" />
           </th>
           <th>
-            <span className="pr-1">Date</span>
+            <span className="pr-1">Age</span>
+            <FaAngleDown className="inline text-sm" />
+          </th>
+          <th>
+            <span className="pr-1">Time Queued</span>
             <FaAngleDown className="inline text-sm" />
           </th>
         </TableHeader>
         <TableBody>
           {users.map((user) => {
-            const { patients, lab } = user;
+            const { patients } = user;
             // console.log(users[1], "from lab");
             return (
               <tr key={user.id}>
@@ -59,21 +65,25 @@ const LabTable = () => {
                 </td>
 
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
+                  {patients.ID_Number}
+                </td>
+                <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                   {patients.firstName} {patients.lastName}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                  {lab.name}
+                  {patients.email}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {lab.amount}
+                  {patients.gender}
                 </td>
                 <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                  {lab.date}
+                  {patients.age}
+                </td>
+                <td className="px-3 border border-[#E0E0E0] border-x-0 ">
+                  {patients.time || currentTime}
                 </td>
                 <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
-                  <Link to="#" className="underline">
-                    Update
-                  </Link>
+                  <IoMdMore className="cursor-pointer" />
                 </td>
               </tr>
             );
@@ -85,4 +95,4 @@ const LabTable = () => {
   );
 };
 
-export default LabTable;
+export default AppointmentTable;

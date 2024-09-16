@@ -9,15 +9,9 @@ import Spinner from "../../shared/Spinner";
 import CurrencyFormatter from "../../shared/CurrencyFormatter";
 
 const PharmacyReportTable = () => {
-  const { people, loading } = useContext(UsersContext);
-  const handleClick = () => {
-    const menu = document.getElementById("moreMenu");
-    if (menu.style.display === "none") {
-      menu.style.display = "block";
-    } else {
-      menu.style.display = "none";
-    }
-  };
+  const { currentItems, loading, handleClick } = useContext(UsersContext);
+  const users = currentItems;
+
   return (
     <div className="w-full mt-5 overflow-x-auto">
       <div>
@@ -52,8 +46,8 @@ const PharmacyReportTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {people.map((user) => {
-                const { pharmacy, patients, HMO} = user
+            {users.map((user) => {
+              const { pharmacy, patients, HMO } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -63,21 +57,19 @@ const PharmacyReportTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#">{pharmacy.name } </Link>
+                    {pharmacy.name}{" "}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/pharmacy-report/${user.id}`}>
-                    {pharmacy.quantity - pharmacy.quantity_avaliable }
-                    </Link>
+                    {pharmacy.quantity - pharmacy.quantity_avaliable}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to="#"><CurrencyFormatter amount={pharmacy.income} /></Link>
+                    <CurrencyFormatter amount={pharmacy.income} />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#"><CurrencyFormatter amount={patients.pending} /></Link>
+                    <CurrencyFormatter amount={patients.pending} />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to="#"><CurrencyFormatter amount={HMO.pending} /></Link>
+                    <CurrencyFormatter amount={HMO.pending} />
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore
@@ -90,13 +82,13 @@ const PharmacyReportTable = () => {
                     >
                       <div className="py-1">
                         <Link
-                          to={"/"}
+                          to={`#`}
                           className="block px-4 py-2 text-sm border-b hover:bg-[#E4EAEA] "
                         >
                           View
                         </Link>
                         <Link
-                          to={"/"}
+                          to={`#`}
                           className="block px-4 py-2 text-sm hover:bg-[#E4EAEA]"
                         >
                           Edit

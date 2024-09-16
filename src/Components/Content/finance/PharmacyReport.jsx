@@ -11,15 +11,7 @@ const style = {
   width: "md:w-64",
 };
 const PharmacyReport = () => {
-  const { people } = useContext(UsersContext);
-
-  const totalPending = people.reduce((acc, items) => {
-    return (acc += items.HMO.pending);
-  }, 0);
-
-  const totalIncome = people.reduce((acc, items) => {
-    return (acc += items.pharmacy.income);
-  }, 0);
+  const { totalHMOPending, totalIncome } = useContext(UsersContext);
 
   return (
     <div>
@@ -62,7 +54,7 @@ const PharmacyReport = () => {
                 Pending From HMO
               </span>
               <p className="text-boldColorText text-3xl font-normal ">
-                <CurrencyFormatter amount={totalPending} />
+                <CurrencyFormatter amount={totalHMOPending} />
               </p>
             </div>
           </div>

@@ -1,7 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const UserDetails = () => {
+  const { id } = useParams();
+  const [person, setPerson] = useState(null);
+
+  useEffect(() => {
+    const fetchItemDdetails = async () => {
+      const response = await fetch(`url/${id}`);
+      const data = await response.json();
+
+      setPerson(data);
+    };
+
+    fetchItemDdetails();
+  }, [id]);
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
       {/* header-section */}
@@ -25,7 +39,13 @@ const UserDetails = () => {
       </div>
 
       <div className="w-full max-w-5xl p-0 md:p-8">
-        <div className="bg-white shadow-lg rounded-lg p-8"></div>
+        <div className="bg-white shadow-lg rounded-lg p-8">
+          {person.id}
+          {person.firstName}
+          {person.lastName}
+          {person.email}
+          {person.role}
+        </div>
       </div>
     </div>
   );

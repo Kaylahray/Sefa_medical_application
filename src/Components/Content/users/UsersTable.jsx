@@ -4,13 +4,14 @@ import TableHeader from "../../shared/TableHeader";
 import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 import { IoMdMore } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const UsersTable = () => {
   const { people, loading } = useContext(UsersContext);
 
   return (
     <div className="w-full overflow-x-auto ">
-      <h1>Users</h1>
+      <h1>Users List</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -49,16 +50,18 @@ const UsersTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {admin.ID_Number}
+                    <Link to={`/users/user/${user.id}`}>{admin.ID_Number}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {admin.firstName} {admin.lastName}
+                    <Link to={`/users/user/${user.id}`}>
+                      {admin.firstName} {admin.lastName}
+                    </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    {admin.email}
+                    <Link to={`/users/user/${user.id}`}>{admin.email}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {admin.role}
+                    <Link to={`/users/user/${user.id}`}>{admin.role}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                     <span
@@ -67,7 +70,7 @@ const UsersTable = () => {
                           ? "bg-green-100 text-green-600"
                           : "bg-orange-100 text-orange-600"
                       }`}>
-                      {admin.status}
+                      <Link to={`/users/user/${user.id}`}>{admin.status}</Link>
                     </span>
                   </td>
                 </tr>

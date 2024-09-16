@@ -7,7 +7,7 @@ import TableHeader from "../../shared/TableHeader";
 import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 
-const OverviewTable = () => {
+const PatientTable = () => {
   const { currentItems, loading } = useContext(UsersContext);
   // const users = people.slice(0, 10);
   // const handleClick = () => {
@@ -21,7 +21,7 @@ const OverviewTable = () => {
   return (
     <div className="w-full overflow-x-auto ">
       <div className="flex justify-between font-semibold">
-        <p className="text-boldColorText text-base ">Patients Queued</p>
+        <p className="text-boldColorText text-base ">Patients</p>
         <Link to="#" className="underline text-[#799794] text-sm ">
           View full list
         </Link>
@@ -52,13 +52,14 @@ const OverviewTable = () => {
               <FaAngleDown className="inline text-sm" />
             </th>
             <th>
-              <span className="pr-1">Time Queued</span>
+              <span className="pr-1">HMO</span>
               <FaAngleDown className="inline text-sm" />
             </th>
           </TableHeader>
           <TableBody>
             {currentItems.map((user) => {
-              const { patients } = user;
+              const { patients, HMO } = user;
+
               return (
                 <tr key={user.id} className="shadow-custom">
                   <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
@@ -70,8 +71,13 @@ const OverviewTable = () => {
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                     {patients.ID_Number}
                   </td>
-                  <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {patients.firstName} {patients.lastName}
+                  <td className="px-3 border border-[#E0E0E0] border-x-0">
+                    <Link
+                      to={`/patient/${patients.ID_Number}`}
+                      className="underline text-blue-600"
+                    >
+                      {patients.firstName} {patients.lastName}
+                    </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
                     {patients.email}
@@ -83,7 +89,7 @@ const OverviewTable = () => {
                     {patients.age}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    {patients.timeQueued}
+                    {HMO.hmoName}
                   </td>
                   <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
                     <IoMdMore className="cursor-pointer" />
@@ -98,4 +104,4 @@ const OverviewTable = () => {
   );
 };
 
-export default OverviewTable;
+export default PatientTable;
