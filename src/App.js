@@ -19,6 +19,7 @@ import LabReport from "./pages/finance/lab_report/LabReport";
 import HMOSettlement from "./pages/finance/hmo/Hmo";
 import EachPatientReport from "./pages/finance/patients_report/EachPatientReport";
 import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
+import PatientDetails from "./pages/patient/all_patients/PatientDetails";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<OverviewPage />} />{" "}
           {/* Default route */}
           <Route path="patient" element={<Patient />}>
+            <Route path="patient/:PatientId" element={<PatientDetails />} />
             <Route path="all" element={<AllPatients />} />
             <Route path="appointment" element={<Appointments />} />
           </Route>
