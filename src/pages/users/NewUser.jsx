@@ -31,11 +31,8 @@ const NewUser = () => {
       <div className="w-full max-w-5xl p-0 md:p-8">
         <div className="bg-white shadow-lg rounded-lg p-8">
           <MyForm />
-
-          {/* Permissions */}
           <PermissionCheckboxes />
 
-          {/* Button */}
           <div className="text-right">
             <Link to="/users">
               <Button className="px-10">Create User </Button>
