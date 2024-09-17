@@ -5,9 +5,10 @@ import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Pagination from "../../shared/Pagination";
 
 const UsersTable = () => {
-  const { people, loading } = useContext(UsersContext);
+  const { currentItems, loading } = useContext(UsersContext);
 
   return (
     <div className="w-full overflow-x-auto ">
@@ -39,7 +40,7 @@ const UsersTable = () => {
             </th>
           </TableHeader>
           <TableBody>
-            {people.map((user) => {
+            {currentItems.map((user) => {
               const { admin } = user;
               return (
                 <tr key={user.id} className="shadow-custom">
@@ -50,18 +51,18 @@ const UsersTable = () => {
                     />
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/users/user/${user.id}`}>{admin.ID_Number}</Link>
+                    <Link to={`/users/${user.id}`}>{admin.ID_Number}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/users/user/${user.id}`}>
+                    <Link to={`/users/${user.id}`}>
                       {admin.firstName} {admin.lastName}
                     </Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 normal-case ">
-                    <Link to={`/users/user/${user.id}`}>{admin.email}</Link>
+                    <Link to={`/users/${user.id}`}>{admin.email}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
-                    <Link to={`/users/user/${user.id}`}>{admin.role}</Link>
+                    <Link to={`/users/${user.id}`}>{admin.role}</Link>
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0 ">
                     <span
@@ -69,8 +70,9 @@ const UsersTable = () => {
                         admin.status === "online"
                           ? "bg-green-100 text-green-600"
                           : "bg-orange-100 text-orange-600"
-                      }`}>
-                      <Link to={`/users/user/${user.id}`}>{admin.status}</Link>
+                      }`}
+                    >
+                      <Link to={`/users/${user.id}`}>{admin.status}</Link>
                     </span>
                   </td>
                 </tr>

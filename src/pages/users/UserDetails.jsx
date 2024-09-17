@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import UsersContext from "../../context/AuthContext";
 
 const UserDetails = () => {
   const { id } = useParams();
-  const [person, setPerson] = useState(null);
 
-  useEffect(() => {
-    const fetchItemDdetails = async () => {
-      const response = await fetch(`url/${id}`);
-      const data = await response.json();
+  const { currentItems } = useContext(UsersContext);
+  const ID = Number(id);
 
-      setPerson(data);
-    };
+  const person = currentItems.find((person) => person.id === ID);
 
-    fetchItemDdetails();
-  }, [id]);
+  //   const { admin } = person;
+
+  if (!person) {
+    return <div>User Not Found</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
@@ -22,7 +22,7 @@ const UserDetails = () => {
       <div className="w-full max-w-5xl p-0 md:px-8 pb-2 ">
         <h2 className="text-xl font-semibold pt-8 pb-6">User Details</h2>
 
-        <Link to="/newuser">
+        <Link to="/users">
           <svg
             className="inline-block mb-0 "
             width="22"
@@ -40,11 +40,11 @@ const UserDetails = () => {
 
       <div className="w-full max-w-5xl p-0 md:p-8">
         <div className="bg-white shadow-lg rounded-lg p-8">
-          {person.id}
-          {person.firstName}
-          {person.lastName}
-          {person.email}
-          {person.role}
+          {person.admin.ID_Number}
+          {person.admin.firstName}
+          {person.admin.lastName}
+          {person.admin.email}
+          {person.admin.role}
         </div>
       </div>
     </div>

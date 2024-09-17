@@ -6,7 +6,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import TableHeader from "../../shared/TableHeader";
 import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
-
+import Pagination from "../../shared/Pagination";
 const PatientTable = () => {
   const { currentItems, loading } = useContext(UsersContext);
   // const users = people.slice(0, 10);
@@ -21,7 +21,7 @@ const PatientTable = () => {
   return (
     <div className="w-full overflow-x-auto ">
       <div className="flex justify-between font-semibold">
-        <p className="text-boldColorText text-base ">Patients</p>
+        <p className="text-boldColorText text-base ">Patients List</p>
         <Link to="#" className="underline text-[#799794] text-sm ">
           View full list
         </Link>
@@ -72,10 +72,7 @@ const PatientTable = () => {
                     {patients.ID_Number}
                   </td>
                   <td className="px-3 border border-[#E0E0E0] border-x-0">
-                    <Link
-                      to={`/patient/${patients.ID_Number}`}
-                      className="underline text-blue-600"
-                    >
+                    <Link to={`/patient/${patients.ID_Number}`}>
                       {patients.firstName} {patients.lastName}
                     </Link>
                   </td>
@@ -100,6 +97,7 @@ const PatientTable = () => {
           </TableBody>
         </table>
       )}
+      <Pagination />
     </div>
   );
 };
