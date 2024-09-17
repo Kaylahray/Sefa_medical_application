@@ -2,6 +2,7 @@ import React from 'react'
 import Search from '../../shared/Search'
 import Select from '../../shared/Select'
 import Button from '../../shared/Button'
+import { Link } from 'react-router-dom'
 
 
 
@@ -9,12 +10,16 @@ import Button from '../../shared/Button'
 
 function StaffHeader() {
   return (
-    <div className='flex flex-row gap-20'>
-    <Search />
-    <Select/>
+    <div className=' flex gap-16'>
+    
   
-    <Button>New Staff</Button>
-
+        <Search />
+        <Select/>
+      
+        <Button><Link to={'/staff/newstaff'}>New Staff</Link></Button>
+    
+  
+      
     
     </div>
   )

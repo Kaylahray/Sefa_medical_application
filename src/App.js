@@ -24,6 +24,10 @@ import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
 import PharmacyForm from "./pages/pharmacy/PharmacyForm";
 import EachDrugDetails from "./pages/pharmacy/EachDrugDetails";
 import PatientDetails from "./pages/patient/all_patients/PatientDetails";
+import StaffDet from "./pages/staff/StaffDet";
+import NewStaff from "./pages/staff/NewStaff";
+
+
 function App() {
   return (
     <>
@@ -41,6 +45,8 @@ function App() {
             element={<PatientDetails />}
           />
           <Route path="staff" element={<Staff />} />
+          <Route path="staff/:id" element={<StaffDet/>}  />
+          <Route path="staff/newstaff" element={<NewStaff/>}  />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}
           

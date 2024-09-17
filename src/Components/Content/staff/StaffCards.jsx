@@ -5,15 +5,15 @@ import users from '../../../assets/img/users.svg'
 
 function StaffCards() {
   return (
-    <div className='flex flex-row gap-7'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mb-5'>
       
-      <DashboardCard className='flex flex-row'>
-      <span className='flex flex-row gap-4'>
-      <img className='w-10 h-10' src={users} alt="users" />
-      <span>
-          <p className='text-[15px]'>Total staff</p>
-          <h1 className='text-[30px]'>10,000</h1>
-      </span>
+      <DashboardCard >
+      <span className='flex flex-row gap-4 item-center'>
+        <img className='w-10 h-10' src={users} alt="users" />
+        <span>
+            <p className='text-[15px]'>Total staff</p>
+            <h1 className='text-[30px]'>10,000</h1>
+        </span>
       </span>
       </DashboardCard>
 
