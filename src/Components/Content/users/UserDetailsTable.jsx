@@ -77,7 +77,7 @@ const UserDetails = () => {
           </div>
           <PermissionCheckboxes />
           <div className="flex justify-end">
-            <Link>Edit Text</Link>{" "}
+            <Link to="/users">Edit Text</Link>{" "}
           </div>
         </div>
       </div>
