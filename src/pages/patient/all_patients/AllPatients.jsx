@@ -11,7 +11,7 @@ const AllPatients = () => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h3>Patients</h3>
+        <h3 className="text-boldColorText">Patients</h3>
         <div className="flex items-center gap-[24px] justify-between">
           <Search />
           <Select />
