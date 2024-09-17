@@ -45,7 +45,7 @@ function App() {
             element={<PatientDetails />}
           />
           <Route path="staff" element={<Staff />} />
-          <Route path="staff/staffdet" element={<StaffDet/>}  />
+          <Route path="staff/:id" element={<StaffDet/>}  />
           <Route path="staff/newstaff" element={<NewStaff/>}  />
           <Route path="finance" element={<Finance />}>
             {/* Nested sub-routes for finance */}

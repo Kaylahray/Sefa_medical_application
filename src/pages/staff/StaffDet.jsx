@@ -1,86 +1,119 @@
-import React from 'react'
-import Card from '../../Components/shared/Card';
-import profile from '../../assets/profile.svg'
+import React from "react";
+import { CiEdit } from "react-icons/ci";
+import Card from "../../Components/shared/Card";
+import profile from "../../assets/img/profile.svg";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useParams,useContext } from "react"
-
-
-
-
-
+import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import UsersContext from "../../context/AuthContext";
 
 function StaffDet() {
   const { id } = useParams();
   const ID = Number(id);
-  const {currentItems} = useContext()
-  
-
-
-  {currentItems
-    .filter((person) => person.id === ID)
-    .map((person) => (
-      <p className=" mt-5 mb-5 text-boldColorText font-semibold text-2xl">
-        {person.patients.firstName} {person.patients.lastName}
-      </p>
-    ))}
-
+  const { currentItems } = useContext(UsersContext);
 
   return (
     <div>
-      <h1>Staff Details</h1>
-      <Link to={'staff'} ><FaArrowLeft /></Link>
-      <Card>
-        
-
-    <div class="grid grid-cols- md:grid-cols-2 gap-6">
-  
-      <div>
-        
-        <div class="space-y-2 pt-6">
-          <p className='text-[10px]'>Position<strong className='text-[14px]' >  <br /> Doctor</strong></p>
-          <p className='text-[10px]'>First Name<strong className='text-[14px]' >  <br /> Oluwatobiloba</strong></p>
-          <p className='text-[10px]'>Last Name<strong className='text-[14px]'>  <br /> Afolabi</strong></p>
-          <p className='text-[10px]' >Gender<strong className='text-[14px]'>  <br /> Male</strong></p>
-          <p className='text-[10px]'>Email Address<strong className='text-[14px]'>  <br /> afolabitobi2000@gmail.com</strong></p>
-          <p className='text-[10px]'>Phone Number<strong className='text-[14px]'>  <br /> 09091121344</strong></p>
+      <h1 className="mb-3 text-lg font-semibold text-boldColorText">Staff Details</h1>
+      <Link to={"/staff"}>
+        <FaArrowLeft />
+      </Link>
+      <Card style={"mt-5"}>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {currentItems
+            .filter((person) => person.id === ID)
+            .map((person) => {
+              const { staff } = person;
+              return (
+                <>
+                  <div className="flex flex-col md:flex-row justify-between px-5 py-5 font-semibold">
+                    <div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">position</p>
+                        <p>{staff.position}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                          First Name
+                        </p>
+                        <p>{staff.firstName}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">Last Name</p>
+                        <p>{staff.lastName}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">Gender</p>
+                        <p>{staff.gender}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                          Email Address
+                        </p>
+                        <p>{staff.email}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                          Phone Number
+                        </p>
+                        <p>{staff.phone}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                          Residential Address
+                        </p>
+                        <p>
+                          {staff.address.street} {staff.address.city},{" "}
+                          {staff.address.state}
+                        </p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">ID Number</p>
+                        <p>{staff.ID_Number}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                          Patients Attended to
+                        </p>
+                        <p>{staff.patientsAttended}</p>
+                      </div>
+                      <div className="mb-5">
+                        <p className="text-lightColorText text-sm">
+                        Year Employed
+                        </p>
+                        <p>{staff.employed}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-between items-end px-5 py-5 ">
+                    <div className="mb-12">
+                      <img src={profile} alt="staff pics" className="mb-2" />
+                      <span
+                        className={` py-1.5 rounded mt-12 ${
+                          staff.status === "Active"
+                            ? "bg-activerBgColor text-activeTextColor px-8"
+                            : "bg-inactiveBgColor text-inactiveTextColor px-5"
+                        }`}
+                      >
+                        {staff.status}
+                      </span>
+                    </div>
+                    <Link
+                      to={"#"}
+                      className="text-[#516563] font-normal text-sm pl-3"
+                    >
+                      <CiEdit className="inline text-lg" /> Edit Profile
+                    </Link>
+                  </div>
+                </>
+              );
+            })}
         </div>
-      </div>
-
-  
-      <div className='flex gap-44 pt-6 ' >
-        <div class="space-y-2">
-        
-          <p className='text-[10px]' >Residential Address<strong className='text-[14px]'>  <br /> 04 Barnawa Close, Barnawa Kaduna</strong></p>
-          <p className='text-[10px]'>I.D. Number<strong  className='text-[14px]'>  <br /> 142314</strong></p>
-          <p className='text-[10px]'>Patients Attended to<strong  className='text-[14px]'>  <br /> 142</strong></p>
-          <p className='text-[10px]'>Year Employed<strong  className='text-[14px]'>  <br /> 27-12-2022</strong></p>
-          <p  ><strong></strong> </p>
-          <p><strong></strong></p>
-        </div>
-
-        
-    <div class=" items-center justify-end ">
-      <div class="flex flex-col items-center">
-      <img src={profile} alt="profile" />
-        <div class="ml-4">
-          <span class="inline-block px-4 py-1 mt-3 text-sm text-white bg-green-500 rounded-full">Active</span>
-        </div>
-      </div >
-      <button class="px-4 py-2 mt-24 mb-7 text-sm text-blue-500 border border-blue-500 rounded hover:bg-blue-100">Edit Profile</button>
-    </div>
-
-      </div>
-    
-
-    
-    </div>
-  
-
-        
       </Card>
     </div>
-  )
+  );
 }
 
-export default StaffDet
+export default StaffDet;
