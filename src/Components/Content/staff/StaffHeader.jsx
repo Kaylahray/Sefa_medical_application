@@ -10,15 +10,17 @@ import { Link } from 'react-router-dom'
 
 function StaffHeader() {
   return (
-    <div className='flex flex-row gap-6 '>
-    <div>
-      <Search />
-      <Select/>
+    <div className=' flex gap-16'>
     
-      <Button><Link to={'/staff/newstaff'}>New Staff</Link></Button>
+  
+        <Search />
+        <Select/>
+      
+        <Button><Link to={'/staff/newstaff'}>New Staff</Link></Button>
+    
   
       
-    </div>
+    
     </div>
   )
 }

@@ -15,7 +15,7 @@ function NewStaff() {
   return (
     <div className=''>
           <h1>New Staff</h1>
-          <Link to={'/'} ><FaArrowLeft /></Link>
+          <Link to={'staff'} ><FaArrowLeft /></Link>
             <Card>
         <div className='grid grid-cols-2 px-3 '>
 

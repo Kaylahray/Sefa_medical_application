@@ -3,13 +3,19 @@ import Card from '../../Components/shared/Card';
 import profile from '../../assets/profile.svg'
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useParams } from "react-dom"
+import { useParams,useContext } from "react"
 
-const { id } = useParams();
-  const ID = Number(id);
+
+
+
 
 
 function StaffDet() {
+  const { id } = useParams();
+  const ID = Number(id);
+  const {currentItems} = useContext()
+  
+
 
   {currentItems
     .filter((person) => person.id === ID)
@@ -19,14 +25,11 @@ function StaffDet() {
       </p>
     ))}
 
-  const style  = {
-    width : 'md:w-[45%]'
-  }
 
   return (
     <div>
       <h1>Staff Details</h1>
-      <Link to={'/'} ><FaArrowLeft /></Link>
+      <Link to={'staff'} ><FaArrowLeft /></Link>
       <Card>
         
 
