@@ -1,12 +1,42 @@
-const AccordionItem = ({ title, isActive, onClick, children }) => (
+import up from "../../../assets/up.svg";
+import down from "../../../assets/arrow_down.svg";
+
+const AccordionItem = ({
+  title,
+  isActive,
+  onClick,
+  children,
+  notify,
+  date,
+  time,
+  setNotify,
+}) => (
   <div>
-    <button
+    <div
       onClick={onClick}
-      className="w-full text-left p-4 bg-gray-50 border border-gray-200 rounded-lg flex justify-between items-center"
+      className={`w-full text-left p-4 bg-white border border-gray-200 rounded-lg flex ${
+        date && time ? "flex-col items-start" : ""
+      } justify-between `}
     >
-      <span>{title}</span>
-      <span>{isActive ? "-" : "+"}</span>
-    </button>
+      <div className="flex gap-2 items-center">
+        <span>{title}</span>
+        <img src={isActive ? up : down} alt="" />
+      </div>
+      {date && time && (
+        <div className="text-sm text-gray-500 flex gap-2">
+          <p>{date}</p>
+          <p>{time}</p>
+        </div>
+      )}
+      {notify && (
+        <div
+          onClick={() => setNotify(false)}
+          className="bg-[#E4EAEA] font-normal text-md px-4 py-2 rounded-lg"
+        >
+          1 new
+        </div>
+      )}
+    </div>
     {isActive && <div>{children}</div>}
   </div>
 );
