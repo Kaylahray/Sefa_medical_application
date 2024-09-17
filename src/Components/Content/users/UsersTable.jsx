@@ -5,6 +5,7 @@ import TableBody from "../../shared/TableBody";
 import Spinner from "../../shared/Spinner";
 import { IoMdMore } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Pagination from "../../shared/Pagination";
 
 const UsersTable = () => {
   const { currentItems, loading } = useContext(UsersContext);
@@ -69,7 +70,8 @@ const UsersTable = () => {
                         admin.status === "online"
                           ? "bg-green-100 text-green-600"
                           : "bg-orange-100 text-orange-600"
-                      }`}>
+                      }`}
+                    >
                       <Link to={`/users/${user.id}`}>{admin.status}</Link>
                     </span>
                   </td>
