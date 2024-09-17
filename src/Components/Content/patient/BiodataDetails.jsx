@@ -24,9 +24,9 @@ const BiodataDetails = () => {
   const { patients } = patient; // Destructure patient object
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="grid md:grid-cols-2 gap-4">
+    <div className="w-full h-full p-4">
+      <div className="flex justify-between gap-20">
+        <div className="grid md:grid-cols-2 flex-1 gap-4">
           {/* First Column */}
           {[
             { label: "First Name", value: patients.firstName },
@@ -40,11 +40,7 @@ const BiodataDetails = () => {
             { label: "Height", value: patients.height },
             {
               label: "Residential Address",
-              value: `${patients.address.street}, ${
-                patients.address.city
-              }, ${patients.address.state || "N/A"}, ${
-                patients.address.country
-              }`,
+              value: `${patients.address.street}, ${patients.address.city}.`,
             },
             { label: "Weight", value: patients.weight },
             {
@@ -52,11 +48,11 @@ const BiodataDetails = () => {
               value: patients.maritalStatus || "N/A",
             },
           ].map(({ label, value }) => (
-            <div key={label}>
-              <p className="text-[#7A7A7A] text-[16px] font-semibold font-AvenirMeduim">
+            <div key={label} className="">
+              <p className="text-[#7A7A7A] text-[16px] font-semibold ">
                 {label}
               </p>
-              <p className="text-[#292929] text-[18px] font-semibold font-AvenirMeduim">
+              <p className="text-[#292929] text-[18px] mt-1 font-semibold">
                 {value}
               </p>
             </div>
@@ -64,8 +60,8 @@ const BiodataDetails = () => {
         </div>
 
         {/* Second Column */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row flex-1 justify-between">
+          <div className="flex flex-col gap-4">
             {[
               { label: "Genotype", value: patients.genotype },
               { label: "Blood Group", value: patients.bloodGroup },
@@ -75,7 +71,7 @@ const BiodataDetails = () => {
                 <p className="text-[#7A7A7A] text-[16px] font-semibold">
                   {label}
                 </p>
-                <p className="text-[#292929] text-[18px] font-semibold">
+                <p className="text-[#292929] mt-1 text-[18px] font-semibold">
                   {value}
                 </p>
               </div>
@@ -83,14 +79,14 @@ const BiodataDetails = () => {
           </div>
 
           {/* Profile Image and Buttons */}
-          <div className="flex flex-col items-center justify-between">
+          <div className="flex flex-col items-end justify-between">
             <img
               src={`https://picsum.photos/300/300`}
               alt="Profile"
               className="w-28 h-28 object-cover rounded-full mb-4"
             />
-            <div className="flex flex-col items-center">
-              <button className="text-blue-500 flex items-center mb-4">
+            <div className="flex flex-col items-end">
+              <button className="flex items-center mb-4 font-inter font-normal text-sm text-[#516563]">
                 <img src={edit} alt="" />
                 Edit Profile
               </button>

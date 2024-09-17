@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
       setLoading(false);
     }
   };
-  // https://portabledd.github.io/medical/db.json http://localhost:8000/medical 
+  // https://portabledd.github.io/medical/db.json http://localhost:8000/medical
   // https://my.api.mockaroo.com/medical.json?key=d050a920
   useEffect(() => {
     if (!hasFetched.current) {
@@ -52,12 +52,18 @@ export const UserProvider = ({ children }) => {
         item.staff?.lastName || ""
       }`.toLowerCase();
       const staffEmail = (item.staff?.email || "").toLowerCase();
+      const adminName = `${item.admin?.firstName || ""} ${
+        item.staff?.lastName || ""
+      }`.toLowerCase();
+      const adminEmail = (item.admin?.email || "").toLowerCase();
 
       return (
         patientName.includes(lowercasedSearchTerm) ||
         patientEmail.includes(lowercasedSearchTerm) ||
         staffName.includes(lowercasedSearchTerm) ||
-        staffEmail.includes(lowercasedSearchTerm)
+        staffEmail.includes(lowercasedSearchTerm) ||
+        adminName.includes(lowercasedSearchTerm) ||
+        adminEmail.includes(lowercasedSearchTerm)
       );
     });
 
