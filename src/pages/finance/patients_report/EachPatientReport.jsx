@@ -9,8 +9,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 const EachPatientReport = () => {
   const { currentItems } = useContext(UsersContext);
   const { id } = useParams();
-  const ID = Number(id);
-  console.log(ID);
+  const ID = Number(id)
   const tabData = [
     { label: "Total Paid", component: PatientsReportsTotalPaid },
     { label: "Covered By HMO", component: PatientsReportCoverHMO },
@@ -28,6 +27,7 @@ const EachPatientReport = () => {
             {person.patients.firstName} {person.patients.lastName}
           </p>
         ))}
+
       <TabComponent tabs={tabData} />
     </div>
   );

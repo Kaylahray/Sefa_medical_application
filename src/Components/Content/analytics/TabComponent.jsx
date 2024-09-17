@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // general Tab Component
 const Tabs = ({ tabs, selectedTab, onTabClick }) => {
   return (
-    <div className="flex border-b lg:gap-[50px] border-gray-200">
+    <div className="flex border-b lg:gap-[20px] border-gray-200 overflow-x-auto">
       {tabs.map((tab, index) => (
         <div
           key={tab.label}

@@ -18,15 +18,21 @@ export const UserProvider = ({ children }) => {
   const hasFetched = React.useRef(false);
 
   const fetchPeople = async () => {
-    const res = await fetch(
-      "https://my.api.mockaroo.com/medical.json?key=d050a920"
-    );
-    const info = await res.json();
-    console.log(info);
-    setPeople(info);
-    setLoading(false);
+    try {
+      const res = await fetch(
+        "https://my.api.mockaroo.com/medical.json?key=d050a920"
+      );
+      const info = await res.json();
+      console.log(info);
+      setPeople(info);
+    } catch (err) {
+      console.log("error fetching data", err);
+    } finally {
+      setLoading(false);
+    }
   };
-
+  // https://portabledd.github.io/medical/db.json http://localhost:8000/medical
+  // https://my.api.mockaroo.com/medical.json?key=d050a920
   useEffect(() => {
     if (!hasFetched.current) {
       hasFetched.current = true;
@@ -46,12 +52,18 @@ export const UserProvider = ({ children }) => {
         item.staff?.lastName || ""
       }`.toLowerCase();
       const staffEmail = (item.staff?.email || "").toLowerCase();
+      const adminName = `${item.admin?.firstName || ""} ${
+        item.staff?.lastName || ""
+      }`.toLowerCase();
+      const adminEmail = (item.admin?.email || "").toLowerCase();
 
       return (
         patientName.includes(lowercasedSearchTerm) ||
         patientEmail.includes(lowercasedSearchTerm) ||
         staffName.includes(lowercasedSearchTerm) ||
-        staffEmail.includes(lowercasedSearchTerm)
+        staffEmail.includes(lowercasedSearchTerm) ||
+        adminName.includes(lowercasedSearchTerm) ||
+        adminEmail.includes(lowercasedSearchTerm)
       );
     });
 
@@ -92,10 +104,9 @@ export const UserProvider = ({ children }) => {
     return (acc += item.patients.coveredHMO);
   }, 0);
 
-  const totalLabsIncome =
-    people.reduce((acc, items) => {
-      return (acc += items.lab.amount);
-    }, 0) * people.length;
+  const totalLabsIncome = people.reduce((acc, items) => {
+    return (acc += items.lab.amount);
+  }, 0);
 
   const totalPatientsPending = people.reduce((acc, items) => {
     return (acc += items.patients.pending);
