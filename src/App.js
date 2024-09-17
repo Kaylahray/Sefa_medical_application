@@ -21,6 +21,8 @@ import EachPatientReport from "./pages/finance/patients_report/EachPatientReport
 import NewUser from "./pages/users/NewUser";
 import UserDetails from "./pages/users/UserDetails";
 import EachHmoReport from "./pages/finance/hmo/EachHmoReport";
+import PharmacyForm from "./pages/pharmacy/PharmacyForm";
+import EachDrugDetails from "./pages/pharmacy/EachDrugDetails";
 
 function App() {
   return (
@@ -45,9 +47,6 @@ function App() {
                 element={<EachPatientReport />}
               />
             </Route>
-            <Route path="patients-report" element={<PatientsReport />} />
-
-            <Route path="patients-report/:id" element={<EachPatientReport />} />
 
             <Route path="hmo-settlement" element={<HMOSettlement />} />
 
@@ -56,15 +55,12 @@ function App() {
               element={<EachHmoReport />}
             />
 
-            <Route
-              path="hmo-settlement-report/:name"
-              element={<EachHmoReport />}
-            />
-
             <Route path="pharmacy-report" element={<PharmacyReport />} />
             <Route path="lab-report" element={<LabReport />} />
           </Route>
           <Route path="pharmacy" element={<Pharmacy />} />
+          <Route path="pharmacy/form" element={<PharmacyForm />} />
+          <Route path="pharmacy/:id" element={<EachDrugDetails />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="labs" element={<Labs />} />
           <Route path="users" element={<Users />}>
