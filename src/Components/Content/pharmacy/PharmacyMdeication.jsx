@@ -4,6 +4,10 @@ import box1 from "../../../assets/pbox1.svg"
 import Search from '../../shared/Search';
 import Select from '../../shared/Select';
 import Button from '../../shared/Button';
+import MedicationDetails from '../../Content/pharmacy/MedicationDetails'
+import NewMedicationForm from './NewMedicationForm';
+import MedicationTable from '../../Content/pharmacy/MdeictionTable';
+
 const Statistics = () => {
   return (
 
