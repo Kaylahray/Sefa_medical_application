@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
   const fetchPeople = async () => {
     try {
       const res = await fetch(
-        "http://localhost:8000/medical"
+        "https://my.api.mockaroo.com/medical.json?key=d050a920"
       );
       const info = await res.json();
       console.log(info);
