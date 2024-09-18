@@ -57,6 +57,7 @@ export const UserProvider = ({ children }) => {
         item.staff?.lastName || ""
       }`.toLowerCase();
       const adminEmail = (item.admin?.email || "").toLowerCase();
+      const labName = (item.lab?.name || "").toLowerCase();
 
       return (
         patientName.includes(lowercasedSearchTerm) ||
@@ -64,7 +65,8 @@ export const UserProvider = ({ children }) => {
         staffName.includes(lowercasedSearchTerm) ||
         staffEmail.includes(lowercasedSearchTerm) ||
         adminName.includes(lowercasedSearchTerm) ||
-        adminEmail.includes(lowercasedSearchTerm)
+        adminEmail.includes(lowercasedSearchTerm) ||
+        labName.includes(lowercasedSearchTerm)
       );
     });
 
