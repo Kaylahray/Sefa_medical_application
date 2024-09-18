@@ -26,7 +26,8 @@ const UserDetails = () => {
             height="22"
             viewBox="0 0 22 22"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M5.43994 9.66673H21.6693V12.3334H5.43994L12.5919 19.4854L10.7066 21.3707L0.335938 11.0001L10.7066 0.629395L12.5919 2.51473L5.43994 9.66673Z"
               fill="#292929"
@@ -38,17 +39,17 @@ const UserDetails = () => {
       {/* User Details Section */}
       <div className="w-full max-w-5xl p-0 md:p-8">
         <div className="bg-white shadow-lg rounded-lg p-8">
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 md:gap-[150px]">
             {/* Name */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-500">Name</h3>
+              <h3 className="text-[13px] font-[600] text-[#7A7A7A]">Name</h3>
               <p className="text-base font-medium text-gray-900">
                 {person.admin.firstName} {person.admin.lastName}
               </p>
             </div>
             {/* Email */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-500">
+              <h3 className="text-[13px] font-[600] text-[#7A7A7A]">
                 Email Address
               </h3>
               <p className="text-base font-medium text-gray-900">
@@ -57,20 +58,20 @@ const UserDetails = () => {
             </div>
             {/* Role */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-500">Role</h3>
+              <h3 className="text-[13px] font-[600] text-[#7A7A7A]">Role</h3>
               <p className="text-base font-medium text-gray-900">
                 {person.admin.role}
               </p>
             </div>
             {/* Status */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-500">Status</h3>
               <span
                 className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
                   person.admin.status === "online"
                     ? "bg-green-100 text-green-600"
                     : "bg-red-100 text-red-600"
-                }`}>
+                }`}
+              >
                 {person.admin.status}
               </span>
             </div>

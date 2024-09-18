@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Pagination from "../../shared/Pagination";
 
 const UsersTable = () => {
-  const { currentItems, loading } = useContext(UsersContext);
+  const { currentItems, loading, handleClick } = useContext(UsersContext);
 
   return (
     <div className="w-full overflow-x-auto ">
@@ -68,12 +68,37 @@ const UsersTable = () => {
                     <span
                       className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
                         admin.status === "online"
-                          ? "bg-green-100 text-green-600"
-                          : "bg-orange-100 text-orange-600"
+                          ? "bg-green-100 text-[#03A300]"
+                          : "bg-orange-100 text-[#A35800]"
                       }`}
                     >
                       <Link to={`/users/${user.id}`}>{admin.status}</Link>
                     </span>
+                  </td>
+                  <td className="px-3 rounded-e-lg border border-[#E0E0E0] border-l-0">
+                    <IoMdMore
+                      onClick={handleClick}
+                      className="cursor-pointer"
+                    />
+                    <div
+                      id="moreMenu"
+                      className="hidden absolute right-2 z-10 mt-2 w-28 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none"
+                    >
+                      <div className="py-1">
+                        <Link
+                          to={`/finance/patients-report/${user.id}`}
+                          className="block px-4 py-2 text-sm border-b hover:bg-[#E4EAEA] "
+                        >
+                          View
+                        </Link>
+                        <Link
+                          to={`/finance/patients-report/${user.id}`}
+                          className="block px-4 py-2 text-sm hover:bg-[#E4EAEA]"
+                        >
+                          Edit
+                        </Link>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               );
