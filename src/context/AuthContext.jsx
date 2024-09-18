@@ -121,6 +121,8 @@ export const UserProvider = ({ children }) => {
     setCurrentPage(1);
   };
 
+  // use useLocation to solve the search and pagination behaviour
+
   const contextValue = {
     people,
     currentItems,
