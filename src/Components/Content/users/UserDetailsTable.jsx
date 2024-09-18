@@ -42,24 +42,26 @@ const UserDetails = () => {
           <div className="grid grid-cols-4 md:gap-[150px]">
             {/* Name */}
             <div>
-              <h3 className="text-[13px] font-[600] text-[#7A7A7A]">Name</h3>
-              <p className="text-base font-medium text-gray-900">
+              <h3 className="text-[13px] font-[600] text-[#7A7A7A] whitespace-nowrap">
+                Name
+              </h3>
+              <p className="text-base font-medium text-[#292929] whitespace-nowrap">
                 {person.admin.firstName} {person.admin.lastName}
               </p>
             </div>
             {/* Email */}
             <div>
-              <h3 className="text-[13px] font-[600] text-[#7A7A7A]">
+              <h3 className="text-[13px] font-[600] text-[#7A7A7A] whitespace-nowrap">
                 Email Address
               </h3>
-              <p className="text-base font-medium text-gray-900">
+              <p className="text-base font-medium text-[#292929] ">
                 {person.admin.email}
               </p>
             </div>
             {/* Role */}
             <div>
               <h3 className="text-[13px] font-[600] text-[#7A7A7A]">Role</h3>
-              <p className="text-base font-medium text-gray-900">
+              <p className="text-base font-medium text-[#292929]">
                 {person.admin.role}
               </p>
             </div>
@@ -68,8 +70,8 @@ const UserDetails = () => {
               <span
                 className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
                   person.admin.status === "online"
-                    ? "bg-green-100 text-green-600"
-                    : "bg-red-100 text-red-600"
+                    ? "bg-green-100 text-[#03A300]"
+                    : "bg-red-100 text-[#A35800]"
                 }`}
               >
                 {person.admin.status}
