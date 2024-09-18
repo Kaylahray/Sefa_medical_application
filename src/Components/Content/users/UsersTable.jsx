@@ -43,8 +43,8 @@ const UsersTable = () => {
             {currentItems.map((user) => {
               const { admin } = user;
               return (
-                <tr key={user.id} className="shadow-custom">
-                  <td className="relative px-3 py-7 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
+                <tr key={user.id} className="">
+                  <td className="relative px-3 sm:w-12 sm:px-6 border-r-0 rounded-s-lg border border-[#E0E0E0]">
                     <input
                       type="checkbox"
                       className="absolute left-4 top-1/2 -mt-2 h-4 w-4 rounded border-[#8F8F8F] text-indigo-600 focus:ring-indigo-600"

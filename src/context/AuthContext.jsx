@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 const UsersContext = createContext();
 
@@ -122,6 +123,12 @@ export const UserProvider = ({ children }) => {
   };
 
   // use useLocation to solve the search and pagination behaviour
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [location.pathname]);
 
   const contextValue = {
     people,
