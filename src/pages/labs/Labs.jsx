@@ -9,7 +9,7 @@ const Labs = () => {
   return (
     <>
       <div className="md:flex items-center justify-between mb-[40px]">
-        <span className="font-[600] md:text-[32px] text-[#292929]">Labs</span>
+        <span className="font-[600] md:text-[30px] text-[#292929]">Labs</span>
         <div className="flex items-center gap-3 justify-end lg:w-[70%]">
           <Search />
           <Select />

@@ -28,11 +28,11 @@ const data = [
 const HMOCoverageChart = () => {
   return (
     <Card>
-      <div className="w-full h-[481px] p-4 ">
+      <div className="w-full h-[481px] p-2 md:p-4 ">
         <h3 className="text-[20px] font-[600] mb-[56px] text-[#3D3D3D]">
           HMOs And Patients Covered
         </h3>
-        <div className="space-y-[32px]">
+        <div className="space-y-[22px] md:space-y-[32px]">
           {data.map((item, index) => (
             <div key={index} className="flex items-center justify-between">
               <div className="flex-1">

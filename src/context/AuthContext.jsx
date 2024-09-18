@@ -128,6 +128,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     setSearchQuery("");
+    setCurrentPage(1);
   }, [location.pathname]);
 
   const contextValue = {

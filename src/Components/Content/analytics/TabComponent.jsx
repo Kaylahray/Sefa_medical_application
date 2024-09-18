@@ -32,7 +32,7 @@ const TabComponent = ({ tabs }) => {
   return (
     <div className="container mx-auto px-2 md:px-4">
       <Tabs tabs={tabs} selectedTab={selectedTab} onTabClick={setSelectedTab} />
-      <div className="py-6">
+      <div className="py-6 overflow-x-scroll shrink">
         <ActiveComponent />
       </div>
     </div>
