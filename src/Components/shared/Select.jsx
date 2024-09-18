@@ -6,7 +6,7 @@ const Select = () => {
       <select
         id="date"
         name="date"
-        className="bg-[#E4EAEA] block w-[87px] border-0 rounded-md py-1 px-2 appearance-none outline-none focus:ring-border-[#666666] sm:text-sm sm:leading-6"
+        className="bg-[#E4EAEA] block w-[87px] border-0 rounded-md py-2 px-2 appearance-none outline-none focus:ring-border-[#666666] sm:text-sm sm:leading-6"
       >
         <option>Today</option>
         <option>Monday</option>
