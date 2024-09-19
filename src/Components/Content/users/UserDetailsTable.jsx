@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import UsersContext from "../../../context/AuthContext";
 import PermissionCheckboxes from "./PermissionCheckboxes";
+import PermissionTabs from "./PermissionTabs";
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -78,7 +79,7 @@ const UserDetails = () => {
               </span>
             </div>
           </div>
-          <PermissionCheckboxes />
+          <PermissionTabs />
           <div className="flex justify-end">
             <Link to="/users">Edit Text</Link>{" "}
           </div>

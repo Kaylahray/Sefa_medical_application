@@ -1,22 +1,63 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router";
+
+const userReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_LOADING":
+      return { ...state, loading: true };
+    case "SET_PEOPLE":
+      return {
+        ...state,
+        loading: false,
+        people: action.payload,
+      };
+    case "SET_SEARCH_QUERY":
+      return { ...state, searchQuery: action.payload };
+    case "SET_FILTERED":
+      return { ...state, filteredPeople: action.payload };
+    case "SET_CURRENT":
+      return { ...state, currentPage: action.payload };
+    case "END_LOADING":
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+};
 
 const UsersContext = createContext();
 
+const initialState = {
+  loading: true,
+  people: [],
+  searchQuery: "",
+  filteredPeople: [],
+  currentPage: 1,
+  itemsPerPage: 10,
+};
+
 export const UserProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  const [people, setPeople] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredPeople, setFilteredPeople] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [people, setPeople] = useState([]);
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredPeople, setFilteredPeople] = useState([]);
   // const [paginationState, setPaginationState] = useState({
   //   lab: 1,
   //   pharmacy: 1,
   // });
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [itemsPerPage] = useState(10);
 
+  const [state, dispatch] = useReducer(userReducer, initialState);
   const hasFetched = React.useRef(false);
+  const {
+    loading,
+    people,
+    searchQuery,
+    filteredPeople,
+    currentPage,
+    itemsPerPage,
+  } = state;
 
   const fetchPeople = async () => {
     try {
@@ -25,11 +66,11 @@ export const UserProvider = ({ children }) => {
       );
       const info = await res.json();
       console.log(info);
-      setPeople(info);
+      dispatch({ type: "SET_PEOPLE", payload: info });
     } catch (err) {
       console.log("error fetching data", err);
     } finally {
-      setLoading(false);
+      dispatch({ type: "END_LOADING" });
     }
   };
   // https://portabledd.github.io/medical/db.json http://localhost:8000/medical
@@ -70,7 +111,7 @@ export const UserProvider = ({ children }) => {
       );
     });
 
-    setFilteredPeople(filtered);
+    dispatch({ type: "SET_FILTERED", payload: filtered });
   }, [searchQuery, people]);
 
   // pagination logic applied to filteredPeople
@@ -78,7 +119,8 @@ export const UserProvider = ({ children }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPeople.slice(indexOfFirstItem, indexOfLastItem);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) =>
+    dispatch({ type: "SET_CURRENT", payload: pageNumber });
 
   // some functions
 
@@ -120,8 +162,8 @@ export const UserProvider = ({ children }) => {
   }, 0);
 
   const handleSearch = (searchTerm) => {
-    setSearchQuery(searchTerm);
-    setCurrentPage(1);
+    dispatch({ type: "SET_SEARCH_QUERY", payload: searchTerm });
+    dispatch({ type: "SET_CURRENT", payload: 1 });
   };
 
   // use useLocation to solve the search and pagination behaviour
@@ -129,8 +171,8 @@ export const UserProvider = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    setSearchQuery("");
-    setCurrentPage(1);
+    dispatch({ type: "SET_SEARCH_QUERY", payload: "" });
+    dispatch({ type: "SET_CURRENT", payload: 1 });
   }, [location.pathname]);
 
   const contextValue = {
