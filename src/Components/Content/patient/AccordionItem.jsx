@@ -6,10 +6,10 @@ const AccordionItem = ({
   isActive,
   onClick,
   children,
-  notify,
+  notifyCount,
   date,
   time,
-  setNotify,
+  setNotifyCount,
 }) => (
   <div>
     <div
@@ -28,16 +28,17 @@ const AccordionItem = ({
           <p>{time}</p>
         </div>
       )}
-      {notify && (
+      {notifyCount > 0 && (
         <div
-          onClick={() => setNotify(false)}
+          onClick={() => setNotifyCount(0)}  // Clear notification count when clicked
           className="bg-[#E4EAEA] font-normal text-md px-4 py-2 rounded-lg"
         >
-          1 new
+          {notifyCount} new
         </div>
       )}
     </div>
     {isActive && <div>{children}</div>}
   </div>
 );
+
 export default AccordionItem;
