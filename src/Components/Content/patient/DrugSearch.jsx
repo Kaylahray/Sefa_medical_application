@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Search from "../../shared/SearchTwo";
+import SearchTwo from "../../shared/SearchTwo";
 
 // Dummy drug data
 const drugsList = [
@@ -19,7 +19,7 @@ const DrugSearch = () => {
   return (
     <div className="w-full">
       {/* Search component */}
-      <Search
+      <SearchTwo
         placeholder="Search for drugs"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}

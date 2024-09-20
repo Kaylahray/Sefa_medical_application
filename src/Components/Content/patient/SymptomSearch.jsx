@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Search from "../../shared/SearchTwo";
+import SearchTwo from "../../shared/SearchTwo";
 const symptomsList = ["Head-aches", "High Temperature", "Flu", "Cough", "Fatigue", "Body Pain"];
 
 const SymptomsSearch = () => {
@@ -26,7 +26,7 @@ const SymptomsSearch = () => {
   return (
     <div className="w-full">
       {/* Search component */}
-      <Search
+      <SearchTwo
         placeholder="Search for symptoms"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
