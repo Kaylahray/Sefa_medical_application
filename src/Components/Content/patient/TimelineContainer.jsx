@@ -1,33 +1,15 @@
 import React, { useState } from 'react';
 import TimelineItem from './Timeline';
 
-const TimelineContainer = ({ setNotifyCount }) => {
-  const [timelineData, setTimelineData] = useState([
-    {
-      id: 1,
-      title: "HIV Test on 25th July, 2022",
-      result: "Negative"
-    },
-    {
-      id: 2,
-      title: "Malaria and Typhoid Test on 24th July, 2022",
-      result: "Positive (Malaria+++) ",
-      result2: "Positive (Typhoid)"
-    },
-    {
-      id: 3,
-      title: "General Test on 25th June, 2022",
-      result: "Positive (Malaria++)"
-    }
-  ]);
-
+const TimelineContainer = ({ setNotifyCount , timelineData, setTimelineData}) => {
+ 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItem, setNewItem] = useState({ title: '', result: '', result2: '' });
 
   // Open modal
   const openModal = () => setIsModalOpen(true);
 
-  // Close modal
+  // Close modalz
   const closeModal = () => setIsModalOpen(false);
 
   // Handle input change
@@ -47,7 +29,7 @@ const TimelineContainer = ({ setNotifyCount }) => {
     setTimelineData([newTimelineItem, ...timelineData]);  // Add new item to timeline
     setNotifyCount((prevCount) => prevCount + 1);  // Increment notification count
     closeModal();  // Close modal
-    setNewItem({ title: '', result: '', result2: '' });  // Reset form fields
+    // setNewItem({ title: '', result: '', result2: '' });   Reset form fields
   };
 
   return (

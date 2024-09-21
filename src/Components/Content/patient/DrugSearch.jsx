@@ -1,21 +1,33 @@
 import React, { useState } from "react";
 import SearchTwo from "../../shared/SearchTwo";
+import { useContext } from "react";
+import UsersContext from "../../../context/AuthContext";
 
 // Dummy drug data
-const drugsList = [
-  { name: "Paracetamol", dose: "", qty: "", time: "", duration: "" },
-  { name: "Coartem 80-480", dose: "", qty: "", time: "", duration: "" },
-];
+
 
 const DrugSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const {people} = useContext(UsersContext);
+  
+  const drugs = people;
+  
+  // ilter the drugs list based on the search query
+  // const filteredDrugs = drugsList.filter(
+  //   (drug) =>
+  //     drug.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+  const filteredDrugs = drugs
+    .flatMap((person) => person.pharmacy) // Flatten the pharmacy objects from people array
+    .filter((pharmacy) =>
+      pharmacy.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+// const {pharmacy} = people;
+// console.log(people.pharmacy.name);
+console.log(filteredDrugs);
 
-  // Filter the drugs list based on the search query
-  const filteredDrugs = drugsList.filter(
-    (drug) =>
-      drug.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
+const visibleDrugs = filteredDrugs.slice(0,3);
+  // console.log(pharmacy);
   return (
     <div className="w-full">
       {/* Search component */}
@@ -38,8 +50,8 @@ const DrugSearch = () => {
             </tr>
           </thead>
           <tbody className="text-gray-600 text-sm font-light">
-            {filteredDrugs.length > 0 ? (
-              filteredDrugs.map((drug, index) => (
+            {visibleDrugs.length > 0 ? (
+              visibleDrugs.map((drug, index) => (
                 <tr key={index} className="text-left">
                   <td className="py-1 px-3">{drug.name}</td>
                   <td className="py-1 px-3">{drug.dose}</td>

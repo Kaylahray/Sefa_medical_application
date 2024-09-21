@@ -24,7 +24,7 @@ const SymptomsSearch = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       {/* Search component */}
       <SearchTwo
         placeholder="Search for symptoms"
@@ -49,10 +49,9 @@ const SymptomsSearch = () => {
           </div>
         ))}
       </div>
-
       {/* Show filtered symptoms based on search query */}
       {searchQuery && filteredSymptoms.length > 0 && (
-        <div className="border border-gray-300 rounded-md p-4 mt-4">
+        <div className="border border-gray-300 rounded-md p-8 mt-4 bg-white absolute top-[-60%] left-40 max-h-28 overflow-y-scroll ">
           <p className="text-gray-500">Click to add:</p>
           {filteredSymptoms.map((symptom, index) => (
             <button
