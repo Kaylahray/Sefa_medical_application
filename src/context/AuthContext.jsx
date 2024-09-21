@@ -19,6 +19,17 @@ const userReducer = (state, action) => {
       return { ...state, currentPage: action.payload };
     case "END_LOADING":
       return { ...state, loading: false };
+    case "SET_EDIT_MODE":
+      return { ...state, editMode: true };
+    case "SET_VIEW_MODE":
+      return { ...state, editMode: false };
+    case "UPDATE_PERSON":
+      return {
+        ...state,
+        filteredPeople: state.filteredPeople.map((person, index) =>
+          index === action.payload.index ? action.payload.updatedPerson : person
+        ),
+      };
     default:
       return state;
   }
@@ -33,21 +44,10 @@ const initialState = {
   filteredPeople: [],
   currentPage: 1,
   itemsPerPage: 10,
+  editMode: false,
 };
 
 export const UserProvider = ({ children }) => {
-  // const [loading, setLoading] = useState(true);
-  // const [people, setPeople] = useState([]);
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [filteredPeople, setFilteredPeople] = useState([]);
-  // const [paginationState, setPaginationState] = useState({
-  //   lab: 1,
-  //   pharmacy: 1,
-  // });
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsPerPage] = useState(10);
-
   const [state, dispatch] = useReducer(userReducer, initialState);
   const hasFetched = React.useRef(false);
   const {
@@ -57,6 +57,7 @@ export const UserProvider = ({ children }) => {
     filteredPeople,
     currentPage,
     itemsPerPage,
+    editMode,
   } = state;
 
   const fetchPeople = async () => {
@@ -113,6 +114,20 @@ export const UserProvider = ({ children }) => {
 
     dispatch({ type: "SET_FILTERED", payload: filtered });
   }, [searchQuery, people]);
+
+  // my edit version
+  const handleEditChange = (e, index) => {
+    const updatedPerson = { ...filteredPeople[index] };
+    updatedPerson.admin[e.target.name] = e.target.value;
+    dispatch({
+      type: "UPDATE_PERSON",
+      payload: { index, updatedPerson },
+    });
+  };
+
+  const toggleEditMode = () => {
+    dispatch(editMode ? { type: "SET_VIEW_MODE" } : { type: "SET_EDIT_MODE" });
+  };
 
   // pagination logic applied to filteredPeople
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -194,6 +209,9 @@ export const UserProvider = ({ children }) => {
     totalIncome,
     handleSearch,
     searchQuery,
+    editMode,
+    toggleEditMode,
+    handleEditChange,
   };
 
   return (
