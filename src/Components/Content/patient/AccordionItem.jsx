@@ -30,7 +30,7 @@ const AccordionItem = ({
       )}
       {notifyCount > 0 && (
         <div
-          onClick={() => setNotifyCount(0)}  // Clear notification count when clicked
+          // Clear notification count when clicked
           className="bg-[#E4EAEA] font-normal text-md px-4 py-2 rounded-lg"
         >
           {notifyCount} new

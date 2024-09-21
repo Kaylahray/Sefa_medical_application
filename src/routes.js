@@ -15,7 +15,6 @@ export const navigation = [
     subLinks: [
       { name: "Patients Report", path: "/finance/patients-report" },
       { name: "HMO Settlement", path: "/finance/hmo-settlement" },
-      { name: "Staff Payroll", path: "/finance/staff-payroll" },
       { name: "Pharmacy Report", path: "/finance/pharmacy-report" },
       { name: "Lab Report", path: "/finance/lab-report" },
     ],
