@@ -25,8 +25,8 @@ const UserDetails = () => {
               {editMode ? (
                 <input
                   type="text"
-                  name="firstName"
-                  value={person.admin.firstName}
+                  name="fullName"
+                  value={person.admin.firstName + " " + person.admin.lastName}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
                   className="text-base font-medium text-[#292929] whitespace-nowrap outline rounded"
                 />

@@ -1,51 +1,8 @@
 import React, { createContext, useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router";
-
-const userReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_LOADING":
-      return { ...state, loading: true };
-    case "SET_PEOPLE":
-      return {
-        ...state,
-        loading: false,
-        people: action.payload,
-      };
-    case "SET_SEARCH_QUERY":
-      return { ...state, searchQuery: action.payload };
-    case "SET_FILTERED":
-      return { ...state, filteredPeople: action.payload };
-    case "SET_CURRENT":
-      return { ...state, currentPage: action.payload };
-    case "END_LOADING":
-      return { ...state, loading: false };
-    case "SET_EDIT_MODE":
-      return { ...state, editMode: true };
-    case "SET_VIEW_MODE":
-      return { ...state, editMode: false };
-    case "UPDATE_PERSON":
-      return {
-        ...state,
-        filteredPeople: state.filteredPeople.map((person, index) =>
-          index === action.payload.index ? action.payload.updatedPerson : person
-        ),
-      };
-    default:
-      return state;
-  }
-};
+import userReducer, { initialState } from "./store/userReducer";
 
 const UsersContext = createContext();
-
-const initialState = {
-  loading: true,
-  people: [],
-  searchQuery: "",
-  filteredPeople: [],
-  currentPage: 1,
-  itemsPerPage: 10,
-  editMode: false,
-};
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
@@ -118,13 +75,18 @@ export const UserProvider = ({ children }) => {
   // my edit version
   const handleEditChange = (e, index) => {
     const updatedPerson = { ...filteredPeople[index] };
-    updatedPerson.admin[e.target.name] = e.target.value;
+    if (e.target.name === "fullName") {
+      const [firstName, lastName] = e.target.value.split(" ");
+      updatedPerson.admin.firstName = firstName;
+      updatedPerson.admin.lastName = lastName;
+    } else {
+      updatedPerson.admin[e.target.name] = e.target.value;
+    }
     dispatch({
       type: "UPDATE_PERSON",
       payload: { index, updatedPerson },
     });
   };
-
   const toggleEditMode = () => {
     dispatch(editMode ? { type: "SET_VIEW_MODE" } : { type: "SET_EDIT_MODE" });
   };
