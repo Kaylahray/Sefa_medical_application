@@ -15,7 +15,7 @@ const PharmacyReport = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
         <h1 className="text-boldColorText text-xl font-semibold ">
           Pharmacy Report
         </h1>
@@ -24,7 +24,7 @@ const PharmacyReport = () => {
           <Select />
         </div>
       </div>
-      <div className=" flex flex-col md:flex-row gap-3 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5">
         <DashboardCard style={style.width}>
           <div className="flex items-center gap-4 ">
             {/* img div */}

@@ -48,7 +48,7 @@ const SingleHMOHero = () => {
           </p>
         ))}
 
-      <div className="flex flex-col md:flex-row gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <DashboardCard style={style.width}>
           <div className="flex items-center gap-4 ">
             {/* img div */}

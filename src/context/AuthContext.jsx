@@ -24,7 +24,6 @@ export const UserProvider = ({ children }) => {
         "https://my.api.mockaroo.com/medical.json?key=d050a920"
       );
       const info = await res.json();
-      console.log(info);
       setPeople(info);
     } catch (err) {
       console.log("error fetching data", err);

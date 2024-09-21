@@ -18,7 +18,6 @@ const Navbar = () => {
 
       return isExactMatch || isNestedMatch;
     });
-    console.log(parentLink);
 
     return parentLink ? parentLink.name : "";
   };
