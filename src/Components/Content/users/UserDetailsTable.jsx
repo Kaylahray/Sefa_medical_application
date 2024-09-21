@@ -26,9 +26,10 @@ const UserDetails = () => {
                 <input
                   type="text"
                   name="fullName"
+                  data-section="admin"
                   value={person.admin.firstName + " " + person.admin.lastName}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929] whitespace-nowrap outline rounded"
+                  className="text-base font-medium text-[#292929] whitespace-nowrap mt-1 outline rounded"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929] whitespace-nowrap">
@@ -45,9 +46,10 @@ const UserDetails = () => {
                 <input
                   type="text"
                   name="email"
+                  data-section="admin"
                   value={person.admin.email}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929]  outline rounded"
+                  className="text-base font-medium text-[#292929] mt-1  outline rounded"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929]">
@@ -61,10 +63,11 @@ const UserDetails = () => {
               {editMode ? (
                 <input
                   type="text"
+                  data-section="admin"
                   name="role"
                   value={person.admin.role}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929] outline rounded"
+                  className="text-base font-medium text-[#292929] mt-1 outline rounded"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929]">
