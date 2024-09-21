@@ -25,11 +25,17 @@ const data = [
 
 const ReportedCasesChart = () => {
   return (
-    <div className="chart-container w-[100%]">
+    <div
+      className="chart-container aspect={1300 / 481}"
+      style={{
+        width: "100%",
+        height: "481px",
+      }}
+    >
       <h3 className="font-[600] ml-1 text-[#3D3D3D] text-[20px] mb-[56px]">
         Reported Cases
       </h3>
-      <ResponsiveContainer width="100%" height="85%" aspect={20 / 8}>
+      <ResponsiveContainer width="100%" height="85%">
         <BarChart
           data={data}
           layout="horizontal"
@@ -45,22 +51,20 @@ const ReportedCasesChart = () => {
             type="category"
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: "10px", fill: "#7A7A7A" }}
+            tick={{ fontSize: 12, fill: "#7A7A7A" }}
             interval={0}
-            height={80}
+            height={100}
             tickMargin={5}
             textAnchor="middle"
-
             // angle={-45}
           />
           <YAxis
             type="number"
             domain={[0, 250]}
             ticks={[0, 50, 100, 150, 200, 250]}
-            interval={0}
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 10, fill: "#7A7A7A" }}
+            tick={{ fontSize: 12, fill: "#7A7A7A" }}
           />
           <Bar
             dataKey="cases"
