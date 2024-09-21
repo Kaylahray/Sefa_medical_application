@@ -41,7 +41,7 @@ const PatientChart = () => {
         <div className="w-full flex mt-1 space-x-8 font-[600] text-[16px] text-[#525252]">
           {["New Patients", "Returning Patients"].map((label, index) => (
             <div key={label} className="flex flex-col items-center">
-              <div className="flex items-center">
+              <div className="md:flex items-center">
                 <div
                   className={`w-[32px] h-[8px] rounded mr-2 ${
                     index === 0 ? "bg-[#799794]" : "bg-[#CDB1A8]"
