@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router";
 import userReducer, { initialState } from "./store/userReducer";
+import { type } from "@testing-library/user-event/dist/type";
 
 const UsersContext = createContext();
 
@@ -151,6 +152,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: "SET_SEARCH_QUERY", payload: "" });
     dispatch({ type: "SET_CURRENT", payload: 1 });
+    dispatch({ type: "SET_VIEW_MODE" });
   }, [location.pathname]);
 
   const contextValue = {

@@ -17,6 +17,26 @@ const UserDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+      {/* Header Section */}
+      <div className="w-full max-w-5xl p-0 md:px-8 pb-2">
+        <h2 className="text-xl font-semibold pt-8 pb-6">User Details</h2>
+
+        <Link to="/users">
+          <svg
+            className="inline-block mb-0"
+            width="22"
+            height="22"
+            viewBox="0 0 22 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.43994 9.66673H21.6693V12.3334H5.43994L12.5919 19.4854L10.7066 21.3707L0.335938 11.0001L10.7066 0.629395L12.5919 2.51473L5.43994 9.66673Z"
+              fill="#292929"
+            />
+          </svg>
+        </Link>
+      </div>
       <div className="w-full max-w-5xl p-0 md:p-8">
         <div className="bg-white shadow-lg rounded-lg p-8">
           <div className="grid grid-cols-4 md:gap-[150px]">
@@ -29,7 +49,7 @@ const UserDetails = () => {
                   data-section="admin"
                   value={person.admin.firstName + " " + person.admin.lastName}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929] whitespace-nowrap mt-1 outline rounded"
+                  className="text-base font-medium text-[#292929] whitespace-nowrap mt-1 input input-bordered"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929] whitespace-nowrap">
@@ -49,7 +69,7 @@ const UserDetails = () => {
                   data-section="admin"
                   value={person.admin.email}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929] mt-1  outline rounded"
+                  className="text-base font-medium text-[#292929] mt-1  input input-bordered"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929]">
@@ -67,7 +87,7 @@ const UserDetails = () => {
                   name="role"
                   value={person.admin.role}
                   onChange={(e) => handleEditChange(e, person.id - 1)}
-                  className="text-base font-medium text-[#292929] mt-1 outline rounded"
+                  className="text-base font-medium text-[#292929] mt-1 input input-bordered"
                 />
               ) : (
                 <p className="text-base font-medium text-[#292929]">
@@ -75,12 +95,25 @@ const UserDetails = () => {
                 </p>
               )}
             </div>
+
+            {/* Status */}
+            <div>
+              <span
+                className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${
+                  person.admin.status === "online"
+                    ? "bg-green-100 text-[#03A300]"
+                    : "bg-red-100 text-[#A35800]"
+                }`}
+              >
+                {person.admin.status}
+              </span>
+            </div>
           </div>
 
           <PermissionTabs />
           <div className="flex justify-end">
             <button onClick={toggleEditMode}>
-              {editMode ? "Done" : "Edit"}
+              {editMode ? "Done" : "Edit Text"}
             </button>
           </div>
         </div>

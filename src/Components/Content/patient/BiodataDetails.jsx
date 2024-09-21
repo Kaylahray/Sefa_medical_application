@@ -6,7 +6,8 @@ import UsersContext from "../../../context/AuthContext";
 
 const BiodataDetails = () => {
   const { patientID } = useParams(); // Get patientID from URL
-  const { currentItems } = useContext(UsersContext); // Get currentItems from context
+  const { currentItems, editMode, toggleEditMode, handleEditChange } =
+    useContext(UsersContext);
 
   // Convert patientID from string to number
   const numericPatientID = Number(patientID);
@@ -22,6 +23,7 @@ const BiodataDetails = () => {
   }
 
   const { patients } = patient; // Destructure patient object
+  const index = currentItems.indexOf(patient); // Get the index of the patient in the currentItems array
 
   return (
     <div className="w-full h-full p-4">
@@ -29,32 +31,70 @@ const BiodataDetails = () => {
         <div className="grid md:grid-cols-2 flex-1 gap-4">
           {/* First Column */}
           {[
-            { label: "First Name", value: patients.firstName },
-            { label: "Date of Birth", value: patients.dob },
-            { label: "Last Name", value: patients.lastName },
-            { label: "State of Birth", value: patients.stateOfBirth },
-            { label: "Age", value: patients.age },
-            { label: "Email Address", value: patients.email },
-            { label: "Gender", value: patients.gender },
-            { label: "Phone Number", value: patients.phoneNumber },
-            { label: "Height", value: patients.height },
+            {
+              label: "First Name",
+              value: patients.firstName,
+              fieldName: "firstName",
+            },
+            { label: "Date of Birth", value: patients.dob, fieldName: "dob" },
+            {
+              label: "Last Name",
+              value: patients.lastName,
+              fieldName: "lastName",
+            },
+            {
+              label: "State of Birth",
+              value: patients.stateOfBirth,
+              fieldName: "state",
+            },
+            { label: "Age", value: patients.age, fieldName: "age" },
+            {
+              label: "Email Address",
+              value: patients.email,
+              fieldName: "email",
+            },
+            { label: "Gender", value: patients.gender, fieldName: "gender" },
+            {
+              label: "Phone Number",
+              value: patients.phoneNumber,
+              fieldName: "phone",
+            },
+            { label: "Height", value: patients.height, fieldName: "height" },
             {
               label: "Residential Address",
               value: `${patients.address.street}, ${patients.address.city}.`,
             },
-            { label: "Weight", value: patients.weight },
+            { label: "Weight", value: patients.weight, fieldName: "weigth" },
             {
               label: "Marital Status",
               value: patients.maritalStatus || "N/A",
+              fieldName: "marriage",
             },
-          ].map(({ label, value }) => (
+          ].map(({ label, value, fieldName }) => (
             <div key={label} className="">
               <p className="text-[#7A7A7A] text-[16px] font-semibold ">
                 {label}
               </p>
-              <p className="text-[#292929] text-[18px] mt-1 font-semibold">
-                {value}
-              </p>
+              {fieldName ? (
+                editMode ? (
+                  <input
+                    type="text"
+                    name={fieldName}
+                    data-section="patients"
+                    value={value}
+                    onChange={(e) => handleEditChange(e, index)}
+                    className="text-base font-medium text-[#292929] whitespace-nowrap input input-bordered"
+                  />
+                ) : (
+                  <p className="text-[#292929] text-[18px] mt-1 font-semibold">
+                    {value}
+                  </p>
+                )
+              ) : (
+                <p className="text-[#292929] text-[18px] mt-1 font-semibold">
+                  {value}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -63,17 +103,46 @@ const BiodataDetails = () => {
         <div className="flex flex-col md:flex-row flex-1 justify-between">
           <div className="flex flex-col gap-4">
             {[
-              { label: "Genotype", value: patients.genotype },
-              { label: "Blood Group", value: patients.bloodGroup },
-              { label: "ID Number", value: patients.ID_Number },
-            ].map(({ label, value }) => (
+              {
+                label: "Genotype",
+                value: patients.genotype,
+                fieldName: "genotype",
+              },
+              {
+                label: "Blood Group",
+                value: patients.bloodGroup,
+                fieldName: "blood",
+              },
+              {
+                label: "ID Number",
+                value: patients.ID_Number,
+                fieldName: "id",
+              },
+            ].map(({ label, value, fieldName }) => (
               <div key={label}>
                 <p className="text-[#7A7A7A] text-[16px] font-semibold">
                   {label}
                 </p>
-                <p className="text-[#292929] mt-1 text-[18px] font-semibold">
-                  {value}
-                </p>
+                {fieldName ? (
+                  editMode ? (
+                    <input
+                      type="text"
+                      name={fieldName}
+                      data-section="patients"
+                      value={value}
+                      onChange={(e) => handleEditChange(e, index)}
+                      className="text-base font-medium text-[#292929] whitespace-nowrap input input-bordered"
+                    />
+                  ) : (
+                    <p className="text-[#292929] text-[18px] mt-1 font-semibold">
+                      {value}
+                    </p>
+                  )
+                ) : (
+                  <p className="text-[#292929] text-[18px] mt-1 font-semibold">
+                    {value}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -86,9 +155,17 @@ const BiodataDetails = () => {
               className="w-28 h-28 object-cover rounded-full mb-4"
             />
             <div className="flex flex-col items-end">
-              <button className="flex items-center mb-4 font-inter font-normal text-sm text-[#516563]">
-                <img src={edit} alt="" />
-                Edit Profile
+              <button
+                className="flex items-center mb-4 font-inter font-normal text-sm text-[#516563]"
+                onClick={toggleEditMode}
+              >
+                {editMode ? (
+                  "Done"
+                ) : (
+                  <span className="flex items-center">
+                    <img src={edit} alt="Edit" /> "Edit Profile"
+                  </span>
+                )}
               </button>
               <Button>Set Appointment</Button>
             </div>
@@ -98,4 +175,5 @@ const BiodataDetails = () => {
     </div>
   );
 };
+
 export default BiodataDetails;
