@@ -66,6 +66,7 @@ const PatientChart = () => {
             tickLine={false}
             padding={{ left: 20 }}
             textAnchor="middle"
+            tick={{ transform: "translate(0, 5)" }}
             // ="text-[#7A7A7A] font-[400]"
           />
           <YAxis
@@ -75,17 +76,7 @@ const PatientChart = () => {
             ticks={[0, 100, 200, 300, 400, 500]}
           />
           <Tooltip />
-          {/* <Legend
-            layout="horizontal"
-            align="left"
-            verticalAlign="top"
-            iconType="rect" // Options: 'circle', 'square', 'rect', 'line', etc.
-            wrapperStyle={{
-              paddingBottom: "10px",
-              fontSize: "14px",
-              color: "#333",
-            }} // Custom styles
-          /> */}
+
           <defs>
             <linearGradient id="colorNewPatients" x1="0" y1="0" x2="0" y2="1">
               {/* <stop offset="5%" stopColor="#D3A7A2" stopOpacity={0.8} /> */}
