@@ -32,8 +32,9 @@ const MedicalAccordion = () => {
 
 
 useEffect(()=>{
-    toggleAccordion(activeIndex)
- },[timelineData])
+  setActiveIndex(null);
+  }
+ ,[timelineData])
   return (
     <div className="w-full max-w-7xl mx-auto mt-8 space-y-4">
       <AccordionItem

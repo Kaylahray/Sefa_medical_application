@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import SearchTwo from "../../shared/SearchTwo";
 import { useContext } from "react";
 import UsersContext from "../../../context/AuthContext";
+import SearchPatient from "../../shared/SearchPatient";
 
-// Dummy drug data
 
 
 const DrugSearch = () => {
@@ -31,7 +30,7 @@ const visibleDrugs = filteredDrugs.slice(0,3);
   return (
     <div className="w-full">
       {/* Search component */}
-      <SearchTwo
+      <SearchPatient
         placeholder="Search for drugs"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
