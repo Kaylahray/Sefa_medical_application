@@ -3,7 +3,7 @@ import AccordionItem from "./AccordionItem";
 import Button from "../../shared/Button";
 // Reusable AccordionItem component
 
-const ConsultationAccordion = () => {
+const ConsultationAccordion = ({ handleSwitchPage }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleAccordion = (index) => {
@@ -12,8 +12,8 @@ const ConsultationAccordion = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto space-y-4">
-      <div className="w-full flex item-center justify-end">
-        <Button>New Consultation</Button>
+      <div className="w-full flex item-center justify-end p-3">
+        <Button  onClick={handleSwitchPage}>New Consultation</Button>
       </div>
       {/* First Accordion Item */}
       <AccordionItem

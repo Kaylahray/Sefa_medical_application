@@ -1,0 +1,46 @@
+/* Swipe in from the right */
+.swipe-right-enter {
+    opacity: 0;
+    transform: translateX(100%); /* Start offscreen to the right */
+  }
+  
+  .swipe-right-enter-active {
+    opacity: 1;
+    transform: translateX(0); /* Slide into place */
+    transition: opacity 300ms, transform 300ms ease-in-out;
+  }
+  
+  .swipe-right-exit {
+    opacity: 1;
+    transform: translateX(0); /* In its original place */
+  }
+  
+  .swipe-right-exit-active {
+    opacity: 0;
+    transform: translateX(-100%); /* Swipe out to the left */
+    transition: opacity 300ms, transform 300ms ease-in-out;
+  }
+  
+  /* Swipe in from the left */
+  .swipe-left-enter {
+    opacity: 0;
+    transform: translateX(-100%); /* Start offscreen to the left */
+  }
+  
+  .swipe-left-enter-active {
+    opacity: 1;
+    transform: translateX(0); /* Slide into place */
+    transition: opacity 300ms, transform 300ms ease-in-out;
+  }
+  
+  .swipe-left-exit {
+    opacity: 1;
+    transform: translateX(0); /* In its original place */
+  }
+  
+  .swipe-left-exit-active {
+    opacity: 0;
+    transform: translateX(100%); /* Swipe out to the right */
+    transition: opacity 300ms, transform 300ms ease-in-out;
+  }
+  

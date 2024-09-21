@@ -1,45 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AccordionItem from "./AccordionItem";
-import TimelineItem from "./Timeline";
+import TimelineContainer from "./TimelineContainer";
 
 const MedicalAccordion = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [notify, setNotify] = useState(true);
-  // const toggleNotify = (index)=>{
+  const [timelineData, setTimelineData] = useState([
+    {
+      id: 1,
+      title: "HIV Test on 25th July, 2022",
+      result: "Negative"
+    },
+    {
+      id: 2,
+      title: "Malaria and Typhoid Test on 24th July, 2022",
+      result: "Positive (Malaria+++) ",
+      result2: "Positive (Typhoid)"
+    },
+    {
+      id: 3,
+      title: "General Test on 25th June, 2022",
+      result: "Positive (Malaria++)"
+    }
+  ]);
 
-  // }
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [notifyCount, setNotifyCount] = useState(0); // Track the count of new items
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  
 
+
+useEffect(()=>{
+  setActiveIndex(null);
+  }
+ ,[timelineData])
   return (
     <div className="w-full max-w-7xl mx-auto mt-8 space-y-4">
-      {/* Accordion Items */}
       <AccordionItem
         title="Tests and Results"
         isActive={activeIndex === 0}
-        onClick={() => toggleAccordion(0)}
-        notify={notify}
-        setNotify={setNotify}
+        onClick={() => {
+          toggleAccordion(0);
+          setNotifyCount(0);
+
+        }}
+        notifyCount={notifyCount}
       >
-        <div className="bg-white p-4 rounded-lg">
+        <div className="bg-[#E4EAEA] border border-[#799794] p-4 rounded-lg mt-1">
           <div className="space-y-4">
-            <TimelineItem
-              number="3"
-              title="HIV Test on 25th July, 2022"
-              result="Negative"
-            />
-            <TimelineItem
-              number="2"
-              title="Malaria and Typhoid Test on 24th July, 2022"
-              result="Positive (Malaria+++), Positive (Typhoid)"
-            />
-            <TimelineItem
-              number="1"
-              title="General Test on 25th June, 2022"
-              result="Positive (Malaria++)"
-            />
+            <TimelineContainer setNotifyCount={setNotifyCount} timelineData = {timelineData} setTimelineData= {setTimelineData} />
           </div>
         </div>
       </AccordionItem>
@@ -61,8 +71,6 @@ const MedicalAccordion = () => {
         title="Scans"
         isActive={activeIndex === 3}
         onClick={() => toggleAccordion(3)}
-        notify={notify}
-        setNotify={setNotify}
       >
         <p className="p-4">No Scans Available.</p>
       </AccordionItem>
@@ -76,4 +84,5 @@ const MedicalAccordion = () => {
     </div>
   );
 };
+
 export default MedicalAccordion;
