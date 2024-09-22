@@ -36,7 +36,7 @@ const TimelineContainer = ({ setNotifyCount , timelineData, isModalOpen, closeMo
       </button> */}
 
       {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed top-0 left-0 w-full h-full z-20 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="mb-4 text-lg font-semibold">Add New Timeline Entry</h2>
             <form onSubmit={handleFormSubmit}>
@@ -100,7 +100,7 @@ const TimelineContainer = ({ setNotifyCount , timelineData, isModalOpen, closeMo
                 result2={item.result2}
               />
               {index !== timelineData.length - 1 && (
-                <div aria-hidden="true" className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300" />
+                <div aria-hidden="true" className="absolute z-2 left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300" />
               )}
             </li>
           ))}
