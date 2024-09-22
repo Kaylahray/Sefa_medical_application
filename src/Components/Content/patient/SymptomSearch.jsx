@@ -33,7 +33,7 @@ const SymptomsSearch = () => {
       />
 
       {/* Show the selected symptoms */}
-      <div className="border border-gray-200 rounded-md p-4 h-40 bg-white">
+      <div className="border border-gray-200 rounded-md p-4 lg:h-40 h-auto bg-white">
         {selectedSymptoms.map((symptom, index) => (
           <div
             key={index}
