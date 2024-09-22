@@ -111,12 +111,11 @@ const BiodataDetails = () => {
               {
                 label: "Blood Group",
                 value: patients.bloodGroup,
-                fieldName: "blood",
+                fieldName: "bloodGroup",
               },
               {
                 label: "ID Number",
                 value: patients.ID_Number,
-                fieldName: "id",
               },
             ].map(({ label, value, fieldName }) => (
               <div key={label}>
