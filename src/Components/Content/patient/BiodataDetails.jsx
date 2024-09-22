@@ -28,8 +28,8 @@ const BiodataDetails = () => {
 
   return (
     <div className="w-full h-full p-4">
-      <div className="flex justify-between gap-20">
-        <div className="grid md:grid-cols-2 flex-1 gap-4">
+      <div className="flex lg:flex-row justify-between  gap-10  lg:gap-20 flex-col-reverse">
+        <div className="grid md:grid-cols-2 gap-4">
           {/* First Column */}
           {[
             {
@@ -101,7 +101,7 @@ const BiodataDetails = () => {
         </div>
 
         {/* Second Column */}
-        <div className="flex flex-col md:flex-row flex-1 justify-between">
+        <div className="flex lg:flex-row flex-col-reverse flex-1 justify-between">
           <div className="flex flex-col gap-4">
             {[
               {

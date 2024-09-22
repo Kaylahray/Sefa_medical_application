@@ -55,8 +55,8 @@ useEffect(()=>{
         notifyCount={notifyCount}
       >
         <div className="bg-[#E4EAEA] relative  border border-[#799794] px-4 pb-2 pt-4 rounded-lg mt-1">
-        <button onClick={openModal} className="flex absolute cursor-pointer items-center right-4 top-4 z-10">
-          <span>
+        <button onClick={openModal} className="flex absolute cursor-pointer items-center right-4 bottom-4 lg:bottom-auto lg:top-4 z-10">
+          <span className="lg:text-sm text-[10px]">
           <img src={edit} alt="update" />
             </span>Update Profile
           </button>

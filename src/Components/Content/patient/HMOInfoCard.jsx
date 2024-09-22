@@ -3,7 +3,7 @@ const HMOInfoCard = () => {
   return (
     <div className="w-full mx-auto p-6 bg-white">
       <div className="flex justify-between items-center mb-4">
-        <div className="grid grid-cols-2 w-1/2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-1/2 ">
           <div>
             <h2 className="text-lg font-semibold text-gray-700">
               HMO Name

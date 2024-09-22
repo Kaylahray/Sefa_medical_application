@@ -72,11 +72,11 @@ const TimelineContainer = ({ setNotifyCount , timelineData, isModalOpen, closeMo
                   className="w-full px-3 py-2 border border-gray-300 rounded"
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end items-center mx-auto gap-4">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="mr-4 px-4 py-2 text-gray-700 cursor-pointer bg-gray-200 rounded hover:bg-gray-300"
+                  className=" px-4 py-1 text-gray-700 cursor-pointer bg-gray-200 rounded hover:bg-gray-300"
                 >
                   Cancel
                 </button>
