@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import edit from "../../../assets/edit.svg";
 import Button from "../../shared/Button";
+import profile from "../../../assets/profilePatient.svg"
 import UsersContext from "../../../context/AuthContext";
 
 const BiodataDetails = () => {
@@ -27,8 +28,8 @@ const BiodataDetails = () => {
 
   return (
     <div className="w-full h-full p-4">
-      <div className="flex justify-between gap-20">
-        <div className="grid md:grid-cols-2 flex-1 gap-4">
+      <div className="flex lg:flex-row justify-between  gap-10  lg:gap-20 flex-col-reverse">
+        <div className="grid md:grid-cols-2 gap-4">
           {/* First Column */}
           {[
             {
@@ -100,7 +101,7 @@ const BiodataDetails = () => {
         </div>
 
         {/* Second Column */}
-        <div className="flex flex-col md:flex-row flex-1 justify-between">
+        <div className="flex lg:flex-row flex-col-reverse flex-1 justify-between">
           <div className="flex flex-col gap-4">
             {[
               {
@@ -149,7 +150,7 @@ const BiodataDetails = () => {
           {/* Profile Image and Buttons */}
           <div className="flex flex-col items-end justify-between">
             <img
-              src={`https://picsum.photos/300/300`}
+              src={profile}
               alt="Profile"
               className="w-28 h-28 object-cover rounded-full mb-4"
             />
@@ -162,7 +163,7 @@ const BiodataDetails = () => {
                   "Done"
                 ) : (
                   <span className="flex items-center">
-                    <img src={edit} alt="Edit" /> "Edit Profile"
+                    <img src={edit} alt="Edit" /> Edit Profile
                   </span>
                 )}
               </button>

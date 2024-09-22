@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AccordionItem from "./AccordionItem";
 import TimelineContainer from "./TimelineContainer";
+import edit from "../../../assets/edit.svg";
 
 const MedicalAccordion = () => {
   const [timelineData, setTimelineData] = useState([
@@ -28,7 +29,13 @@ const MedicalAccordion = () => {
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+   // Open modal
+   const openModal = () => setIsModalOpen(true);
+
+   // Close modalz
+   const closeModal = () => setIsModalOpen(false);
+ 
 
 
 useEffect(()=>{
@@ -47,9 +54,14 @@ useEffect(()=>{
         }}
         notifyCount={notifyCount}
       >
-        <div className="bg-[#E4EAEA] border border-[#799794] p-4 rounded-lg mt-1">
+        <div className="bg-[#E4EAEA] relative  border border-[#799794] px-4 pb-2 pt-4 rounded-lg mt-1">
+        <button onClick={openModal} className="flex absolute cursor-pointer items-center right-4 bottom-4 lg:bottom-auto lg:top-4 z-10">
+          <span className="lg:text-sm text-[10px]">
+          <img src={edit} alt="update" />
+            </span>Update Profile
+          </button>
           <div className="space-y-4">
-            <TimelineContainer setNotifyCount={setNotifyCount} timelineData = {timelineData} setTimelineData= {setTimelineData} />
+            <TimelineContainer isModalOpen={isModalOpen} closeModal={closeModal} setNotifyCount={setNotifyCount} timelineData = {timelineData} setTimelineData= {setTimelineData} />
           </div>
         </div>
       </AccordionItem>

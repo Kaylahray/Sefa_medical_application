@@ -24,8 +24,8 @@ const ConsultationAccordion = ({ handleSwitchPage }) => {
         isActive={activeIndex === 0}
         onClick={() => toggleAccordion(0)}
       >
-        <div className="grid grid-cols-3 gap-4 p-4 min-h-[310px] rounded-lg mt-2 bg-[#E4EAEA] border-[1px] border-[#799794]">
-          <div className="p-4 rounded-lg">
+        <div className="grid grid-col-1 lg:grid-cols-3 gap-4 p-4 min-h-[310px] rounded-lg mt-2 bg-[#E4EAEA] border-[1px] border-[#799794]">
+          <div className="p-4 rounded-lg border-l-[0.5px] lg:border-none border-[#D2DCDB]">
             <p className="font-semibold text-[#283231] text-lg">
               Observations
             </p>

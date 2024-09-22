@@ -7,7 +7,7 @@ import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa6";
 const PatientCard = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mb-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mt-4 mb-5">
       {/* card 1 */}
       <DashboardCard>
         <div className="flex items-center gap-4 ">

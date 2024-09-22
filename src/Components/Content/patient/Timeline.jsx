@@ -8,7 +8,7 @@ export default function TimelineItem({number, title , result, result2}) {
   return (
     <> 
   <div className="group relative flex items-start">
-    <span className="flex h-9 items-center">
+    <span className="flex h-9 items-center ">
       <span className="relative z-10 flex h-8 w-8 text-white items-center justify-center rounded-full bg-[#516563] group-hover:bg-gray-800">
        {number}
       </span>
