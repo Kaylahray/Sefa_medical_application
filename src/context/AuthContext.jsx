@@ -76,7 +76,7 @@ export const UserProvider = ({ children }) => {
   // my edit version
   const handleEditChange = (e, index) => {
     const updatedPerson = { ...filteredPeople[index] };
-    const section = e.target.dataset.section; // Get the section attribute from the input field
+    const section = e.target.dataset.section; // get the section attribute from the input field. use data-section
     if (e.target.name === "fullName") {
       const [firstName, lastName] = e.target.value.split(" ");
       updatedPerson[section].firstName = firstName;

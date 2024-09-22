@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import edit from "../../../assets/edit.svg";
 import Button from "../../shared/Button";
-import profile from "../../../assets/profilePatient.svg"
+import profile from "../../../assets/profilePatient.svg";
 import UsersContext from "../../../context/AuthContext";
 
 const BiodataDetails = () => {
@@ -46,7 +46,7 @@ const BiodataDetails = () => {
             {
               label: "State of Birth",
               value: patients.stateOfBirth,
-              fieldName: "state",
+              fieldName: "stateOfBirth",
             },
             { label: "Age", value: patients.age, fieldName: "age" },
             {
@@ -58,18 +58,19 @@ const BiodataDetails = () => {
             {
               label: "Phone Number",
               value: patients.phoneNumber,
-              fieldName: "phone",
+              fieldName: "phoneNumber",
             },
             { label: "Height", value: patients.height, fieldName: "height" },
             {
               label: "Residential Address",
               value: `${patients.address.street}, ${patients.address.city}.`,
+              fieldName: "street",
             },
-            { label: "Weight", value: patients.weight, fieldName: "weigth" },
+            { label: "Weight", value: patients.weight, fieldName: "weight" },
             {
               label: "Marital Status",
               value: patients.maritalStatus || "N/A",
-              fieldName: "marriage",
+              fieldName: "maritalStatus",
             },
           ].map(({ label, value, fieldName }) => (
             <div key={label} className="">
