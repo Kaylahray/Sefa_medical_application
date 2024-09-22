@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import edit from "../../../assets/edit.svg";
 import Button from "../../shared/Button";
+import profile from "../../../assets/profilePatient.svg"
 import UsersContext from "../../../context/AuthContext";
 
 const BiodataDetails = () => {
@@ -150,7 +151,7 @@ const BiodataDetails = () => {
           {/* Profile Image and Buttons */}
           <div className="flex flex-col items-end justify-between">
             <img
-              src={`https://picsum.photos/300/300`}
+              src={profile}
               alt="Profile"
               className="w-28 h-28 object-cover rounded-full mb-4"
             />
@@ -163,7 +164,7 @@ const BiodataDetails = () => {
                   "Done"
                 ) : (
                   <span className="flex items-center">
-                    <img src={edit} alt="Edit" /> "Edit Profile"
+                    <img src={edit} alt="Edit" /> Edit Profile
                   </span>
                 )}
               </button>
